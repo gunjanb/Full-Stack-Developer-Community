@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Post = require("./Post");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
@@ -28,7 +29,8 @@ const userSchema = new Schema({
   },
   contactInfo: {
     type: String
-  }
+  },
+  post: [Post]
 });
 
 // set up pre-save middleware to create password
