@@ -9,7 +9,7 @@ const typeDefs = gql`
     aboutMe: String
     profilePic: String
     contactInfo: String
-    post: Post
+    post: [Post]
   }
 
   type Post {
