@@ -4,19 +4,21 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    username: String!
-    email: String!
-    password: String!
+    username: String
+    email: String
+    password: String
     aboutMe: String
     profilePic: String
     contactInfo: String
     post: [Post]
+
   }
 
   type Post {
     _id: ID
-    title: String!
-    content: String!
+    title: String
+    content: String
+    tech: String
     video: String
     video_title: String
     user: User
@@ -30,6 +32,7 @@ const typeDefs = gql`
   type Query {
     user: User
     post: Post
+    all_user: User
   }
 
   type Mutation {

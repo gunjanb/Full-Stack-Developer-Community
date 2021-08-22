@@ -29,8 +29,8 @@ const userSchema = new Schema({
   },
   contactInfo: {
     type: String
-  },
-  post: [Post]
+  }
+
 });
 
 // set up pre-save middleware to create password

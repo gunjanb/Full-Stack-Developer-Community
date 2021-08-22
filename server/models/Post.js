@@ -8,6 +8,11 @@ const postSchema = new Schema({
       required: true,
       trim: true,
     },
+    tech: {
+      type: String,
+      required: true,
+      trim: true
+    },
     content: {
         type: String,
         required: true

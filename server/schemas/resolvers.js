@@ -3,40 +3,38 @@ const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {
-
+Query: {
+///////////////////////////////
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate(post);
+        const user = await User.findById(context.user._id).populate('post');
         return user
       }
       throw new AuthenticationError("Not logged in");
     },
-
-    all_user: (parent, args) => {
-      const all = await User.find().populate(post);
-      return all
+////////////////////////////////
+    all_user: async () => {
+      return await User.find({}).populate('post');
     },
-
-
+////////////////////////////////
     post: async (parent, args, context) => {
       if (context.user) {
-        return await Post.find()
+        return await Post.find({})
       }
     }
-
   },
 
 
 
 
 Mutation: {
+  ////////////////////////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
-
+////////////////////////////////
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -45,7 +43,7 @@ Mutation: {
       }
       throw new AuthenticationError("Not logged in");
     },
-
+////////////////////////////////
     addPost: async (parent, args, context) => {
       if (context.user) {
         const updatedUserPost = await User.create(args);
@@ -53,8 +51,7 @@ Mutation: {
       }
       // throw new AuthenticationError('You need to be logged in!');
     },
-
-
+////////////////////////////////
     deletePost: async (parent, { postId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -64,10 +61,9 @@ Mutation: {
         );
         return updatedUser;
       }
-
       throw new AuthenticationError('You need to be logged in!');
     },
-
+////////////////////////////////
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
