@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -7,18 +7,24 @@ const resolvers = {
 
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "post",
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
+        const user = await User.findById(context.user._id).populate(post);
+        return user
       }
-
       throw new AuthenticationError("Not logged in");
     },
+
+    all_user: (parent, args) => {
+      const all = await User.find().populate(post);
+      return all
+    },
+
+
+    post: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.find()
+      }
+    }
+
   },
 
 
@@ -28,7 +34,6 @@ Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
 
@@ -42,15 +47,25 @@ Mutation: {
     },
 
     addPost: async (parent, args, context) => {
-
+      if (context.user) {
+        const updatedUserPost = await User.create(args);
+        return updatedUserPost;
+      }
+      // throw new AuthenticationError('You need to be logged in!');
     },
 
-    deletePost: async (parent, args, context) => {
-      if (context.post) {
-        return await Post.findByIdAndModify(context.post._id, args, {
-          remove: true,
-        })
+
+    deletePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { post: { postId } } },
+          { new: true }
+        );
+        return updatedUser;
       }
+
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     login: async (parent, { email, password }) => {
