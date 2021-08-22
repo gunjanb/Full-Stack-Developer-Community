@@ -31,7 +31,6 @@ export const UPLOAD_PHOTO = gql`
       _id
       username
       email
-      username
       imgUrl
       aboutme
       contactme
