@@ -14,6 +14,9 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
+import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
+import UserProfile from "./pages/UserProfile/UserProfile.js";
+import ContentPage from "./pages/ContentPage/ContentPage.js";
 import store from "./utils/store";
 
 const httpLink = createHttpLink({
@@ -46,6 +49,9 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
+              <Route exact path="/user/:userId" component={UserDashboard} />
+              <Route exact path="/profile/:profileId" component={UserProfile} />
+              <Route exact path="/content/:contentId" component={ContentPage} />
               <Route component={NoMatch} />
             </Switch>
           </Provider>{" "}
