@@ -10,18 +10,23 @@ const typeDefs = gql`
     aboutMe: String
     profilePic: String
     contactInfo: String
-    post: [Post]
+    posts: [Post]
 
+  }
+
+  type Tech {
+    _id: ID
+    name: String
+    post: [Post]
   }
 
   type Post {
     _id: ID
     title: String
     content: String
-    tech: String
     video: String
     video_title: String
-    user: User
+    tech: Tech
   }
 
   type Auth {
@@ -30,14 +35,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: User
-    post: Post
-    all_user: User
+    user: [User]
+    posts: [Post]
+    users: [User]
+    techs: [Tech]
   }
 
   type Mutation {
+
     addPost(
       title: String!
+      tech: String!
       content: String!
       video: String
       video_title: String
