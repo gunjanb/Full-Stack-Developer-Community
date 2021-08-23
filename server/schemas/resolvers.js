@@ -1,37 +1,45 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Post, Tech } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {
 
+Query: {
     user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "post",
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError("Not logged in");
+    if (context.user) {
+      const user = await User.findById(context.user._id).populate('posts').populate({
+        path: 'posts',
+        populate: 'tech'
+      });
+      return user
+    }
+    throw new AuthenticationError("Not logged in");
     },
+    users: async () => {
+      return await User.find({}).populate('posts').populate({
+        path: 'posts',
+        populate: 'tech'
+      });
+    },
+    techs: async () => {
+      return await Tech.find({}).populate('post');
+    },
+    posts: async () => {
+      // Populate the classes subdocument on every instance of Professor
+      return await Post.find({}).populate('tech');
+    }
   },
 
 
 
-
 Mutation: {
+  ////////////////////////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
-
+////////////////////////////////
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -40,19 +48,27 @@ Mutation: {
       }
       throw new AuthenticationError("Not logged in");
     },
-
+////////////////////////////////
     addPost: async (parent, args, context) => {
-
-    },
-
-    deletePost: async (parent, args, context) => {
-      if (context.post) {
-        return await Post.findByIdAndModify(context.post._id, args, {
-          remove: true,
-        })
+      if (context.user) {
+        const updatedUserPost = await User.create(args);
+        return updatedUserPost;
       }
+      // throw new AuthenticationError('You need to be logged in!');
     },
-
+////////////////////////////////
+    deletePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { post: { postId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+////////////////////////////////
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
