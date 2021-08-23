@@ -1,38 +1,35 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Post } = require("../models");
+const { User, Post, Tech } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
+
 Query: {
-///////////////////////////////
     user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate('post');
-        return user
-      }
-      throw new AuthenticationError("Not logged in");
+    if (context.user) {
+      const user = await User.findById(context.user._id).populate('posts').populate({
+        path: 'posts',
+        populate: 'tech'
+      });
+      return user
+    }
+    throw new AuthenticationError("Not logged in");
     },
-////////////////////////////////
-    all_user: async () => {
-      return await User.find({}).populate('post');
+    users: async () => {
+      return await User.find({}).populate('posts').populate({
+        path: 'posts',
+        populate: 'tech'
+      });
     },
-////////////////////////////////
-    post: async (parent, args, context) => {
-      if (context.user) {
-        return await Post.find({})
-      }
+    techs: async () => {
+      return await Tech.find({}).populate('post');
+    },
+    posts: async () => {
+      // Populate the classes subdocument on every instance of Professor
+      return await Post.find({}).populate('tech');
     }
   },
 
-    posts: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Post.find(params);
-    },
-
-    post: async (parent, { postId } ) => {
-      return Post.findOne({ _id: postId });
-    },
-  },
 
 
 Mutation: {
