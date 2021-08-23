@@ -17,7 +17,7 @@ const typeDefs = gql`
   type Tech {
     _id: ID
     name: String
-    post: [Post]
+    posts: [Post]
   }
 
   type Post {
@@ -35,7 +35,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: [User]
+    user(_id: ID!): User
+    post(_id: ID!): Post
+    tech(_id: ID!): Tech
     posts: [Post]
     users: [User]
     techs: [Tech]
@@ -43,11 +45,15 @@ const typeDefs = gql`
 
   type Mutation {
 
+    addTech(
+      postId: ID!,
+      name: String!
+    ): Post
+
     addPost(
-      title: String!
-      tech: String!
-      content: String!
-      video: String
+      title: String!,
+      content: String!,
+      video: String,
       video_title: String
     ): User
 
@@ -56,21 +62,21 @@ const typeDefs = gql`
     ): User
 
     addUser(
-      username: String!
-      email: String!
+      username: String!,
+      email: String!,
       password: String!
-      aboutMe: String
-      profilePic: String
-      contactInfo: String
     ): Auth
 
     updateUser(
-      aboutMe: String
-      profilePic: String
-      contactInfo: String
+      aboutMe: String,
+      profilePic: String,
+      contactInfo: String,
     ): User
 
-    login(email: String!, password: String!): Auth
+    login(
+      email: String!,
+      password: String!
+    ): Auth
   }
 `;
 
