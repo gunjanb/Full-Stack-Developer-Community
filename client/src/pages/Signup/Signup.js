@@ -38,7 +38,8 @@ function Signup(props) {
         <div
           style={{
             position: 'fixed'
-          }}>
+          }}
+        >
         <Link to="/login">← Go to Login</Link>
 
           <h2>Signup</h2>
