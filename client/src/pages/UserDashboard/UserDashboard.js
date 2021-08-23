@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { QUERY_USERS } from "../../utils/queries";
 import { UPDATE_USERS } from "../../utils/actions";
@@ -17,12 +18,14 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { users } = state;
-  const { userId } = useParam();
+  const { userId } = useParams();
   const { loading, data } = useQuery(QUERY_USERS);
+
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     if (data) {
-      setCurrentUser(data.users.find((user) => user._id === id));
+      setCurrentUser(data.users.find((user) => user._id === userId));
       dispatch({
         type: UPDATE_USERS,
         payload: data.users,
@@ -35,7 +38,7 @@ const UserDashboard = () => {
         dispatch({ type: UPDATE_USERS, payload: users });
       });
     }
-  }, [users, data, loading, dispatch, id]);
+  }, [users, data, loading, dispatch, userId]);
 
   return (
     <>
