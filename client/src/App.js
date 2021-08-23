@@ -51,7 +51,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/user/:userId" component={UserDashboard} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
-              <Route exact path="/content/:contentId" component={ContentPage} />
+              <Route exact path="/post/:postId" component={ContentPage} />
               <Route component={NoMatch} />
             </Switch>
           </Provider>{" "}
