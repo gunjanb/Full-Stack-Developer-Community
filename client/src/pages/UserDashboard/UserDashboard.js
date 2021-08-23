@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 
 import { QUERY_USERS } from "../../utils/queries";
-import { UPDATE_USER } from "../../utils/actions";
+import { UPDATE_USERS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
 import { Row, Col, Spinner } from "react-bootstrap";
 import "./UserDashboard.css";
@@ -17,9 +17,25 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { users } = state;
+  const { userId } = useParam();
   const { loading, data } = useQuery(QUERY_USERS);
 
-  useEffect(() => {});
+  useEffect(() => {
+    if (data) {
+      setCurrentUser(data.users.find((user) => user._id === id));
+      dispatch({
+        type: UPDATE_USERS,
+        payload: data.users,
+      });
+      data.users.forEach((user) => {
+        idbPromise("users", "put", user);
+      });
+    } else if (!loading) {
+      idbPromise("users", "get").then((users) => {
+        dispatch({ type: UPDATE_USERS, payload: users });
+      });
+    }
+  }, [users, data, loading, dispatch, id]);
 
   return (
     <>
