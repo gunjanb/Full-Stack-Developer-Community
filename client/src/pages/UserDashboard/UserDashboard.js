@@ -22,6 +22,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (data) {
+      console.log(data);
       setCurrentUser(data.users.find((user) => user._id === userId));
       dispatch({
         type: UPDATE_USERS,
@@ -35,7 +36,7 @@ const UserDashboard = () => {
         dispatch({ type: UPDATE_USERS, payload: users });
       });
     }
-  }, [users, data, loading, dispatch, userId]);
+  }, [data, userId]);
 
   return (
     <>
