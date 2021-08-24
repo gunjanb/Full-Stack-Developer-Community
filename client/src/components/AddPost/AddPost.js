@@ -69,10 +69,6 @@ const AddPost = () => {
     setVideoTitle(event.target.value);
   };
 
-  const handleChange = (event) => {
-    setVideoTitle(event.target.value);
-  };
-
   return (
     <>
       {loading ? (
