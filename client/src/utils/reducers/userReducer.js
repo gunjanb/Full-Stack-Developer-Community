@@ -5,8 +5,7 @@ const userReducer = (state = [], action) => {
     case UPDATE_USERS:
       // return array
       return {
-        ...state,
-        users: action.payload,
+        ...action.payload,
       };
 
     // POSSIBLY CREATE NEW ACTION TO HANDLE UPDATE OF INDIVIDUAL CREATOR PROPERTIES
