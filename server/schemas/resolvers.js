@@ -5,6 +5,9 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
 
 Query: {
+
+  //find user by id if logged in
+
     user: async (parent, args, context) => {
     if (context.user) {
       const user = await User.findById(context.user._id).populate('posts').populate({
@@ -15,17 +18,32 @@ Query: {
     }
     throw new AuthenticationError("Not logged in");
     },
+
+
+
+    post: async (parent, args) => {
+      return await Post.findById(args._id).populate('tech');
+    },
+
+    tech: async (parent, args) => {
+      return await Tech.findById(args._id).populate('post');
+    },
+
+    //fina all users
     users: async () => {
       return await User.find({}).populate('posts').populate({
         path: 'posts',
         populate: 'tech'
       });
     },
+
+    //find all techs
     techs: async () => {
       return await Tech.find({}).populate('post');
     },
+
+    //find all posts
     posts: async () => {
-      // Populate the classes subdocument on every instance of Professor
       return await Post.find({}).populate('tech');
     }
   },
@@ -39,22 +57,59 @@ Mutation: {
       const token = signToken(user);
       return { token, user };
     },
+
 ////////////////////////////////
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
-          new: true,
-        });
+        return await User.findByIdAndUpdate(
+          context.user._id,
+          args,
+          {new: true}
+        );
       }
       throw new AuthenticationError("Not logged in");
     },
 ////////////////////////////////
+    addTech: async(parent, {postId, name}) =>{
+      if (context.user) {
+      const existedTech = await Tech.findOne({name});
+      if(existedTech){
+        const updatedPost = await Post.findByIdAndUpdate(
+        { _id: postId },
+        {$push: { tech: existedTech } },
+        {new: true}
+        )
+        return updatedPost}
+      else {
+        const newTech = await Tech.create({name});
+        const newPost = await Post.findByIdAndUpdate(
+          { _id: postId },
+          {$push: { tech: newTech } },
+          {new: true}
+          );
+          return newPost
+      }
+
+    } throw new AuthenticationError('App: You need to be logged in!');
+  },
+////////////////////////////////
+    // addPost: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const updatedUserPost = await User.create(args);
+    //     return updatedUserPost;
+    //   }
+    //   throw new AuthenticationError('App: You need to be logged in!');
+    // },
     addPost: async (parent, args, context) => {
       if (context.user) {
-        const updatedUserPost = await User.create(args);
-        return updatedUserPost;
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { post: args } },
+          { new: true }
+        );
+        return updatedUser;
       }
-      // throw new AuthenticationError('You need to be logged in!');
+        throw new AuthenticationError('App: You need to be logged in!');
     },
 ////////////////////////////////
     deletePost: async (parent, { postId }, context) => {
