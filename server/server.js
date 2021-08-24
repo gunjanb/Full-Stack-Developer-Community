@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
@@ -29,6 +30,11 @@ if (process.env.NODE_ENV === 'production') {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
+
+// TODO: Adding for debugging purposes.  Will remove before deployment
+const S_KEY = process.env.S_KEY;
+
+console.log('S_KEY', S_KEY);
 
 db.once('open', () => {
   app.listen(PORT, () => {
