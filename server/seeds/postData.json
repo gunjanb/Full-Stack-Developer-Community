@@ -1,17 +1,26 @@
 [
   {
-    "name": "UseEffect University",
-    "location": "Downtown",
-    "studentCount": 6000
+  "title": "Rex's",
+  "content": "no conetent",
+  "video": "no video",
+  "video_title": "not available"
   },
   {
-    "name": "Component College",
-    "location": "Art District",
-    "studentCount": 8000
-  },
-  {
-    "name": "JSX Technical School",
-    "location": "React Park",
-    "studentCount": 5000
-  }
+    "title": "Donna's",
+    "content": "no conetent",
+    "video": "no video",
+    "video_title": "not available"
+    },
+    {
+      "title": "Tiffany's",
+      "content": "no conetent",
+      "video": "no video",
+      "video_title": "not available"
+      },
+      {
+        "title": "Gunjan's",
+        "content": "no conetent",
+        "video": "no video",
+        "video_title": "not available"
+        }
 ]
