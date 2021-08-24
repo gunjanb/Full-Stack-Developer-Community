@@ -17,22 +17,23 @@ import { gql } from "@apollo/client";
 
 export const QUERY_USERS = gql`
   {
-    user {
+    users {
       _id
-      email
       username
-      imgUrl
-      aboutme
-      contactme
-      tech {
-        _id
-        name
-      }
-      resource {
-        _id
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
         title
-        videoUrl
-        shortdescription
+        video_title
+        _id
+        tech {
+          _id
+          name
+        }
+        content
+        video
       }
     }
   }
