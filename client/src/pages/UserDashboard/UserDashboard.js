@@ -61,82 +61,77 @@ const UserDashboard = () => {
               <h1 className="w-100 my-5 text-center">
                 Welcome {currentUser.username}!
               </h1>
-              <Row className="mt-4 d-flex justify-content-center ">
-                <Col
-                  lg={6}
-                  // className="d-flex flex-column align-items-center justify-content-start"
-                  className="d-flex"
-                >
-                  <div
-                    className="w-100  pt-2 mb-2 rounded"
-                    style={{ color: " red" }}
+              <Row className="m-4  d-flex justify-content-center ">
+                <Col lg={6} className="pb-2">
+                  <Card
+                    className="w-75 mx-auto"
+                    style={{ backgroundColor: "#415d43" }}
                   >
-                    <Card className="w-75 mx-auto ">
-                      {currentUser.profilePic ? (
-                        <>
-                          <Card.Img
-                            variant="top"
-                            className="w-75 mx-auto rounded"
-                            src={currentUser.profilePic}
-                          />
-                          <Card.Body className="text-center">
-                            <AddPhoto />
-                          </Card.Body>
-                        </>
-                      ) : (
+                    {currentUser.profilePic ? (
+                      <>
+                        <Card.Img
+                          variant="top"
+                          className="w-75 mx-auto rounded"
+                          src={currentUser.profilePic}
+                        />
                         <Card.Body className="text-center">
-                          <p className="text-center">
-                            Add your profile picture here
-                          </p>
                           <AddPhoto />
                         </Card.Body>
-                      )}
-                    </Card>
-                  </div>
-                </Col>
-                <Col lg={6}>
-                  <div
-                    className=" rounded  w-100 p-4 m-2"
-                    style={{ color: "red" }}
-                  >
-                    {/* <div className=" rounded w-50 m-2 text-center">
-                      <p>{currentUser.contactInfo}</p>
-                      <AddContactInfo currentUserContactInfo={currentUser.contactInfo} />
-                    </div> */}
-
-                    {/* <div className=' rounded w-100 m-2 mb-3 p-4 text-center'> */}
-                    {currentUser.contactInfo ? (
-                      <p className="text-left">{currentUser.contactInfo}</p>
+                      </>
                     ) : (
-                      <p className="mb-3">Add your Contact Info</p>
+                      <Card.Body className="text-center text-white">
+                        <p className="text-center">Add your profile picture</p>
+                        <AddPhoto />
+                      </Card.Body>
                     )}
-                    <AddContactInfo
-                      currentUserContactInfo={currentUser.contactInfobio}
-                    />
-                  </div>
+                  </Card>
                   {/* </div> */}
                 </Col>
-              </Row>
-              <Row>
                 <Col lg={6}>
-                  <div
-                    className=" rounded w-100 m-2 mb-3 p-4 text-center"
-                    styles={{ color: "red" }}
+                  <Card
+                    className="w-75 mx-auto"
+                    style={{ backgroundColor: "#415d43" }}
+                  >
+                    {currentUser.contactInfo ? (
+                      <>
+                        <Card.Body className="text-center">
+                          <AddContactInfo />
+                        </Card.Body>
+                      </>
+                    ) : (
+                      <Card.Body className="text-center text-white">
+                        <p className="text-center">Add your Contact Info</p>
+                        <AddContactInfo
+                          currentUserContactInfo={currentUser.contactInfobio}
+                        />
+                      </Card.Body>
+                    )}
+                  </Card>
+                </Col>
+              </Row>
+              <Row className="m-4  d-flex justify-content-center">
+                <Col lg={6} className="pb-2">
+                  <Card
+                    className="w-75 mx-auto"
+                    style={{ backgroundColor: "#415d43" }}
                   >
                     {currentUser.aboutMe ? (
-                      <p className="text-left">{currentUser.aboutMe}</p>
+                      <>
+                        <Card.Body className="text-center">
+                          <AddAboutMe />
+                        </Card.Body>
+                      </>
                     ) : (
-                      <p className="mb-3">Please add about yourself</p>
+                      <Card.Body className="text-center text-white">
+                        <p className="text-center">Add About yourself</p>
+                        <AddAboutMe currentUserAboutMe={currentUser.aboutMe} />
+                      </Card.Body>
                     )}
-                    <AddAboutMe currentUserAboutMe={currentUser.aboutMe} />
-                  </div>
+                  </Card>
                 </Col>
 
-                <Col
-                  lg={6}
-                  className="d-flex flex-column align-items-center justify-content-start mt-0 mb-3"
-                >
-                  <div className=" w-100 mb-3 p-2 rounded d-flex flex-column justify-content-center align-items-center">
+                <Col lg={6}>
+                  {/* <div className=" w-100 mb-3 p-2 rounded d-flex flex-column justify-content-center align-items-center">
                     <h5 className="text-dark">Techs</h5>
                     {currentUser.posts && currentUser.posts.length ? (
                       <ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
@@ -150,26 +145,67 @@ const UserDashboard = () => {
                         ))}
                       </ul>
                     ) : null}
-                  </div>
-                  <div className=" w-100 p-5 d-flex flex-column align-items-center rounded">
-                    <h4 className="text-dark">Resoucres</h4>
+                  </div> */}
+                  <Card
+                    className="w-75 mx-auto"
+                    style={{ backgroundColor: "#415d43" }}
+                  >
                     {currentUser.posts && currentUser.posts.length ? (
-                      <div className="w-100">
-                        {currentUser.posts.map((post) => (
-                          <Link
-                            className="btn btn-block btn-squared btn-light text-dark"
-                            to={`/post/${post._id}`}
+                      <>
+                        <Card.Body className="text-center">
+                          <h5
+                            className="text-center"
+                            style={{ color: "black" }}
                           >
-                            {post.title}
-                          </Link>
-                        ))}
-                      </div>
+                            Techs
+                          </h5>
+                          <ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
+                            {currentUser.posts.map((post) => (
+                              <span
+                                key={post._id}
+                                className="d-inline-block text-center btn-sm m-1 text-white"
+                              >
+                                {post.tech.name}
+                              </span>
+                            ))}
+                          </ul>
+                        </Card.Body>
+                      </>
                     ) : (
-                      <p>Add your content here you want to share</p>
+                      <Card.Body className="text-center ">
+                        <h5 className="text-center" styel={{ color: "black" }}>
+                          Techs
+                        </h5>
+                        <p className="text-center">Not added anything yet</p>
+                      </Card.Body>
                     )}
-                    <AddPost />
-                  </div>
+                  </Card>
                 </Col>
+              </Row>
+              <Row className="m-4  d-flex justify-content-center">
+                <div
+                  className="  p-4 d-flex flex-column align-items-center rounded"
+                  style={{ backgroundColor: "#415d43", width: "65rem" }}
+                >
+                  <h4 className="" style={{ color: "black" }}>
+                    Resources
+                  </h4>
+                  {currentUser.posts && currentUser.posts.length ? (
+                    <div className="w-20">
+                      {currentUser.posts.map((post) => (
+                        <Link
+                          className="btn btn-block btn-squared btn-light text-dark"
+                          to={`/post/${post._id}`}
+                        >
+                          {post.title}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>Add your content here you want to share</p>
+                  )}
+                  <AddPost />
+                </div>
               </Row>
             </div>
           ) : null}
