@@ -168,3 +168,19 @@ export const UPDATE_USER_RESOURCE = gql`
     }
   }
 `;
+
+export const ADD_ORDER = gql`
+  mutation addOrder($contributions: [ID]!) {
+    addOrder(contributions: $contributions) {
+      purchaseDate
+      contributions {
+        _id
+        name
+        description
+        image
+        price
+        quantity
+      }
+    }
+  }
+`;
