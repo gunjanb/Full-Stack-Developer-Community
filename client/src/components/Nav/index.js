@@ -35,13 +35,13 @@ export default function NavTabs () {
     <nav>
         <ul className="navbar-nav align-items-center">
             <li className="nav-item">
-                <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page"><a>Full Stack Developer Community</a></Link>
+                <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
             </li>
             <li className="nav-item">
-                <Link to="/login" hash="tab5" className="nav-link active nav-text me-4" aria-current="page"><a>Login</a></Link>
+                <Link to="/login" hash="tab5" className="nav-link active nav-text me-4" aria-current="page">Login</Link>
             </li>
             <li className="nav-item">
-                <Link to="/signup" hash="tab6" className="nav-link active nav-text me-4" aria-current="page"><a>Signup</a></Link>
+                <Link to="/signup" hash="tab6" className="nav-link active nav-text me-4" aria-current="page">Signup</Link>
             </li>
             </ul>
             </nav>
@@ -49,10 +49,10 @@ export default function NavTabs () {
     }
     };  
     return(
-    <header className="hero nav-style">
+    <header className="hero nav-style align-items-center justify-content-evenly sticky-top p-2">
             <div className="navbar navbar-expand-lg navbar-light">
-                <div className="container-fluid d-flex">
-                    <div className="navbar-brand">
+                <div className="container-fluid">
+                    <div className="navbar-brand ms-4">
                         <img src={logo} alt="FSDC" width="64" height="64" className="d-inline-block align-text-center me-1 " />
                     </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

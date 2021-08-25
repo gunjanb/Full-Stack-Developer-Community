@@ -13,12 +13,11 @@ import Home from "./pages/Home/Home.js";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login/Login.js";
 import Signup from "./pages/Signup/Signup";
-import Nav from "./components/Nav/index";
-import Footer from "./components/Footer/Footer";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer/Footer.js"
 import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
 import ContentPage from "./pages/ContentPage/ContentPage.js";
-import Donate from "./pages/Donate";
 import store from "./utils/store";
 
 const httpLink = createHttpLink({
@@ -46,7 +45,7 @@ function App() {
       <Router>
         <div>
           <Provider store={store}>
-              <Nav />
+            <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
@@ -54,7 +53,6 @@ function App() {
               <Route exact path="/user/:userId" component={UserDashboard} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content/:contentId" component={ContentPage} />
-              <Route exact path="/donate" component={Donate} />
               <Route component={NoMatch} />
             </Switch>
             <Footer />
