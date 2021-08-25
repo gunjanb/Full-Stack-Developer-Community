@@ -20,7 +20,6 @@ import ContentPage from "./pages/ContentPage/ContentPage.js";
 import store from "./utils/store";
 import ContributionPage from "./pages/ContributionPage";
 import Detail from './pages/Detail';
-import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
@@ -48,7 +47,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider store={store}>
+          <Provider store={store}>
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -63,7 +62,7 @@ function App() {
               <Route exact path="/content/:contentId" component={ContentPage} />
               <Route component={NoMatch} />
             </Switch>
-          </StoreProvider>{" "}
+          </Provider>{" "}
         </div>
       </Router>
     </ApolloProvider>
