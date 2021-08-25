@@ -26,21 +26,6 @@ const AddPost = () => {
   const handleShow = () => setShow(true);
   const { data, loading } = useQuery(QUERY_TECHS);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     // var getalltechs = [];
-  //     // data.techs.forEach((tech) => {
-  //     //   getalltechs.push(tech.name);
-  //     //   console.log(getalltechs);
-  //     // });
-
-  //     setAllTechs(data);
-  //     // console.log("data", data);
-  //     // console.log("all techs", data.techs);
-  //     console.log("after seeting all array", alltechs);
-  //     console.log(typeof alltechs);
-  //   }
-  // }, [data]);
   useEffect(() => {
     if (data) {
       dispatch({ type: UPDATE_TECHS, payload: data.techs });
@@ -101,7 +86,6 @@ const AddPost = () => {
     setVideoTitle(event.target.value);
   };
 
-  console.log(typeof Alltechs);
   return (
     <>
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
