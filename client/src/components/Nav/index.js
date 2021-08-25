@@ -16,7 +16,7 @@ export default function NavTabs () {
                 <nav>
                 <ul className="navbar-nav align-items-center">
                 <li className="nav-item">
-                    <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page">Full Stack Development Community</Link>
+                    <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/user/:userId" hash="tab2" className="nav-link active nav-text me-4 text-color" aria-current="page">Dashboard</Link>
@@ -35,7 +35,7 @@ export default function NavTabs () {
     <nav>
         <ul className="navbar-nav align-items-center">
             <li className="nav-item">
-                <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page"><a>Full Stack Development Community</a></Link>
+                <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page"><a>Full Stack Developer Community</a></Link>
             </li>
             <li className="nav-item">
                 <Link to="/login" hash="tab5" className="nav-link active nav-text me-4" aria-current="page"><a>Login</a></Link>
