@@ -1,12 +1,11 @@
-const mongoose = require("mongoose");
+const {Schema, model} = require("mongoose");
 
-const { Schema } = mongoose;
-
-const postSchema = new Schema({
+const postSchema = new Schema(
+  {
     title: {
       type: String,
       required: true,
-      trim: true,
+      trim: true
     },
     content: {
         type: String,
@@ -17,9 +16,14 @@ const postSchema = new Schema({
     },
     video_title: {
         type: String
-      }
-  });
+    },
+    tech: {
+      type: Schema.Types.ObjectId,
+      ref: 'Tech'
+    }
+  }
+);
 
 
-const Post = mongoose.model("Post", postSchema);
+const Post = model("Post", postSchema);
 module.exports = Post;

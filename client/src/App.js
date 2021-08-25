@@ -18,6 +18,7 @@ import Footer from "./components/Footer/Footer.js"
 import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
 import ContentPage from "./pages/ContentPage/ContentPage.js";
+import Donate from "./pages/Donate";
 import store from "./utils/store";
 
 const httpLink = createHttpLink({
@@ -45,7 +46,7 @@ function App() {
       <Router>
         <div>
           <Provider store={store}>
-            <Nav />
+              <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
@@ -53,6 +54,7 @@ function App() {
               <Route exact path="/user/:userId" component={UserDashboard} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content/:contentId" component={ContentPage} />
+              <Route exact path="/donate" component={Donate} />
               <Route component={NoMatch} />
             </Switch>
             <Footer />
