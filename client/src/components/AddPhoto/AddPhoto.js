@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Spinner } from "react-bootstrap";
+import { Modal, Button, Form, Spinner, FormControl } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PHOTO } from "../../utils/mutations";
 import "./AddPhoto.css";
 
 const AddPhoto = () => {
   const [show, setShow] = useState(false);
+  const [file, setFile] = useState();
   const [updateUser, { loading }] = useMutation(UPDATE_PHOTO);
   //set show to true or false
   const handleClose = () => setShow(false);
@@ -13,9 +14,9 @@ const AddPhoto = () => {
   //on submit
   const handleFileUpload = async (e) => {
     e.preventDefault();
-    var files = document.getElementById("uploadphoto").files;
+    // var files = document.getElementById("uploadphoto").files;
     handleClose();
-    const file = files[0];
+    // const file = files[0];
     console.log(file);
     try {
       await updateUser({
@@ -59,7 +60,11 @@ const AddPhoto = () => {
         <Modal.Body>
           <Form className="m-2" onSubmit={handleFileUpload}>
             <Form.Group>
-              <Form.File className="text-center" id="uploadphoto" />
+              {/* <Form.File className="text-center" id="uploadphoto" /> */}
+              <Form.Control
+                type="file"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
             </Form.Group>
             <Button type="submit" variant="dark btn-sm ">
               save
