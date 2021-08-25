@@ -7,13 +7,14 @@ import "./AddAboutMe.css";
 const AddAboutMe = ({ currentUserAboutMe }) => {
   const [aboutme, setAboutMe] = useState(currentUserAboutMe);
   const [show, setShow] = useState(false);
-
   const [updateUser] = useMutation(UPDATE_ABOUT_ME);
 
   // update state based on form input changes
   const handleChange = (event) => {
     setAboutMe(event.target.value);
   };
+
+  //submit form
   const handleFormSubmit = async (e) => {
     // close modal
     handleClose();
@@ -30,7 +31,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
     }
   };
 
-  // MODAL DISPLAY
+  // set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -56,7 +57,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
               name="aboutme"
               rows="5"
               as="textarea"
-              aria-label="With textarea"
+              aria-label="textarea"
               onChange={handleChange}
               value={aboutme || ""}
               placeholder={currentUserAboutMe}

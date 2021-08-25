@@ -14,6 +14,8 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
   const handleChange = (event) => {
     setContactInfo(event.target.value);
   };
+
+  //on form submit
   const handleFormSubmit = async (e) => {
     // close modal
     handleClose();
@@ -30,7 +32,7 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
     }
   };
 
-  // MODAL DISPLAY
+  // set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -56,7 +58,7 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
               name="contactinfo"
               rows="5"
               as="textarea"
-              aria-label="With textarea"
+              aria-label="textarea"
               onChange={handleChange}
               value={contactInfo || ""}
               placeholder={currentUserContactInfo}

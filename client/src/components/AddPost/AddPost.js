@@ -3,9 +3,16 @@ import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_TECHS } from "../../utils/queries";
+import { UPDATE_TECHS } from "../../utils/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { idbPromise } from "../../utils/helper";
+
 import "./AddPost.css";
 
 const AddPost = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { techs } = state;
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState();
   const [tech, setTech] = useState();
@@ -14,21 +21,47 @@ const AddPost = () => {
   const [videotitle, setVideoTitle] = useState();
   const [alltechs, setAllTechs] = useState([]);
 
+  // set show to true and false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { data, loading } = useQuery(QUERY_TECHS);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     // var getalltechs = [];
+  //     // data.techs.forEach((tech) => {
+  //     //   getalltechs.push(tech.name);
+  //     //   console.log(getalltechs);
+  //     // });
+
+  //     setAllTechs(data);
+  //     // console.log("data", data);
+  //     // console.log("all techs", data.techs);
+  //     console.log("after seeting all array", alltechs);
+  //     console.log(typeof alltechs);
+  //   }
+  // }, [data]);
   useEffect(() => {
     if (data) {
-      setAllTechs(data);
+      dispatch({ type: UPDATE_TECHS, payload: data.techs });
+      data.techs.forEach((tech) => {
+        idbPromise("techs", "put", tech);
+      });
+    } else if (!loading) {
+      idbPromise("techs", "get").then((techs) => {
+        dispatch({ type: UPDATE_TECHS, payload: techs });
+      });
     }
-  }, [data, loading]);
+  }, [data, loading, dispatch]);
+
   const [addPost] = useMutation(ADD_POST);
 
+  //on submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     handleClose();
-
+    console.log(file);
+    console.log(title, tech, content, videotitle);
     try {
       await addPost({
         variables: {
@@ -43,7 +76,6 @@ const AddPost = () => {
       console.error(err);
     }
   };
-  // MODAL TOGGLE
   // title: String!
   // tech: String!
   // content: String!
@@ -69,20 +101,9 @@ const AddPost = () => {
     setVideoTitle(event.target.value);
   };
 
+  console.log(typeof Alltechs);
   return (
     <>
-      {loading ? (
-        <Spinner
-          animation="border"
-          role="status"
-          style={{
-            width: " 1rem",
-            height: " 1rem",
-            margin: "auto",
-            display: "block",
-          }}
-        ></Spinner>
-      ) : null}
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
         Add Post
       </Button>
@@ -99,11 +120,12 @@ const AddPost = () => {
         </Modal.Header>
         <Modal.Body>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="d-flex  flex-column justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 m-1">
-              <p className="">Select title:</p>
+            <div className="col-12 m-1 p-1">
+              {/* <p className="">Select title:</p> */}
+              <label htmlFor="title">Title:</label>
               <input
                 name="title"
                 type="text"
@@ -113,8 +135,9 @@ const AddPost = () => {
                 onChange={handletitle}
               />
             </div>
-            <div className="col-12">
-              <p>Short Description:</p>
+            <div className="col-12 m-1 p-1">
+              {/* <p>Short Description:</p> */}
+              <label htmlFor="content">Short Description:</label>
               <textarea
                 name="content"
                 placeholder="write your view here"
@@ -126,19 +149,21 @@ const AddPost = () => {
               ></textarea>
             </div>
 
-            <div className="col-12 m-1">
-              <p>Select a tech </p>
+            <div className="col-12 m-1 p-1">
+              {/* <p>Select a tech </p> */}
+              <label htmlFor="tech">Select a tech:</label>
               <select onChange={(e) => setTech(e.target.value)} value={tech}>
                 <option>Choose an option</option>
-                {alltechs.map((tech) => (
-                  <option key={tech} value={tech}>
-                    {tech}
+                {data?.techs.map((tech) => (
+                  <option key={tech._id} value={tech.name}>
+                    {tech.name}
                   </option>
                 ))}
               </select>
             </div>
-            <div className="col-12 m-1">
-              <p className="">Select Video title:</p>
+            <div className="col-12 m-1 p-1">
+              {/* <p className="">Select Video title:</p> */}
+              <label htmlFor="videotitle">Video Title:</label>
               <input
                 name="videotitle"
                 type="text"
@@ -148,19 +173,30 @@ const AddPost = () => {
                 onChange={handlevideotitle}
               />
             </div>
-            <div className="col-12 m-1">
-              <p className="pt-1">Select Video to upload:</p>
-              <input
+            <div className="col-12 m-1 p-1">
+              {/* <p className="pt-1">Select Video to upload:</p> */}
+              {/* <label htmlFor="file">Select Video:</label> */}
+              {/* <input
                 type="file"
                 name="file"
                 value={file}
+                accept="video/*"
                 className="form-input w-100"
                 onChange={handlefile}
+              /> */}
+
+              <Form.File
+                className="text-center"
+                type="file"
+                // className="custom-file-label"
+                // id="inputGroupFile01"
+                // label={file}
+                onChange={(e) => setFile(e.target.files[0])}
               />
             </div>
 
-            <div className="col-12 ">
-              <button className="btn btn-dark btn-sm py-1" type="submit">
+            <div className="col-12 m-1 p-1 ">
+              <button className="btn btn-dark btn-sm p-1" type="submit">
                 Save
               </button>
             </div>

@@ -41,7 +41,7 @@ export const QUERY_USERS = gql`
 
 export const QUERY_TECHS = gql`
   {
-    tech {
+    techs {
       _id
       name
     }

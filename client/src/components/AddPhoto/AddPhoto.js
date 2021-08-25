@@ -5,26 +5,22 @@ import { UPDATE_PHOTO } from "../../utils/mutations";
 import "./AddPhoto.css";
 
 const AddPhoto = () => {
-  // MODAL TOGGLE
-
   const [show, setShow] = useState(false);
-
+  const [updateUser, { loading }] = useMutation(UPDATE_PHOTO);
+  //set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [updateUser, { loading }] = useMutation(UPDATE_PHOTO);
-
+  //on submit
   const handleFileUpload = async (e) => {
     e.preventDefault();
     var files = document.getElementById("uploadphoto").files;
-
     handleClose();
-
     const file = files[0];
-
+    console.log(file);
     try {
       await updateUser({
         variables: {
-          file,
+          profilePic: file,
         },
       });
     } catch (err) {
