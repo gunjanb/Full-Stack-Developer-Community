@@ -1,19 +1,24 @@
 import { gql } from "@apollo/client";
 
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     user(username: $username) {
-//       _id
-//       username
-//       email
-//       thoughts {
-//         _id
-//         thoughtText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+export const QUERY_USER = gql`
+  {
+    user {
+      username
+      orders {
+        _id
+        purchaseDate
+        contributions {
+          _id
+          name
+          description
+          image
+          price
+          quantity
+        }
+      }
+    }
+  }
+`;
 
 export const QUERY_USERS = gql`
   {
@@ -54,6 +59,27 @@ export const QUERY_RESOURCE = gql`
       title
       shortdescription
       videoUrl
+    }
+  }
+`;
+
+export const QUERY_ALL_CONTRIBUTIONS = gql`
+  {
+    contributions {
+      _id
+      name
+      description
+      image
+      price
+      quantity
+    }
+  }
+`;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($contributions: [ID]!) {
+    checkout(contributions: $contributions) {
+      session
     }
   }
 `;
