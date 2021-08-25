@@ -144,13 +144,16 @@ const UserDashboard = () => {
                               </span>
                             ))}
                           </ul>
+                          {/* need to pass the tech  already user selected in previous articles as prop to this component */}
+                          {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
                         </Card.Body>
                       </>
                     ) : (
                       <Card.Body className="text-center ">
                         <h5 className="text-center dark-black-color">Techs</h5>
                         <p className="text-center">Not added anything yet</p>
-                        {/* will work fine if we go with model having user having tech and post seperate model and not nested one  */}
+                        {/* will work fine if we go with model having user having tech and post seperate model and not nested one  and just part of user itself */}
+                        {/* {not having any previous techs selected so anything user selected will get added to user model } */}
                         {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
                       </Card.Body>
                     )}
