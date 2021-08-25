@@ -12,7 +12,7 @@ import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home/Home.js";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login/Login.js";
-import Signup from "./pages/Singup/Signup";
+import Signup from "./pages/Signup/Signup";
 import Nav from "./components/Nav";
 import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
