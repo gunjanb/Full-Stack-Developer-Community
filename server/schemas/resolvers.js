@@ -54,6 +54,9 @@ Mutation: {
   ////////////////////////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      if(!user) {
+        throw new AuthenticationError("The email already exists; does not create successfully")
+      }
       const token = signToken(user);
       return { token, user };
     },
@@ -69,6 +72,7 @@ Mutation: {
       }
       throw new AuthenticationError("Not logged in");
     },
+
 ////////////////////////////////
     addTech: async(parent, {postId, name}) =>{
       if (context.user) {
@@ -92,6 +96,8 @@ Mutation: {
 
     } throw new AuthenticationError('App: You need to be logged in!');
   },
+
+
 ////////////////////////////////
     // addPost: async (parent, args, context) => {
     //   if (context.user) {
