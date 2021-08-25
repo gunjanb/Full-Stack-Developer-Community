@@ -53,7 +53,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user(_id: ID!): User
+    user(_id: ID): User
     post(_id: ID!): Post
     tech(_id: ID!): Tech
     posts: [Post]
@@ -105,7 +105,7 @@ const typeDefs = gql`
     ): Order
 
     updateContribution(
-      _id: ID!, quantity: Int!
+      _id: ID!
     ): Contribution
   }
 `;
