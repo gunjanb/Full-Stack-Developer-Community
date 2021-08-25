@@ -1,6 +1,6 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
-
+//  Just a dummy page so react works
 const Donate = () => {
   return (
     <div className="container">
