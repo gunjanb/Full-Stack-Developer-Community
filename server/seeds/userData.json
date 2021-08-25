@@ -1,0 +1,34 @@
+[
+  {
+  "username": "rex12345",
+  "email": "rex@testmail.com",
+  "password": "rex1234",
+  "aboutMe": "I am a king",
+  "profilePic": "imgurl is here, but not here",
+  "contactInfo": "facebook: yu19910513"
+  },
+  {
+    "username": "donna12345",
+    "email": "donna@testmail.com",
+    "password": "donna1234",
+    "aboutMe": "I am a queen",
+    "profilePic": "imgurl is here, but not here",
+    "contactInfo": "facebook: yu19910513"
+  },
+  {
+      "username": "gunjan12345",
+      "email": "gunjan@testmail.com",
+      "password": "gunjan1234",
+      "aboutMe": "I am a master",
+      "profilePic": "imgurl is here, but not here",
+      "contactInfo": "facebook: yu19910513"
+  },
+  {
+      "username": "tiffany12345",
+      "email": "tiffany@testmail.com",
+      "password": "tiffany1234",
+      "aboutMe": "I am a lord",
+      "profilePic": "imgurl is here, but not here",
+      "contactInfo": "facebook: yu19910513"
+  }
+]

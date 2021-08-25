@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { LOGIN } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
 import { Container, Card } from "react-bootstrap";
-import './Login.css';
+import './Signup.css';
 
-function Login(props) {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN);
+
+function Signup(props) {
+  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-    } catch (e) {
-      console.log(e);
-    }
+    const mutationResponse = await addUser({
+      variables: {
+        username: formState.username,
+        email: formState.email,
+        password: formState.password,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
   };
 
   const handleChange = (event) => {
@@ -36,19 +37,30 @@ function Login(props) {
       <Card>
         <div
           style={{
-          position: 'fixed'
+            position: 'fixed'
           }}
         >
-        <Link to="/signup">← Go to Signup</Link>
+        <Link to="/login">← Go to Login</Link>
 
-          <h2>Login</h2>
+          <h2>Signup</h2>
           <form onSubmit={handleFormSubmit}>
-    
+            <label htmlFor="username">
+              Username
+              <br />
+            <input
+              placeholder="Username"
+              name="username"
+              type="text"
+              id="username"
+              onChange={handleChange}
+            />
+            </label>
+            <br />
             <label htmlFor="email">
               Email
               <br />
             <input
-              placeholder="youremail@test.com"
+              placeholder="youremail@email.com"
               name="email"
               type="email"
               id="email"
@@ -67,14 +79,9 @@ function Login(props) {
               onChange={handleChange}
             />
             </label>
-            
-            {error ? (
-              <div>
-                <p className="error-text">The provided credentials are incorrect</p>
-              </div>
-            ) : null}
+            <br />
+            <br />
             <div className="flex-row flex-end">
-              <br />
               <button type="submit">Submit</button>
             </div>
           </form>
@@ -84,4 +91,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Signup;
