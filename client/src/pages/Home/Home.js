@@ -11,6 +11,7 @@ const Home = () => {
     <div className="container col-sm-7 m-3">
       <h1 className="header-title">Full Stack Developer Community</h1>
       <p className="p-text mt-3">Let's Learn Together! Learn about your favorite technologies, or become a part of the learning experience and create videos to help new web developes on their path to success.  Whether you are new to web development or have been doing this for years, we are all in this together! <br /> <br /> Sign up, or login to view videos by technology, or contribute to the Full Stack Developer Community by uploading a video or donating!</p>
+
     </div>
       <div className="carousel-container pic-carousel-container col-sm-5 me-5" id="myCarousal" className="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div className="carousel-inner image-size">

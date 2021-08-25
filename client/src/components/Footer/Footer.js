@@ -9,11 +9,11 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "./Footer.css";
 
 
-const facebook = <FontAwesomeIcon icon={faFacebook} size="2x"/>;
-const twitter = <FontAwesomeIcon icon={faTwitter} size="2x"/>;
-const stackOverflow = <FontAwesomeIcon icon={faStackOverflow} size="2x"/>;
-const linkedIn = <FontAwesomeIcon icon={faLinkedin} size="2x"/>;
-const github = <FontAwesomeIcon icon={faGithub} size="2x"/>;
+const facebook = <FontAwesomeIcon icon={faFacebook} size="3x"/>;
+const twitter = <FontAwesomeIcon icon={faTwitter} size="3x"/>;
+const stackOverflow = <FontAwesomeIcon icon={faStackOverflow} size="3x"/>;
+const linkedIn = <FontAwesomeIcon icon={faLinkedin} size="3x"/>;
+const github = <FontAwesomeIcon icon={faGithub} size="3x"/>;
 
 export default function Footer() {
     return (
