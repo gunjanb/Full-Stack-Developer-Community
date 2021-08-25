@@ -85,7 +85,7 @@ function Detail() {
     <>
       {currentContribution && cart ? (
         <div className="container my-1">
-          <Link to="/">← Back to Contributions</Link>
+          <Link to="/contributionPage">← Back to Contributions</Link>
 
           <h2>{currentContribution.name}</h2>
 
@@ -103,7 +103,7 @@ function Detail() {
           </p>
 
           <img
-            src={`/images/${currentContribution.image}`}
+            src={`../images/${currentContribution.image}`}
             alt={currentContribution.name}
           />
         </div>
