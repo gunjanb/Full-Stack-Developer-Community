@@ -1,15 +1,15 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
 
-const Home = () => {
+const Donate = () => {
   return (
     <div className="container">
       <Jumbotron>
-        <h1>Starter Stack</h1>
-        <p>We are here to be awesome</p>
+        <h1>Donate</h1>
+        <p>Content Here</p>
       </Jumbotron>
     </div>
   );
 };
 
-export default Home;
+export default Donate;
