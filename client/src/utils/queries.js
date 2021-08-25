@@ -1,60 +1,48 @@
 import { gql } from "@apollo/client";
-
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     user(username: $username) {
-//       _id
-//       username
-//       email
-//       thoughts {
-//         _id
-//         thoughtText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
-
-export const QUERY_USERS = gql`
-  {
-    users {
+// for profile page; able to render all data(posts and video)
+export const QUERY_USER = gql`
+  query user {
+    _id
+    username
+    email
+    profilePic
+    aboutMe
+    contactInfo
+    posts {
       _id
-      username
-      email
-      aboutMe
-      profilePic
-      contactInfo
-      posts {
-        title
-        video_title
+      title
+      video
+      video_title
+      tech {
         _id
-        tech {
-          _id
-          name
-        }
-        content
-        video
+        name
       }
     }
   }
 `;
 
-export const QUERY_TECHS = gql`
-  {
-    techs {
+//for home page; able to track down tech info and render back user
+export const QUERY_USERS = gql`
+  query users {
+    _id
+    username
+    email
+    profilePic
+    aboutMe
+    contactInfo
+    posts {
       _id
-      name
+      tech {
+        _id
+        name
+      }
     }
   }
 `;
-
-export const QUERY_RESOURCE = gql`
-  query resource($_id: ID!) {
-    resource(_id: $_id) {
-      _id
-      title
-      shortdescription
-      videoUrl
-    }
+//for home page
+export const QUERY_TECHS = gql`
+  query tech {
+    _id
+    name
   }
 `;

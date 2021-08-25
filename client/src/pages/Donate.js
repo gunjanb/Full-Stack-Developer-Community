@@ -1,15 +1,15 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron";
+import Jumbotron from "../components/Jumbotron";
 
-const UserProfile = () => {
+const Donate = () => {
   return (
     <div className="container">
       <Jumbotron>
-        <h1>User Profile</h1>
+        <h1>Donate</h1>
         <p>Content Here</p>
       </Jumbotron>
     </div>
   );
 };
 
-export default UserProfile;
+export default Donate;
