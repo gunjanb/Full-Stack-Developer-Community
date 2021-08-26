@@ -9,7 +9,7 @@ import {
   TOGGLE_CART
 } from "../actions";
 
-export const reducer = (state, action) => {
+export const reducer = (state = {}, action = { type: null }) => {
   switch (action.type) {
     case UPDATE_CONTRIBUTIONS:
       return {
