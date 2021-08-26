@@ -169,12 +169,17 @@ const AddPost = () => {
                 onChange={handlefile}
               /> */}
 
-              <Form.File
+              {/* <Form.File
                 className="text-center"
                 type="file"
                 // className="custom-file-label"
                 // id="inputGroupFile01"
                 // label={file}
+                onChange={(e) => setFile(e.target.files[0])}
+              /> */}
+
+              <Form.Control
+                type="file"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </div>
