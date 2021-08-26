@@ -10,3 +10,19 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.footer-position {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .footer-position {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
