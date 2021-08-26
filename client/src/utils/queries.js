@@ -45,3 +45,15 @@ query tech {
       name
     }
 `;
+
+export const QUERY_POST = gql`
+query post(_id: ID!) {
+      title
+      content
+      video
+      video_title
+      tech {
+        name
+      }
+    }
+`;
