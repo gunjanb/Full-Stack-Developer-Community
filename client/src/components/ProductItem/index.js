@@ -4,7 +4,7 @@ import { pluralize, idbPromise } from "../../utils/helper";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 
-function ContributionItem(item) {
+function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
   const {
@@ -15,7 +15,7 @@ function ContributionItem(item) {
     quantity
   } = item;
 
-  const { cart } = state
+  const { cart } = state;
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
@@ -32,7 +32,7 @@ function ContributionItem(item) {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        contribution: { ...item, purchaseQuantity: 1 }
+        product: { ...item, purchaseQuantity: 1 }
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
     }
@@ -40,7 +40,7 @@ function ContributionItem(item) {
 
   return (
     <div className="card px-1 py-1">
-      <Link to={`/contributions/${_id}`}>
+      <Link to={`/products/${_id}`}>
         <img
           alt={name}
           src={`/images/${image}`}
@@ -56,4 +56,4 @@ function ContributionItem(item) {
   );
 }
 
-export default ContributionItem;
+export default ProductItem;

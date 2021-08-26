@@ -14,8 +14,16 @@ export const LOGIN = gql`
 
 //signup
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser(
+    $username: String!, 
+    $email: String!, 
+    $password: String!
+    ) {
+    addUser(
+      username: $username, 
+      email: $email, 
+      password: $password
+      ) {
       token
       user {
         _id
@@ -170,10 +178,10 @@ export const UPDATE_USER_RESOURCE = gql`
 `;
 
 export const ADD_ORDER = gql`
-  mutation addOrder($contributions: [ID]!) {
-    addOrder(contributions: $contributions) {
+  mutation addOrder($products: [ID]!) {
+    addOrder(products: $products) {
       purchaseDate
-      contributions {
+      products {
         _id
         name
         description

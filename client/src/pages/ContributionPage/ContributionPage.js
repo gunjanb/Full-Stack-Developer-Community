@@ -1,11 +1,11 @@
 import React from "react";
-import ContributionList from "../../components/ContributionList";
+import ProductList from "../../components/ProductList";
 import Cart from "../../components/Cart";
 
 const ContributionPage = () => {
   return (
     <div className="container">
-      <ContributionList />
+      <ProductList />
       <Cart />
     </div>
   );

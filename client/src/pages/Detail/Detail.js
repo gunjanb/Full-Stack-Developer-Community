@@ -8,9 +8,9 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
-  UPDATE_CONTRIBUTIONS,
+  UPDATE_PRODUCTS,
 } from '../../utils/actions/index';
-import { QUERY_ALL_CONTRIBUTIONS } from '../../utils/queries';
+import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helper';
 import spinner from '../../assets/spinner.gif';
 
@@ -18,38 +18,38 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentContribution, setCurrentContribution] = useState({});
+  const [currentProduct, setCurrentProduct] = useState({});
 
-  const { loading, data } = useQuery(QUERY_ALL_CONTRIBUTIONS);
+  const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
 
-  const { contributions, cart } = state;
+  const { products, cart } = state;
 
   useEffect(() => {
     // already in global store
-    if (contributions.length) {
-      setCurrentContribution(contributions.find((contribution) => contribution._id === id));
+    if (products.length) {
+      setCurrentProduct(products.find((product) => product._id === id));
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_CONTRIBUTIONS,
-        contributions: data.contributions,
+        type: UPDATE_PRODUCTS,
+        products: data.products,
       });
 
-      data.contributions.forEach((contribution) => {
-        idbPromise('contributions', 'put', contribution);
+      data.products.forEach((product) => {
+        idbPromise('products', 'put', product);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('contributions', 'get').then((indexedContributions) => {
+      idbPromise('products', 'get').then((indexedProducts) => {
         dispatch({
-          type: UPDATE_CONTRIBUTIONS,
-          products: indexedContributions,
+          type: UPDATE_PRODUCTS,
+          products: indexedProducts,
         });
       });
     }
-  }, [contributions, data, loading, dispatch, id]);
+  }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -66,36 +66,36 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        contribution: { ...currentContribution, purchaseQuantity: 1 },
+        product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentContribution, purchaseQuantity: 1 });
+      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
   };
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: currentContribution._id,
+      _id: currentProduct._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentContribution });
+    idbPromise('cart', 'delete', { ...currentProduct });
   };
 
   return (
     <>
-      {currentContribution && cart ? (
+      {currentProduct && cart ? (
         <div className="container my-1">
           <Link to="/contributionPage">← Back to Contributions</Link>
 
-          <h2>{currentContribution.name}</h2>
+          <h2>{currentProduct.name}</h2>
 
-          <p>{currentContribution.description}</p>
+          <p>{currentProduct.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentContribution.price}{' '}
+            <strong>Price:</strong>${currentProduct.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
             <button
-              disabled={!cart.find((p) => p._id === currentContribution._id)}
+              disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
             >
               Remove from Cart
@@ -103,8 +103,8 @@ function Detail() {
           </p>
 
           <img
-            src={`../images/${currentContribution.image}`}
-            alt={currentContribution.name}
+            src={`../images/${currentProduct.image}`}
+            alt={currentProduct.name}
           />
         </div>
       ) : null}

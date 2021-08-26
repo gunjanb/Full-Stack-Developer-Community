@@ -38,19 +38,19 @@ const typeDefs = gql`
     user: User
   }
 
-  type Contribution {
+  type Product {
     _id: ID
     name: String
     description: String
     image: String
     quantity: Int
-    price: Int
+    price: Float
   }
 
   type Order {
     _id: ID
     purchaseDate: String
-    contributions: [Contribution]
+    products: [Product]
   }
 
   type Query {
@@ -60,10 +60,10 @@ const typeDefs = gql`
     posts: [Post]
     users: [User]
     techs: [Tech]
-    contributions(name: String): [Contribution]
-    contribution(_id: ID!): Contribution
+    products(name: String): [Product]
+    product(_id: ID!): Product
     order(_id: ID!): Order
-    checkout(contributions: [ID]!): Checkout
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
@@ -91,6 +91,9 @@ const typeDefs = gql`
     ): Auth
 
     updateUser(
+      username: String,
+      email: String,
+      password: String, 
       aboutMe: String,
       profilePic: String,
       contactInfo: String,
@@ -102,12 +105,13 @@ const typeDefs = gql`
     ): Auth
     
     addOrder(
-      contributions: [ID]!
+      products: [ID]!
     ): Order
 
-    updateContribution(
-      _id: ID!
-    ): Contribution
+    updateProduct(
+      _id: ID!,
+      quantity: Int!
+    ): Product
   }
 `;
 

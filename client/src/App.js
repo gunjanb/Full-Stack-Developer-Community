@@ -58,7 +58,7 @@ function App() {
               <Route exact path="/contributionPage" component={ContributionPage} />
               <Route exact path="/success" component={Success} />
               <Route exact path="/orderHistory" component={OrderHistory} />
-              <Route exact path="/contributions/:id" component={Detail} />
+              <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content/:contentId" component={ContentPage} />
               <Route component={NoMatch} />

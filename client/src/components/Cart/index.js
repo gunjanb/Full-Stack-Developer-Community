@@ -10,7 +10,7 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51JRSIkDCPVMgZ8j7LQXvGtgzf95mU0xYqBOij8hGCmsqUW97YIKnIcsn5iPCSswvapFxsXA9F7IVJw73CFoQIuV000ZgsxrTkm');
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
@@ -31,7 +31,7 @@ const Cart = () => {
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, contributions: [...cart] });
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
     }
 
     if (!state.cart.length) {
@@ -54,16 +54,18 @@ const Cart = () => {
   // When the submit checkout method is invoked, loop through each item in the cart
   // Add each item id to the productIds array and then invoke the getCheckout query passing an object containing the id for all our products
   function submitCheckout() {
-    const contributionIds = [];
+    console.log('submitCheckout()');
+    const productIds = [];
 
     state.cart.forEach((item) => {
       for (let i = 0; i < item.purchaseQuantity; i++) {
-        contributionIds.push(item._id);
+        productIds.push(item._id);
       }
     });
+    console.log('productIds:', productIds);
 
     getCheckout({
-      variables: { contributions: contributionIds },
+      variables: { products: productIds },
     });
   }
 

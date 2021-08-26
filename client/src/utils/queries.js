@@ -7,13 +7,13 @@ export const QUERY_USER = gql`
       orders {
         _id
         purchaseDate
-        contributions {
+        products {
           _id
           name
           description
-          image
           price
           quantity
+          image
         }
       }
     }
@@ -63,22 +63,22 @@ export const QUERY_RESOURCE = gql`
   }
 `;
 
-export const QUERY_ALL_CONTRIBUTIONS = gql`
+export const QUERY_ALL_PRODUCTS = gql`
   query {
-    contributions {
+    products {
       _id
       name
       description
-      image
       price
       quantity
+      image
     }
   }
 `;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($contributions: [ID]!) {
-    checkout(contributions: $contributions) {
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
       session
     }
   }

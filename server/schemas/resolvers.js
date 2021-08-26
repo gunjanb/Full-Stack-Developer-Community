@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Post, Tech, Contribution, Order } = require("../models");
+const { User, Post, Tech, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require('stripe')(process.env.S_KEY);
 
@@ -18,6 +18,16 @@ const resolvers = {
           path: 'posts',
           populate: 'tech',
         });
+        return user;
+      }
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: 'orders.products',
+          populate: 'product'
+        });
+
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
         return user;
       }
     },
@@ -47,13 +57,13 @@ const resolvers = {
     },
 
     // find all contributions
-    contributions: async () => {
-      return await Contribution.find();
+    products: async () => {
+      return await Product.find();
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.contributions',
+          path: 'orders.products',
           populate: 'order'
         });
 
@@ -64,21 +74,21 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ contributions: args.contributions });
+      const order = new Order({ products: args.products });
       const line_items = [];
 
-      const { contributions } = await order.populate('contributions').execPopulate();
+      const { products } = await order.populate('products').execPopulate();
 
-      for (let i = 0; i < contributions.length; i++) {
-        const contribution = await stripe.contributions.create({
-          name: contributions[i].name,
-          description: contributions[i].description,
-          images: [`${url}/images/${contributions[i].image}`]
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          images: [`${url}/images/${products[i].image}`]
         });
 
         const price = await stripe.prices.create({
-          contribution: contribution.id,
-          unit_amount: contributions[i].price * 100,
+          product: product.id,
+          unit_amount: products[i].price * 100,
           currency: 'usd',
         });
 
@@ -175,10 +185,10 @@ const resolvers = {
     },
 ////////////////////////////////
 
-    addOrder: async (parent, { contributions}, context) => {
+    addOrder: async (parent, { products }, context) => {
       console.log(context);
       if (context.user) {
-        const order = new Order({ contributions });
+        const order = new Order({ products });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
@@ -188,10 +198,10 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    updateContribution: async (parent, { _id, quantity }) => {
+    updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Contribution.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
 
     login: async (parent, { email, password }) => {

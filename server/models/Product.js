@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const contributionSchema = new Schema({
+const productSchema = new Schema({
   name: {
     type: String,
     require: true,
@@ -25,6 +25,6 @@ const contributionSchema = new Schema({
   }
 });
 
-const Contribution = mongoose.model('Contribution', contributionSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports = Contribution;
+module.exports = Product;

@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import {
-  UPDATE_CONTRIBUTIONS,
+  UPDATE_PRODUCTS,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
@@ -11,40 +11,40 @@ import {
 
 export const reducer = (state = {}, action = { type: null }) => {
   switch (action.type) {
-    case UPDATE_CONTRIBUTIONS:
+    case UPDATE_PRODUCTS:
       return {
         ...state,
-        contributions: [...action.contributions],
+        products: [...action.products],
       };
 
     case ADD_TO_CART:
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.contribution],
+        cart: [...state.cart, action.product],
       };
 
     case ADD_MULTIPLE_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, ...action.contributions],
+        cart: [...state.cart, ...action.products],
       };
 
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map(contribution => {
-          if (action._id === contribution._id) {
-            contribution.purchaseQuantity = action.purchaseQuantity
+        cart: state.cart.map(product => {
+          if (action._id === product._id) {
+            product.purchaseQuantity = action.purchaseQuantity
           }
-          return contribution;
+          return product;
         })
       };
 
     case REMOVE_FROM_CART:
-      let newState = state.cart.filter(contribution => {
-        return contribution._id !== action._id;
+      let newState = state.cart.filter(product => {
+        return product._id !== action._id;
       });
 
       return {
