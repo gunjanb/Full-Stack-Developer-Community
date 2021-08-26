@@ -13,6 +13,9 @@ function Nav() {
               Logout
             </a>
           </li>
+          <li className="mx-1">
+            <Link to="/contributionPage">Contribute</Link>
+          </li>
         </ul>
       );
     } else {

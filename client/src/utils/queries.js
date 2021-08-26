@@ -64,7 +64,7 @@ export const QUERY_RESOURCE = gql`
 `;
 
 export const QUERY_ALL_CONTRIBUTIONS = gql`
-  {
+  query {
     contributions {
       _id
       name

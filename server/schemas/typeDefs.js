@@ -44,6 +44,7 @@ const typeDefs = gql`
     description: String
     image: String
     quantity: Int
+    price: Int
   }
 
   type Order {

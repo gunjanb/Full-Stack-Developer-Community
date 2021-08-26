@@ -10,9 +10,8 @@ import spinner from '../../assets/spinner.gif';
 function ContributionList() {
   const [state, dispatch] = useStoreContext();
 
-  const { currentContributions } = state;
-
   const { loading, data } = useQuery(QUERY_ALL_CONTRIBUTIONS);
+  console.log('data:\n', JSON.stringify(data, null, 2));
 
   useEffect(() => {
     if (data) {
@@ -27,25 +26,18 @@ function ContributionList() {
       idbPromise('contributions', 'get').then((contributions) => {
         dispatch({
           type: UPDATE_CONTRIBUTIONS,
-          contributions: contributions,
+          contributions,
         });
       });
     }
   }, [data, loading, dispatch]);
-
-  function filterContributions() {
-
-    return state.contributions.filter(
-      (contribution) => contribution._id === currentContributions
-    );
-  }
 
   return (
     <div className="my-2">
       <h2>Choose a dollar amount contribution:</h2>
       {state.contributions.length ? (
         <div className="flex-row">
-          {filterContributions().map((contribution) => (
+          {data.contributions.map(contribution => (
             <ContributionItem
               key={contribution._id}
               _id={contribution._id}
