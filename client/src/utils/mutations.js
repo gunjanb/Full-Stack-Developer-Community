@@ -14,8 +14,16 @@ export const LOGIN = gql`
 
 //signup
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser(
+    $username: String!, 
+    $email: String!, 
+    $password: String!
+    ) {
+    addUser(
+      username: $username, 
+      email: $email, 
+      password: $password
+      ) {
       token
       user {
         _id
@@ -79,10 +87,10 @@ export const UPDATE_PROFILE = gql`
         video_title
         title
         content
-        tech {
-          _id
-          name
-        }
+      tech {
+        _id
+        name
+      }
       }
     }
   }
@@ -169,3 +177,19 @@ export const UPDATE_PROFILE = gql`
 //     }
 //   }
 // `;
+
+export const ADD_ORDER = gql`
+  mutation addOrder($products: [ID]!) {
+    addOrder(products: $products) {
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        image
+        price
+        quantity
+      }
+    }
+  }
+`;

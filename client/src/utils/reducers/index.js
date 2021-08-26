@@ -1,5 +1,12 @@
 import { combineReducers } from "redux";
+// import userReducer from "./userReducer";
+// import techReducer from "./techReducer";
+import { reducer as stripeReducer } from "./reducers";
 
-const allReducer = combineReducers({});
+const allReducer = combineReducers({
+  // users: userReducer,
+  // techs: techReducer,
+  stripe: stripeReducer,
+});
 
 export default allReducer;

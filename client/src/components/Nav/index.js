@@ -25,7 +25,7 @@ export default function NavTabs () {
                     <Link to="/profile/:profileId" hash="tab3" className="nav-link active nav-text me-4" aria-current="page">Profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/donate" hash="tab4" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
+                    <Link to="/contributionPage" hash="tab4" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
                 </li>
                 </ul>
                 </nav>

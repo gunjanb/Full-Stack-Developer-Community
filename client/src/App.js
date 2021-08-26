@@ -1,5 +1,6 @@
 import React from "react";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
+import { StoreProvider } from './utils/GlobalState';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -19,6 +20,10 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
 import ContentPage from "./pages/ContentPage/ContentPage.js";
 import store from "./utils/store";
+import ContributionPage from "./pages/ContributionPage/ContributionPage";
+import Detail from './pages/Detail/Detail';
+import Success from './pages/Success/Success';
+import OrderHistory from './pages/OrderHistory/OrderHistory';
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -44,19 +49,23 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Provider store={store}>
+          <StoreProvider store={store}>
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/user/:userId" component={UserDashboard} />
+              <Route exact path="/contributionPage" component={ContributionPage} />
+              <Route exact path="/success" component={Success} />
+              <Route exact path="/orderHistory" component={OrderHistory} />
+              <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content/:contentId" component={ContentPage} />
               <Route component={NoMatch} />
             </Switch>
             <Footer />
-          </Provider>{" "}
+          </StoreProvider>{" "}
         </div>
       </Router>
     </ApolloProvider>
