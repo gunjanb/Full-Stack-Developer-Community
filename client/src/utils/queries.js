@@ -50,24 +50,7 @@ export const QUERY_USERS = gql`
       }
     }
 `;
-//for home page; able to track down tech info and render back user
-export const QUERY_USERS = gql`
-  query users {
-      _id
-      username
-      email
-      profilePic
-      aboutMe
-      contactInfo
-      posts {
-        _id
-        tech {
-        _id
-          name
-      }
-    }
-  }
-`;
+
 //for home page
 export const QUERY_TECHS = gql`
 query tech {
@@ -77,7 +60,7 @@ query tech {
 `;
 
 export const QUERY_POST = gql`
-query post(_id: ID!) {
+query post($_id: ID!) {
       title
       content
       video
