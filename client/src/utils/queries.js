@@ -1,64 +1,89 @@
 import { gql } from "@apollo/client";
-
+// for profile page; able to render all data(posts and video)
 export const QUERY_USER = gql`
-  {
-    user {
-      username
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
-    }
-  }
-`;
-
-export const QUERY_USERS = gql`
-  {
-    user {
+query user {
+    _id
+    username
+    email
+    profilePic
+    aboutMe
+    contactInfo
+    posts {
       _id
-      email
-      username
-      imgUrl
-      aboutme
-      contactme
+      title
+      video
+      video_title
       tech {
         _id
         name
       }
-      resource {
+    }
+    orders {
+      _id
+      purchaseDate
+      products {
         _id
-        title
-        videoUrl
-        shortdescription
+        name
+        description
+        price
+        quantity
+        image
       }
     }
   }
 `;
-
-export const QUERY_TECHS = gql`
-  {
-    tech {
+//for home page; able to track down tech info and render back user
+export const QUERY_USERS = gql`
+  query users {
       _id
-      name
+      username
+      email
+      profilePic
+      aboutMe
+      contactInfo
+      posts {
+        _id
+        tech {
+          _id
+          name
+        }
+      }
+    }
+`;
+//for home page; able to track down tech info and render back user
+export const QUERY_USERS = gql`
+  query users {
+      _id
+      username
+      email
+      profilePic
+      aboutMe
+      contactInfo
+      posts {
+        _id
+        tech {
+        _id
+          name
+      }
     }
   }
 `;
-
-export const QUERY_RESOURCE = gql`
-  query resource($_id: ID!) {
-    resource(_id: $_id) {
+//for home page
+export const QUERY_TECHS = gql`
+query tech {
       _id
+      name
+    }
+`;
+
+export const QUERY_POST = gql`
+query post(_id: ID!) {
       title
-      shortdescription
-      videoUrl
+      content
+      video
+      video_title
+      tech {
+        name
     }
   }
 `;

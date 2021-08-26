@@ -35,7 +35,7 @@ const resolvers = {
       return await Post.findById(args._id).populate('tech');
     },
     tech: async (parent, args) => {
-      return await Tech.findById(args._id).populate('post');
+      return await Tech.findById(args._id).populate('user');
     },
 
     //find all users
@@ -48,7 +48,7 @@ const resolvers = {
 
     //find all techs
     techs: async () => {
-      return await Tech.find({}).populate('post');
+      return await Tech.find({}).populate('user');
     },
 
     //find all posts
@@ -114,6 +114,9 @@ const resolvers = {
   ////////////////////////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      if(!user) {
+        throw new AuthenticationError("The email already exists; does not create successfully")
+      }
       const token = signToken(user);
       return { token, user };
     },
@@ -129,6 +132,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+
 ////////////////////////////////
     addTech: async(parent, {postId, name}) =>{
       if (context.user) {
@@ -152,14 +156,9 @@ const resolvers = {
 
     } throw new AuthenticationError('App: You need to be logged in!');
   },
+
+
 ////////////////////////////////
-    // addPost: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const updatedUserPost = await User.create(args);
-    //     return updatedUserPost;
-    //   }
-    //   throw new AuthenticationError('App: You need to be logged in!');
-    // },
     addPost: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(

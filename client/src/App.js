@@ -15,6 +15,7 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login/Login.js";
 import Signup from "./pages/Signup/Signup";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer/Footer.js"
 import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
 import ContentPage from "./pages/ContentPage/ContentPage.js";
@@ -63,6 +64,7 @@ function App() {
               <Route exact path="/content/:contentId" component={ContentPage} />
               <Route component={NoMatch} />
             </Switch>
+            <Footer />
           </StoreProvider>{" "}
         </div>
       </Router>

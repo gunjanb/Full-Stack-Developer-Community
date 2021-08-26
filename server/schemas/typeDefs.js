@@ -21,7 +21,7 @@ const typeDefs = gql`
   type Tech {
     _id: ID
     name: String
-    posts: [Post]
+    users: [User]
   }
 
   type Post {
