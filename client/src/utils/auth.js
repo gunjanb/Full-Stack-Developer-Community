@@ -27,6 +27,9 @@ class AuthService {
     return localStorage.getItem("id_token");
   }
 
+  getUserId() {
+    return localStorage.getItem("userId");
+  }
   login(idToken, userId) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
