@@ -4,7 +4,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_CONTRIBUTIONS } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_CONTRIBUTIONS } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+import { idbPromise } from '../../utils/helper';
 import spinner from '../../assets/spinner.gif';
 
 function ContributionList() {

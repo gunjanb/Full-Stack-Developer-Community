@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import Cart from '../components/Cart';
-import { useStoreContext } from '../utils/GlobalState';
+import Cart from '../../components/Cart';
+import { useStoreContext } from '../../utils/GlobalState';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -12,7 +12,7 @@ import {
 } from '../../utils/actions/index';
 import { QUERY_ALL_CONTRIBUTIONS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helper';
-import spinner from '../assets/spinner.gif';
+import spinner from '../../assets/spinner.gif';
 
 function Detail() {
   const [state, dispatch] = useStoreContext();

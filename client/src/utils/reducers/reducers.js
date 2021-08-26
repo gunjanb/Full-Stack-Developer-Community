@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 import {
   UPDATE_CONTRIBUTIONS,
   ADD_TO_CART,
@@ -6,9 +7,9 @@ import {
   ADD_MULTIPLE_TO_CART,
   CLEAR_CART,
   TOGGLE_CART
-} from "./actions";
+} from "../actions";
 
-const stripeReducer = (state = [], action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case UPDATE_CONTRIBUTIONS:
       return {
@@ -70,4 +71,6 @@ const stripeReducer = (state = [], action) => {
   }
 };
 
-export default stripeReducer;
+export function useProductReducer(initialState) {
+  return useReducer(reducer, initialState)
+}
