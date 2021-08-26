@@ -186,34 +186,21 @@ export const UPDATE_PROFILE = gql`
 //   }
 // `;
 
-// add photo of user old
-// export const UPLOAD_PHOTO = gql`
-//   mutation uploadPhoto($file: Upload!) {
-//     uploadPhoto(file: $file) {
-//       _id
-//       username
-//       email
-//       imgUrl
-//       aboutme
-//       contactme
-//       tech {
-//         _id
-//         name
-//       }
-//       resource {
-//         _id
-//         title
-//         videoUrl
-//         shortdescription
-//       }
-//     }
-//   }
-// `;
-
-// new
-export const UPDATE_PHOTO = gql`
-  mutation updateUser($profilePic: file) {
-    updateUser(profilePic: $profilePic) {
+export const ADD_POST = gql`
+  mutation addPost(
+    $file: Upload!
+    $title: String!
+    $tech: String!
+    $content: String!
+    $video_title: String!
+  ) {
+    addPost(
+      file: $file
+      title: $title
+      tech: $tech
+      content: $content
+      video_title: $video_title
+    ) {
       _id
       username
       email
@@ -222,8 +209,6 @@ export const UPDATE_PHOTO = gql`
       contactInfo
       posts {
         _id
-        video
-        video_title
         title
         content
         video
@@ -237,82 +222,74 @@ export const UPDATE_PHOTO = gql`
   }
 `;
 
-// export const UPDATE_USER_RESOURCE = gql`
-//   mutation updateUserResource(
-//     $file: Upload!
-//     $title: String!
-//     $shortdescription: String!
-//   ) {
-//     updateUserResource(
-//       file: $file
-//       title: $title
-//       shortdescription: $shortdescription
-//     ) {
-//       _id
-//       username
-//       email
-//       imgUrl
-//       aboutme
-//       contactme
-//       tech {
-//         _id
-//         name
-//       }
-//       resource {
-//         _id
-//         title
-//         videoUrl
-//         shortdescription
-//       }
-//     }
-//   }
-// `;
+export const UPDATE_ABOUT_ME = gql`
+  mutation updateUser($aboutMe: String) {
+    updateUser(aboutMe: $aboutMe) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
 
-// // add photo of user
-// export const UPLOAD_PHOTO = gql`
-//   mutation uploadPhoto($file: Upload!) {
-//     uploadPhoto(file: $file) {
-//       _id
-//       username
-//       email
-//       imgUrl
-//       aboutme
-//       contactme
-//       tech {
-//         _id
-//         name
-//       }
-//       resource {
-//         _id
-//         title
-//         videoUrl
-//         shortdescription
-//       }
-//     }
-//   }
-// `;
+export const UPDATE_CONTACT_INFO = gql`
+  mutation updateUser($contactInfo: String) {
+    updateUser(contactInfo: $contactInfo) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
 
-//add video
-// export const UPLOAD_VIDEO = gql`
-//   mutation uploadVideo($file: Upload!) {
-//     uploadVideo(file: $file) {
-//       _id
-//       username
-//       email
-//       username
-//       imgUrl
-//       aboutme
-//       contactme
-//       tech {
-//         _id
-//         name
-//       }
-//       resource {
-//         _id
-//         title
-//         videoUrl
-//         shortdescription
-//       }
-//     }
-//   }
-// `;
+export const UPDATE_PHOTO = gql`
+  mutation updateUser($profilePic: file) {
+    updateUser(profilePic: $profilePic) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
