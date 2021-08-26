@@ -3,14 +3,15 @@ import firstSlide from "./../../assets/learningtogether.jpg";
 import secondSlide from "../../assets/learningtogether.jpeg";
 import thirdSlide from "../../assets/working-together.jpeg";
 import "./Home.css";
+// import "./debug.css";
 
 // Need to fix buttons with data
 const Home = () => {
   return (
-  <div className="container d-flex flex-row flex-wrap justify-content-around text-style mt-2">
+  <div className="container d-flex flex-row flex-wrap justify-content-around text-style margin">
     <div className="container col-sm-7 m-3">
       <h1 className="header-title">Full Stack Developer Community</h1>
-      <p className="p-text mt-3">Let's Learn Together! Learn about your favorite technologies, or become a part of the learning experience and create videos to help new web developes on their path to success.  Whether you are new to web development or have been doing this for years, we are all in this together! <br /> <br /> Sign up, or login to view videos by technology, or contribute to the Full Stack Developer Community by uploading a video or donating!</p>
+      <p className="p-text mt-2">Let's Learn Together! Learn about your favorite technologies, or become a part of the learning experience and create videos to help new web developes on their path to success.  Whether you are new to web development or have been doing this for years, we are all in this together! <br /> <br /> Sign up, or login to view videos by technology, or contribute to the Full Stack Developer Community by uploading a video or donating!</p>
 
     </div>
       <div className="carousel-container pic-carousel-container col-sm-5 me-5" id="myCarousal" className="carousel slide" data-bs-ride="carousel" data-interval="2000">
@@ -27,10 +28,10 @@ const Home = () => {
             </div>
         </div>
         
-        <div className="row d-flex justify-content-evenly align-items-center flex-wrap learn-more">
-        <div className="card card-border">
+        <div className="card-container learn-more padding-bottom">
+        <div className="card card-border ">
           <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">Javascript</button>
+          <button type="button" className="btn btn-lg button-style tech-button">Javascript</button>
         </div>
         <div className="card card-border">
           <h3>Learn more about</h3>
