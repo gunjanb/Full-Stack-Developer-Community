@@ -6,12 +6,10 @@ import './index.css';
 
 const ContributionPage = () => {
   return (
-    <Container>
-      <div className="container">
-        <ProductList />
-        <Cart />
-      </div>
-    </Container>
+    <div className="container">
+      <ProductList />
+      <Cart />
+    </div>
   );
 };
 
