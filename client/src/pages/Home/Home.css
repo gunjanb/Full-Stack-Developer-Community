@@ -59,6 +59,30 @@
   align-self: center;
 }
 
+@media screen and (max-width: 780px) {
+  .margin {
+    margin-top: 20px;
+  }
+
+  .learn-more {
+    font-size: 4rem;
+    font-style: italic;
+  }
+
+  .tech-button {
+    font-size: 1.5rem;
+  }
+  .card-border {
+    border: none;
+    height: auto;
+    width: 70%;
+    margin: 20px;
+  }
+}
+.padding-bottom {
+  padding-bottom: 100px;
+}
+
 @media screen and (max-width: 480px) {
   .margin {
     margin-top: 0px;
