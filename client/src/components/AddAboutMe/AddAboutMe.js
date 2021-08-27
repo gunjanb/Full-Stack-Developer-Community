@@ -7,7 +7,7 @@ import "./AddAboutMe.css";
 const AddAboutMe = ({ currentUserAboutMe }) => {
   const [aboutme, setAboutMe] = useState(currentUserAboutMe);
   const [show, setShow] = useState(false);
-  const [updateUser] = useMutation(UPDATE_ABOUT_ME);
+  const [updateaboutme] = useMutation(UPDATE_ABOUT_ME);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
     e.preventDefault();
 
     try {
-      await updateUser({
+      await updateaboutme({
         variables: {
           aboutMe: aboutme,
         },

@@ -39,22 +39,32 @@ const AddPost = () => {
     }
   }, [data, loading, dispatch]);
 
-  const [addPost] = useMutation(ADD_POST);
+  const [updatepost] = useMutation(ADD_POST);
 
   //on submit
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     handleClose();
     console.log(file);
-    console.log(title, tech, content, videotitle);
+    console.log(title, content, videotitle);
+
     try {
-      await addPost({
+      // await addPost({
+      //   variables: {
+      //     file: file,
+      //     title: title,
+      //     tech: tech,
+      //     content: content,
+      //     video_tilte: videotitle,
+      //   },
+      // });
+      await updatepost({
         variables: {
-          file: file,
           title: title,
-          tech: tech,
           content: content,
-          video_tilte: videotitle,
+          video: content,
+          video_title: videotitle,
         },
       });
     } catch (err) {
@@ -133,8 +143,7 @@ const AddPost = () => {
               ></textarea>
             </div>
 
-            <div className="col-12 m-1 p-1">
-              {/* <p>Select a tech </p> */}
+            {/* <div className="col-12 m-1 p-1">
               <label htmlFor="tech">Select a tech:</label>
               <select onChange={(e) => setTech(e.target.value)} value={tech}>
                 <option>Choose an option</option>
@@ -144,7 +153,7 @@ const AddPost = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div className="col-12 m-1 p-1">
               {/* <p className="">Select Video title:</p> */}
               <label htmlFor="videotitle">Video Title:</label>
@@ -178,10 +187,10 @@ const AddPost = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               /> */}
 
-              <Form.Control
+              {/* <Form.Control
                 type="file"
                 onChange={(e) => setFile(e.target.files[0])}
-              />
+              /> */}
             </div>
 
             <div className="col-12 m-1 p-1 ">
