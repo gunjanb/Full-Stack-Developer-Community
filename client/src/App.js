@@ -1,6 +1,6 @@
 import React from "react";
-// import { Provider } from "react-redux";
-import { StoreProvider } from './utils/GlobalState';
+import { Provider } from "react-redux";
+// import { StoreProvider } from './utils/GlobalState';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -9,6 +9,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import store from './utils/store';
 
 import Home from "./pages/Home/Home.js";
 import NoMatch from "./pages/NoMatch";
@@ -49,7 +50,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider store={store}>
+          <Provider store={store}>
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -65,7 +66,7 @@ function App() {
               <Route component={NoMatch} />
             </Switch>
             <Footer />
-          </StoreProvider>{" "}
+          </Provider>{" "}
         </div>
       </Router>
     </ApolloProvider>
