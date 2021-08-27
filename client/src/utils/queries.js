@@ -1,7 +1,8 @@
 import { gql } from "@apollo/client";
 // for profile page; able to render all data(posts and video)
 export const QUERY_USER = gql`
-query user {
+query {
+  user {
     _id
     username
     email
@@ -31,10 +32,12 @@ query user {
       }
     }
   }
+}
 `;
 //for home page; able to track down tech info and render back user
 export const QUERY_USERS = gql`
-  query users {
+  query {
+    users {
       _id
       username
       email
@@ -49,18 +52,22 @@ export const QUERY_USERS = gql`
         }
       }
     }
+  }
 `;
 
 //for home page
 export const QUERY_TECHS = gql`
-query tech {
+query {
+  techs {
       _id
       name
     }
+}
 `;
 
 export const QUERY_POST = gql`
-query post($_id: ID!) {
+query {
+  post($_id:ID!) {
       title
       content
       video
@@ -69,6 +76,7 @@ query post($_id: ID!) {
         name
     }
   }
+}
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`

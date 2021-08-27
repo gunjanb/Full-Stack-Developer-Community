@@ -2,11 +2,25 @@ import React from "react";
 import firstSlide from "./../../assets/learningtogether.jpg";
 import secondSlide from "../../assets/learningtogether.jpeg";
 import thirdSlide from "../../assets/working-together.jpeg";
+import { useQuery } from '@apollo/client';
 import "./Home.css";
+import { QUERY_TECHS} from '../../utils/queries';
 // import "./debug.css";
+
 
 // Need to fix buttons with data
 const Home = () => {
+  const { loading, error, data } = useQuery(QUERY_TECHS);
+console.log(data);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error(error);
+    return <div>Error!</div>;
+  };
+
+
   return (
   <div className="container d-flex flex-row flex-wrap justify-content-around text-style margin">
     <div className="container col-md-7 m-3">
@@ -27,40 +41,22 @@ const Home = () => {
               </div>
             </div>
         </div>
-        
+
         <div className="card-container learn-more padding-bottom">
-        <div className="card card-border ">
-          <h3>Learn more about</h3>
-          <button type="button" className="btn btn-lg button-style tech-button">Javascript</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">HTML</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">CSS</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">React</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">Redux</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">GraphQL</button>
-        </div>
-        
+        {data.techs.map((tech)=>{
+          return (
+            <div className="card card-border ">
+            <h3>Learn more about</h3>
+            <button type="button" className="btn btn-lg button-style tech-button" key={`${tech._id}`}>{tech.name}</button>
+            </div>
+          )
+        })}
         </div>
     </div>
-      
-        
+
+
 
   );
 };
 
 export default Home;
-

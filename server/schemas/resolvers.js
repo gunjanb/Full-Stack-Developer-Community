@@ -48,7 +48,7 @@ const resolvers = {
 
     //find all techs
     techs: async () => {
-      return await Tech.find({}).populate('user');
+      return await Tech.find({});
     },
 
     //find all posts
