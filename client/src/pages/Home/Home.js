@@ -2,18 +2,33 @@ import React from "react";
 import firstSlide from "./../../assets/learningtogether.jpg";
 import secondSlide from "../../assets/learningtogether.jpeg";
 import thirdSlide from "../../assets/working-together.jpeg";
+import { useQuery } from '@apollo/client';
 import "./Home.css";
+import { QUERY_TECHS} from '../../utils/queries';
+// import "./debug.css";
+
 
 // Need to fix buttons with data
 const Home = () => {
+  const { loading, error, data } = useQuery(QUERY_TECHS);
+console.log(data);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error(error);
+    return <div>Error!</div>;
+  };
+
+
   return (
-  <div className="container d-flex flex-row flex-wrap justify-content-around text-style mt-2">
-    <div className="container col-sm-7 m-3">
+  <div className="container d-flex flex-row flex-wrap justify-content-around text-style margin">
+    <div className="container col-md-7 m-3">
       <h1 className="header-title">Full Stack Developer Community</h1>
-      <p className="p-text mt-3">Let's Learn Together! Learn about your favorite technologies, or become a part of the learning experience and create videos to help new web developes on their path to success.  Whether you are new to web development or have been doing this for years, we are all in this together! <br /> <br /> Sign up, or login to view videos by technology, or contribute to the Full Stack Developer Community by uploading a video or donating!</p>
+      <p className="p-text mt-2">Let's Learn Together! Learn about your favorite technologies, or become a part of the learning experience and create videos to help new web developes on their path to success.  Whether you are new to web development or have been doing this for years, we are all in this together! <br /> <br /> Sign up, or login to view videos by technology, or contribute to the Full Stack Developer Community by uploading a video or donating!</p>
 
     </div>
-      <div className="carousel-container pic-carousel-container col-sm-5 me-5" id="myCarousal" className="carousel slide" data-bs-ride="carousel" data-interval="2000">
+      <div className="carousel-container pic-carousel-container col-md-5 me-5" id="myCarousal" className="carousel slide" data-bs-ride="carousel" data-interval="2000">
             <div className="carousel-inner image-size">
               <div className="carousel-item active">
                 <img src={firstSlide} className="d-block w-100 image-size img-fluid rounded" alt="Full Stack Development Community" title="Full Stack Development Community"/>
@@ -26,40 +41,22 @@ const Home = () => {
               </div>
             </div>
         </div>
-        
-        <div className="row d-flex justify-content-evenly align-items-center flex-wrap learn-more">
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">Javascript</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">HTML</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">CSS</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">React</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">Redux</button>
-        </div>
-        <div className="card card-border">
-          <h3>Learn more about</h3>
-        <button type="button" className="btn btn-lg button-style tech-button">GraphQL</button>
-        </div>
-        
+
+        <div className="card-container learn-more padding-bottom">
+        {data.techs.map((tech)=>{
+          return (
+            <div className="card card-border ">
+            <h3>Learn more about</h3>
+            <button type="button" className="btn btn-lg button-style tech-button" key={`${tech._id}`}>{tech.name}</button>
+            </div>
+          )
+        })}
         </div>
     </div>
-      
-        
+
+
 
   );
 };
 
 export default Home;
-

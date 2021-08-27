@@ -33,22 +33,19 @@ function Login(props) {
   };
 
   return (
-    <Container fluid>
-      <Card>
-        <div
-          style={{
-          position: 'fixed'
-          }}
-        >
-        <Link to="/signup">← Go to Signup</Link>
+    <Container className="height" fluid>
+      <Card className="background">
+        <div className="text-style">
+        <Link to="/signup" className="signup">← Go to Signup</Link>
 
-          <h2>Login</h2>
-          <form onSubmit={handleFormSubmit}>
+          <h2 className="login-style">Login</h2>
+          <form className="form" onSubmit={handleFormSubmit}>
     
-            <label htmlFor="email">
+            <label className="label" htmlFor="email">
               Email
               <br />
             <input
+              className="input"
               placeholder="youremail@test.com"
               name="email"
               type="email"
@@ -57,10 +54,11 @@ function Login(props) {
             />
             </label>
             <br />
-            <label htmlFor="pwd">
+            <label className="label" htmlFor="pwd">
               Password
               <br />
             <input
+            className="input"
               placeholder="******"
               name="password"
               type="password"
@@ -74,11 +72,12 @@ function Login(props) {
                 <p className="error-text">The provided credentials are incorrect</p>
               </div>
             ) : null}
-            <div className="flex-row flex-end">
+            <div>
               <br />
-              <button type="submit">Submit</button>
+              <button className="rounded btn submit-button" type="submit">Submit</button>
             </div>
           </form>
+          <br /> < br/> < br/> <br />
         </div>
       </Card>
     </Container>

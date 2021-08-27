@@ -1,6 +1,6 @@
 /* Need to specify only styles that are globally used */
 
-:root {
+/* :root {
   --primary: #232f3e;
   --secondary: #f3a847;
   --tertiary: #b12704;
@@ -9,26 +9,26 @@
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
-}
+} */
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 /* html,
   body {
     min-height: 100%;
   } */
 
-body {
+/* body {
   margin: 0;
   padding: 0;
-  /* font-family: "Karla", sans-serif;
+  font-family: "Karla", sans-serif;
     font-weight: 400;
     line-height: 1.5;
     font-size: 16px;
-    color: var(--dark); */
-}
+    color: var(--dark);
+} */
 
 /* h1,
   h2,
@@ -71,7 +71,7 @@ body {
     margin-top: 0;
   } */
 
-a {
+/* a {
   color: var(--tertiary);
   text-decoration: none;
   font-weight: bold;
@@ -79,4 +79,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
+} */
