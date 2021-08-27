@@ -22,10 +22,7 @@ export default function NavTabs () {
                     <Link to="/user/:userId" className="nav-link active nav-text me-4 text-color" aria-current="page">Dashboard</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/profile/:profileId" className="nav-link active nav-text me-4" aria-current="page">Profile</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/contributionPage" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
+                    <Link to="/donate" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
                 </li>
                 <li className="nav-item">
                 <Link to="/" className="nav-link active nav-text me-4" href="/" onClick={() => Auth.logout()} aria-current="page">Logout</Link>

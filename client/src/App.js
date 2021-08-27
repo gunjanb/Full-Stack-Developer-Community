@@ -62,6 +62,7 @@ function App() {
               <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content/:contentId" component={ContentPage} />
+              <Route exact path="/donate" component={ContributionPage} />
               <Route component={NoMatch} />
             </Switch>
             <Footer />
