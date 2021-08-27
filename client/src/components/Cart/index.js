@@ -5,7 +5,8 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helper';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
+// import { useStoreContext } from '../../utils/GlobalState';
+import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
@@ -13,7 +14,9 @@ import './style.css';
 const stripePromise = loadStripe('pk_test_51JRSIkDCPVMgZ8j7LQXvGtgzf95mU0xYqBOij8hGCmsqUW97YIKnIcsn5iPCSswvapFxsXA9F7IVJw73CFoQIuV000ZgsxrTkm');
 
 const Cart = () => {
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
