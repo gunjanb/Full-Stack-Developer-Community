@@ -14,16 +14,8 @@ export const LOGIN = gql`
 
 //signup
 export const ADD_USER = gql`
-  mutation addUser(
-    $username: String!, 
-    $email: String!, 
-    $password: String!
-    ) {
-    addUser(
-      username: $username, 
-      email: $email, 
-      password: $password
-      ) {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -33,27 +25,37 @@ export const ADD_USER = gql`
 `;
 
 export const DELETE_POST = gql`
-mutation deletePost($postId: ID!) {
-  deletePost(postId: $postId) {
-    posts {
-      title
-      _id
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId) {
+      posts {
+        title
+        _id
+      }
     }
   }
-}
-`
+`;
 
 // add post THEN attach tech to post ******
 //need to test if it will return a single post._id associated with the new post; if it returns all posts._id, then we have to use post.content for update_tech instead of post._id
 export const CREATE_POST = gql`
-mutation addPost($title: String!, $content: String!, $video_title: String, $video: String) {
-  addPost(title: $title, content: $content, video: $video, video_title: $video_title) {
-    posts{
-      _id
+  mutation addPost(
+    $title: String!
+    $content: String!
+    $video_title: String
+    $video: String
+  ) {
+    addPost(
+      title: $title
+      content: $content
+      video: $video
+      video_title: $video_title
+    ) {
+      posts {
+        _id
+      }
     }
   }
-}
-`
+`;
 
 // the posts {_id} will be used for update_tech *******
 export const UPDATE_TECH = gql`
@@ -73,8 +75,16 @@ export const UPDATE_TECH = gql`
 
 // update userinfo including aboutMe, profilePic, and contactInfo
 export const UPDATE_PROFILE = gql`
-  mutation updateUser($aboutMe: String,$profilePic: String,$contactInfo: String) {
-    updateUser(aboutMe: $aboutMe, profilePic: $profilePic, contactInfo: $contactInfo) {
+  mutation updateUser(
+    $aboutMe: String
+    $profilePic: String
+    $contactInfo: String
+  ) {
+    updateUser(
+      aboutMe: $aboutMe
+      profilePic: $profilePic
+      contactInfo: $contactInfo
+    ) {
       _id
       username
       email
@@ -87,16 +97,14 @@ export const UPDATE_PROFILE = gql`
         video_title
         title
         content
-      tech {
-        _id
-        name
-      }
+        tech {
+          _id
+          name
+        }
       }
     }
   }
 `;
-
-
 
 // export const UPDATE_USER_RESOURCE = gql`
 //   mutation updateUserResource(
@@ -178,6 +186,113 @@ export const UPDATE_PROFILE = gql`
 //   }
 // `;
 
+export const ADD_POST = gql`
+  mutation addPost(
+    $file: Upload!
+    $title: String!
+    $tech: String!
+    $content: String!
+    $video_title: String!
+  ) {
+    addPost(
+      file: $file
+      title: $title
+      tech: $tech
+      content: $content
+      video_title: $video_title
+    ) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const UPDATE_ABOUT_ME = gql`
+  mutation updateUser($aboutMe: String) {
+    updateUser(aboutMe: $aboutMe) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const UPDATE_CONTACT_INFO = gql`
+  mutation updateUser($contactInfo: String) {
+    updateUser(contactInfo: $contactInfo) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const UPDATE_PHOTO = gql`
+  mutation updateUser($profilePic: file) {
+    updateUser(profilePic: $profilePic) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+        tech {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {

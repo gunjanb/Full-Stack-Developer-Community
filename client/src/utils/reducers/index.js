@@ -4,8 +4,8 @@ import { combineReducers } from "redux";
 import { stripeReducer } from "./reducers";
 
 const allReducer = combineReducers({
-  // users: userReducer,
-  // techs: techReducer,
+  users: userReducer,
+  techs: techReducer,
   stripe: stripeReducer,
 });
 
