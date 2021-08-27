@@ -9,7 +9,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import store from './utils/store';
 
 import Home from "./pages/Home/Home.js";
 import NoMatch from "./pages/NoMatch";

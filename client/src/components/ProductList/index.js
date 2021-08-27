@@ -11,7 +11,7 @@ import spinner from '../../assets/spinner.gif';
 function ProductList() {
   // const [state, dispatch] = useStoreContext();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.stripe);
 
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
   console.log('data:\n', JSON.stringify(data, null, 2));

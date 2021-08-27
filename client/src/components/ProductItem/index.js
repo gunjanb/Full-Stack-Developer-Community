@@ -8,7 +8,7 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 function ProductItem(item) {
   // const [state, dispatch] = useStoreContext();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.stripe);
 
   const {
     image,

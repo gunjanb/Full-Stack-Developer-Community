@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 // import userReducer from "./userReducer";
 // import techReducer from "./techReducer";
-import { reducer as stripeReducer } from "./reducers";
+import { stripeReducer } from "./reducers";
 
 const allReducer = combineReducers({
   // users: userReducer,
