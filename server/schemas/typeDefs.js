@@ -54,7 +54,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user(_id: ID): User
+    user(_id: ID!): User
     post(_id: ID!): Post
     tech(_id: ID!): Tech
     posts: [Post]
@@ -93,7 +93,7 @@ const typeDefs = gql`
     updateUser(
       username: String,
       email: String,
-      password: String, 
+      password: String,
       aboutMe: String,
       profilePic: String,
       contactInfo: String,
@@ -103,7 +103,7 @@ const typeDefs = gql`
       email: String!,
       password: String!
     ): Auth
-    
+
     addOrder(
       products: [ID]!
     ): Order

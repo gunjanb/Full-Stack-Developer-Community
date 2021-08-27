@@ -6,10 +6,10 @@ const techSchema = new Schema(
         type: String,
         required: true
       },
-      posts: [
+      users: [
           {
             type: Schema.Types.ObjectId,
-            ref: 'Post'
+            ref: 'User'
           }
         ]
     }
