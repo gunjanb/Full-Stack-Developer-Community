@@ -33,21 +33,18 @@ function Signup(props) {
   };
 
   return (
-    <Container fluid>
-      <Card>
-        <div
-          style={{
-            position: 'fixed'
-          }}
-        >
-        <Link to="/login">← Go to Login</Link>
+    <Container className="height" fluid>
+      <Card className="background">
+        <div className="text-style">
+        <Link to="/login" className="login">← Go to Login</Link>
 
-          <h2>Signup</h2>
-          <form onSubmit={handleFormSubmit}>
-            <label htmlFor="username">
+          <h2 className="signup-style">Signup</h2>
+          <form className="form" onSubmit={handleFormSubmit}>
+            <label className="label" htmlFor="username">
               Username
               <br />
             <input
+              className="input"
               placeholder="Username"
               name="username"
               type="text"
@@ -56,10 +53,11 @@ function Signup(props) {
             />
             </label>
             <br />
-            <label htmlFor="email">
+            <label className="label" htmlFor="email">
               Email
               <br />
             <input
+              className="input"
               placeholder="youremail@email.com"
               name="email"
               type="email"
@@ -68,10 +66,11 @@ function Signup(props) {
             />
             </label>
             <br />
-            <label htmlFor="pwd">
+            <label className="label" htmlFor="pwd">
               Password
               <br />
             <input
+              className="input"
               placeholder="******"
               name="password"
               type="password"
@@ -80,9 +79,9 @@ function Signup(props) {
             />
             </label>
             <br />
+            <div>
             <br />
-            <div className="flex-row flex-end">
-              <button type="submit">Submit</button>
+              <button className="rounded submit-button" type="submit">Submit</button>
             </div>
           </form>
         </div>

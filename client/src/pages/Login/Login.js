@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { Container, Card } from "react-bootstrap";
-import Jumbotron from "./../../components/Jumbotron/index.js";
 import './Login.css';
 
 function Login(props) {
@@ -74,9 +73,10 @@ function Login(props) {
             ) : null}
             <div>
               <br />
-              <button className="rounded submit-button" type="submit">Submit</button>
+              <button className="rounded btn submit-button" type="submit">Submit</button>
             </div>
           </form>
+          <br /> < br/> < br/> <br />
         </div>
       </Card>
     </Container>
