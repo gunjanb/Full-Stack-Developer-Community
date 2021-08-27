@@ -16,19 +16,19 @@ export default function NavTabs () {
                 <nav>
                 <ul className="navbar-nav align-items-center">
                 <li className="nav-item">
-                    <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
+                    <Link to="/" className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/user/:userId" hash="tab2" className="nav-link active nav-text me-4 text-color" aria-current="page">Dashboard</Link>
+                    <Link to="/user/:userId" className="nav-link active nav-text me-4 text-color" aria-current="page">Dashboard</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/profile/:profileId" hash="tab3" className="nav-link active nav-text me-4" aria-current="page">Profile</Link>
+                    <Link to="/profile/:profileId" className="nav-link active nav-text me-4" aria-current="page">Profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/contributionPage" hash="tab4" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
+                    <Link to="/contributionPage" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
                 </li>
                 <li className="nav-item">
-                <Link to="/" hash="tab6" className="nav-link active nav-text me-4" href="/" onClick={() => Auth.logout()} aria-current="page">Logout</Link>
+                <Link to="/" className="nav-link active nav-text me-4" href="/" onClick={() => Auth.logout()} aria-current="page">Logout</Link>
                 </li>
                 </ul>
                 </nav>
@@ -38,13 +38,13 @@ export default function NavTabs () {
     <nav>
         <ul className="navbar-nav align-items-center">
             <li className="nav-item">
-                <Link to="/" hash="tab1" className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
+                <Link to="/"  className="nav-link active nav-text me-4" aria-current="page">Full Stack Developer Community</Link>
             </li>
             <li className="nav-item">
-                <Link to="/login" hash="tab5" className="nav-link active nav-text me-4" aria-current="page">Login</Link>
+                <Link to="/login"  className="nav-link active nav-text me-4" aria-current="page">Login</Link>
             </li>
             <li className="nav-item">
-                <Link to="/signup" hash="tab6" className="nav-link active nav-text me-4" aria-current="page">Signup</Link>
+                <Link to="/signup" className="nav-link active nav-text me-4" aria-current="page">Signup</Link>
             </li>
             </ul>
             </nav>
