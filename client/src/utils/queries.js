@@ -65,19 +65,19 @@ query {
 }
 `;
 
-export const QUERY_POST = gql`
-query {
-  post($_id:ID!) {
-      title
-      content
-      video
-      video_title
-      tech {
-        name
-    }
-  }
-}
-`;
+// export const QUERY_POST = gql`
+// query {
+//   post($_id:ID!) {
+//       title
+//       content
+//       video
+//       video_title
+//       tech {
+//         name
+//     }
+//   }
+// }
+// `;
 
 export const QUERY_ALL_PRODUCTS = gql`
   query {
