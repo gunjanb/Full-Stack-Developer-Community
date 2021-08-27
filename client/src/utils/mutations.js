@@ -419,29 +419,29 @@ export const ADD_POST = gql`
     }
   }
 `;
-export const UPDATE_PHOTO = gql`
-  mutation updateUser($profilePic: file) {
-    updateUser(profilePic: $profilePic) {
-      _id
-      username
-      email
-      aboutMe
-      profilePic
-      contactInfo
-      posts {
-        _id
-        title
-        content
-        video
-        video_title
-        tech {
-          _id
-          name
-        }
-      }
-    }
-  }
-`;
+// export const UPDATE_PHOTO = gql`
+//   mutation updateUser($profilePic: file) {
+//     updateUser(profilePic: $profilePic) {
+//       _id
+//       username
+//       email
+//       aboutMe
+//       profilePic
+//       contactInfo
+//       posts {
+//         _id
+//         title
+//         content
+//         video
+//         video_title
+//         tech {
+//           _id
+//           name
+//         }
+//       }
+//     }
+//   }
+// `;
 
 //login
 export const LOGIN = gql`
@@ -483,7 +483,7 @@ export const ADD_ORDER = gql`
   }
 `;
 
-export const UPLOAD_PHOTO = gql`
+export const UPDATE_PHOTO = gql`
   mutation uploadprofilepic($file: Upload!) {
     uploadprofilepic(file: $file) {
       _id
