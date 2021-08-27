@@ -27,6 +27,9 @@ export default function NavTabs () {
                 <li className="nav-item">
                     <Link to="/contributionPage" hash="tab4" className="nav-link active nav-text me-4" aria-current="page">Donate! {donate}</Link>
                 </li>
+                <li className="nav-item">
+                <Link to="/" hash="tab6" className="nav-link active nav-text me-4" href="/" onClick={() => Auth.logout()} aria-current="page">Logout</Link>
+                </li>
                 </ul>
                 </nav>
             );
