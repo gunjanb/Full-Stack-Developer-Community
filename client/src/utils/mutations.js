@@ -482,3 +482,27 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+
+export const UPLOAD_PHOTO = gql`
+  mutation uploadprofilepic($file: Upload!) {
+    uploadprofilepic(file: $file) {
+      _id
+      username
+      email
+      aboutMe
+      profilePic
+      contactInfo
+      techs {
+        _id
+        name
+      }
+      posts {
+        _id
+        title
+        content
+        video
+        video_title
+      }
+    }
+  }
+`;
