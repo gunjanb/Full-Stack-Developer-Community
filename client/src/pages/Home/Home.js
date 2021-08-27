@@ -4,21 +4,19 @@ import secondSlide from "../../assets/learningtogether.jpeg";
 import thirdSlide from "../../assets/working-together.jpeg";
 import { useQuery } from '@apollo/client';
 import "./Home.css";
-import { QUERY_TECHS} from '../../utils/queries';
+import { QUERY_TECHS, QUERY_USER_ID, QUERY_USERS} from '../../utils/queries';
+import { useLazyQuery } from '@apollo/client';
 // import "./debug.css";
 
 
-// Need to fix buttons with data
 const Home = () => {
-  const { loading, error, data } = useQuery(QUERY_TECHS);
-console.log(data);
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    console.error(error);
-    return <div>Error!</div>;
-  };
+    const { loading: loading1, data: data1 } = useQuery(QUERY_TECHS);
+    const { loading: loading2, data: data2} = useQuery(QUERY_USERS)
+    // const [getUser, { loading: loading2, data: data2 }] = useLazyQuery(QUERY_USER_ID);
+
+    if (loading1 || loading2) {
+      return <div>Loading...</div>;
+    }
 
 
   return (
@@ -42,20 +40,70 @@ console.log(data);
             </div>
         </div>
 
-        <div className="card-container learn-more padding-bottom">
-        {data.techs.map((tech)=>{
+      <div className="card-container learn-more padding-bottom">
+        {data1.techs.map((tech)=>{
           return (
-            <div className="card card-border ">
+            <div className="card card-border " key={tech._id}>
             <h3>Learn more about</h3>
-            <button type="button" className="btn btn-lg button-style tech-button" key={`${tech._id}`}>{tech.name}</button>
+            <button type="button" className="btn btn-lg button-style tech-button" data-toggle="modal" data-target="#exampleModal" key={tech._id}>{tech.name}</button>
+
+            <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+              <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">Our Developers</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+
+
+        {data2.users.map((user)=>{
+          return(
+                  <div className="card" style={{width: '18rem'}} key={user._id}>
+                    <img src={`${user.profilePic}`} alt="profilePic"/>
+                    <div className="card-body">
+                      <h5 className="card-title">Developer:{user.username}</h5>
+                      <h6 className="card-subtitle mb-2 text-muted">{user.aboutMe}</h6>
+                      <p className="card-text"></p>
+                      <a href={`/profile/${user._id}`} className="card-link">Profile Link</a>
+                      <h6 href="#" className="card-link">{user.contactInfo}</h6>
+                    </div>
+                  </div>
+          )
+          }
+        )
+        }
+
+
+
+
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             </div>
           )
         })}
-        </div>
+      </div>
+
+      {/* <div className="card-container learn-more padding-bottom">
+        {user_data.map((user)=>{
+          return (
+            <div className="card card-border ">
+              <h3>Developer</h3>
+              <button type="button" className="btn btn-lg button-style tech-button" key={`${user._id}`}>{user.username}</button>
+            </div>
+          )
+        })}
+      </div> */}
     </div>
-
-
-
   );
 };
 

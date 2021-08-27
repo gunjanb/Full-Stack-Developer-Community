@@ -46,6 +46,7 @@ export const QUERY_USERS = gql`
       contactInfo
       posts {
         _id
+        title
         tech {
           _id
           name
@@ -61,8 +62,24 @@ query {
   techs {
       _id
       name
+      users{
+        _id
+      }
     }
 }
+`;
+
+export const QUERY_USER_ID = gql`
+  query getUser($_id: ID!) {
+    user(_id: $_id) {
+      _id
+      username
+      email
+      profilePic
+      aboutMe
+      contactInfo
+    }
+  }
 `;
 
 // export const QUERY_POST = gql`

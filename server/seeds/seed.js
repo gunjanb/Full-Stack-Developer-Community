@@ -27,7 +27,8 @@ db.once('open', async () => {
     const tempTech = techs[Math.floor(Math.random() * techs.length)];
     newPost.tech = tempTech._id;
     await newPost.save();
-    tempTech.posts.push(newPost._id);
+    tempTech.users.push(tempUser._id);
+    tempTech.users.username = tempUser.username;
     await tempTech.save();
   }
 
