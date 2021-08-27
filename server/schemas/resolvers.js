@@ -426,6 +426,42 @@ const resolvers = {
         { new: true }
       );
     },
+
+    uploadprofilepic: async (parent, args, context) => {
+      if (context.user) {
+        // s3 stuff
+        console.log(context.user);
+        const file = await args.file;
+        console.log("File ", file);
+        // console.log("file.mime ", file.mimetype);
+        // const { createReadStream, filename, mimetype } = file;
+        // const fileStream = createReadStream();
+        // console.log("filestream", fileStream);
+        // console.log("filetype", file.type);
+        // const uploadParams = {
+        //   Bucket: "learn-together",
+        //   Key: filename,
+        //   Body: fileStream,
+        //   ACL: "public-read",
+        //   ContentType: file.mimetype,
+        // };
+        // const result = await S3.upload(uploadParams).promise();
+
+        // console.log("ans from aws", result);
+        // console.log("argshelpme", args.helpme);
+
+        // return Profile.findOneAndUpdate(
+        //   { _id: profileId },
+        //   {
+        //     $addToSet: { skills: skill },
+        //   },
+        //   {
+        //     new: true,
+        //     runValidators: true,
+        //   }
+        // );
+      } else throw new AuthenticationError("In upload video");
+    },
   },
 };
 
