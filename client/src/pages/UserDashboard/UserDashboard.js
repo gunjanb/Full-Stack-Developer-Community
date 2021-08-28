@@ -171,14 +171,16 @@ const UserDashboard = () => {
                 <div className="  p-4 d-flex flex-column align-items-center rounded resource-block">
                   <h4 className="dark-black-color">Resources</h4>
                   {currentUser.posts && currentUser.posts.length ? (
-                    <div className="w-20">
+                    <div className="p-1">
                       {currentUser.posts.map((post) => (
-                        <Link
-                          className="btn btn-block btn-squared btn-light text-dark"
-                          to={`/post/${post._id}`}
-                        >
-                          {post.title}
-                        </Link>
+                        <div className="p-1" key={post._id}>
+                          <Link
+                            className="btn btn-block btn-squared btn-light text-dark"
+                            to={`/post/${post._id}`}
+                          >
+                            {post.title}
+                          </Link>
+                        </div>
                       ))}
                     </div>
                   ) : (
