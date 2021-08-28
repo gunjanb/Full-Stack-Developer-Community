@@ -44,7 +44,7 @@ const AddPhoto = () => {
         ></Spinner>
       ) : null}
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
-        Add profile photo
+        Add Profile pic
       </Button>
 
       <Modal
