@@ -195,7 +195,7 @@ const typeDefs = gql`
     updatepost(
       title: String
       content: String
-      video: String
+      file: Upload
       video_title: String
     ): User
     uploadprofilepic(file: Upload!): User
@@ -203,3 +203,10 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// updatepost(
+//   title: String
+//   content: String
+//   video: String
+//   video_title: String
+// ): User
