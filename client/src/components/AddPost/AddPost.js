@@ -24,7 +24,8 @@ const AddPost = () => {
   // set show to true and false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { data, loading } = useQuery(QUERY_TECHS);
+  const { data } = useQuery(QUERY_TECHS);
+  const [updatepost, { loading }] = useMutation(ADD_POST);
 
   useEffect(() => {
     if (data) {
@@ -38,8 +39,6 @@ const AddPost = () => {
       });
     }
   }, [data, loading, dispatch]);
-
-  const [updatepost] = useMutation(ADD_POST);
 
   //on submit
 
@@ -98,6 +97,18 @@ const AddPost = () => {
 
   return (
     <>
+      {loading ? (
+        <Spinner
+          animation="border"
+          role="status"
+          style={{
+            width: " 1rem",
+            height: " 1rem",
+            margin: "auto",
+            display: "block",
+          }}
+        ></Spinner>
+      ) : null}
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
         Add Post
       </Button>
