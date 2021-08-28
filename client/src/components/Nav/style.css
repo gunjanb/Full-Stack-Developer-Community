@@ -1,0 +1,24 @@
+.nav-style {
+  background-image: linear-gradient(to bottom, #00b3b3, #6699ff);
+  font-family: "Share Tech", sans-serif;
+}
+
+.nav-text {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+  .nav-text {
+    font-size: 1.25rem;
+  }
+}

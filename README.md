@@ -4,19 +4,7 @@
 
 ## Description
 
-AS a web developer \
-I WANT a place where I can learn or teach web technologies \
-SO THAT I CAN contribute to the web community.
-
-GIVEN the home page of Full Stack Developer Community \
-WHEN I signup or login \
-THEN I am taken to a dashboard where I can add personal information for my profile \
-WHEN I add a technology concept \
-THEN I include details and links \
-WHEN I view other people’s content \
-THEN I also have the ability to view their Profile Page. \
-WHEN I view their Profile \
-THEN I can view the concepts they have uploaded.
+Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/) where web developers can come together to learn, or contribute to the web developement community! Whether you are new to web development, or are an experienced web developer, this site allows the user the ability to **Login** or **Sign Up** to create their own posts, or view other developers posts by technology. Once logged in the user can use their **Dashboard** to upload a profile picture, enter information about themselves and post their own content (including videos). From the **Home** page they can view all of the avaialble technologies and choose one to view the content for that technology. There is a **Donate** page for members to financially contribute to the [Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/) and the web developers who use it.
 
 ## Table of Contents
 
@@ -30,7 +18,42 @@ THEN I can view the concepts they have uploaded.
 
 ## About the Project
 
+- The **server** folder utilizes the following technologies:
+
+  - [express](https://www.npmjs.com/package/express)
+  - [apollo-express-server](https://www.npmjs.com/package/apollo-server-express)
+  - [bcrypt](https://www.npmjs.com/package/bcrypt)
+  - [graphQL](https://www.npmjs.com/package/graphql)
+  - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+  - [mongoose](https://www.npmjs.com/package/mongoose)
+  - [stripe](https://www.npmjs.com/package/stripe)
+  - [dotenv](https://www.npmjs.com/package/dotenv)
+  - [MongoDB](https://www.mongodb.com/)
+  - [Node.js](https://nodejs.org/en/)
+
+- The **client** folder utilizes the following technologies:
+
+  - [react](https://www.npmjs.com/package/create-react-app)
+  - [redux](https://www.npmjs.com/package/redux)
+  - [@apollo/client](https://www.npmjs.com/package/apollo-client)
+  - [graphQL](https://www.npmjs.com/package/graphql)
+  -
+  - [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3.org/Style/CSS/Overview.en.html), and [Javascript](https://www.javascript.com/)
+  - [Node.js](https://nodejs.org/en/)
+
+- For [Website Deployment](https://reduxstore082021.herokuapp.com/) the following technologies were used:
+  - [Heroku](https://heroku.com/)
+  - [MongoDB Atlas](https://www.mongodb.com/)
+  - [if-env](https://www.npmjs.com/package/if-env)
+
 ## Installation
+
+- Open [Full Stack Developer Community](https://github.com/twashke/Full-Stack-Developer-Community).
+- Use the command line to **git clone**
+- **npm install**
+- **npm run seed**
+- **npm run develop** from command line to connect to server and client.
+- Go to [localhost:3000](http://localhost:3000/) for client and [localhost:3001/graphql](http://localhost:3001/graphql) for the server while in development.
 
 ## Usage
 

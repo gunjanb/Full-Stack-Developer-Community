@@ -1,0 +1,41 @@
+.item-size {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  margin: 10px;
+}
+
+.cart-flex-box {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-left: 100px;
+}
+
+.shopping-text {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Share Tech", sans-serif;
+}
+
+.input-size {
+  width: 25%;
+  margin: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .item-size {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+  }
+  .cart-flex-box {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding-right: 100px;
+  }
+}

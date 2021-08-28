@@ -1,0 +1,34 @@
+[
+  {
+    "username": "rex12345",
+    "email": "rex@testmail.com",
+    "password": "rex1234",
+    "aboutMe": "I am a king",
+    "profilePic": "https://scontent-sea1-1.xx.fbcdn.net/v/t1.6435-9/175490637_10209085720297096_6902058411419859689_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=X2IDd_zqNz4AX96zy8x&_nc_ht=scontent-sea1-1.xx&oh=9fb85e54f0157d952a9e455ce9564eb2&oe=614E9281",
+    "contactInfo": "facebook: yu19910513"
+  },
+  {
+    "username": "donna12345",
+    "email": "donna@testmail.com",
+    "password": "donna1234",
+    "aboutMe": "I am a queen",
+    "profilePic": "https://avatars.githubusercontent.com/u/78838048?v=4",
+    "contactInfo": "facebook: yu19910513"
+  },
+  {
+    "username": "gunjan12345",
+    "email": "gunjan@testmail.com",
+    "password": "gunjan1234",
+    "aboutMe": "I am a master",
+    "profilePic": "https://avatars.githubusercontent.com/u/13214814?v=4",
+    "contactInfo": "facebook: yu19910513"
+  },
+  {
+    "username": "tiffany12345",
+    "email": "tiffany@testmail.com",
+    "password": "tiffany1234",
+    "aboutMe": "I am a lord",
+    "profilePic": "https://avatars.githubusercontent.com/u/79234530?v=4",
+    "contactInfo": "facebook: yu19910513"
+  }
+]

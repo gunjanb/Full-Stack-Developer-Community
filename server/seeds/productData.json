@@ -1,0 +1,23 @@
+[
+  {
+    "name": "One Dollar",
+    "description": "One dollar contribution",
+    "image": "dollar-hand.jpg",
+    "price": 1.00,
+    "quantity": 1
+  },
+  {
+    "name": "Five Dollars",
+    "description": "Five dollar contribution",
+    "image": "pink-piggybank.jpg",
+    "price": 5.00,
+    "quantity": 1
+  },
+  {
+    "name": "Ten Dollars",
+    "description": "Ten dollar contribution",
+    "image": "debit-card.jpg",
+    "price": 10.00,
+    "quantity": 1
+  }     
+]

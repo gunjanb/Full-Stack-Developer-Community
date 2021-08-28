@@ -1,0 +1,28 @@
+.footer-color {
+  background-image: linear-gradient(to bottom, #00b3b3, #6699ff);
+}
+.flex-container {
+  display: flex;
+  flex-direction: flex-row;
+}
+
+.flex-direction {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer-position {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .footer-position {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
