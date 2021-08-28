@@ -7,10 +7,8 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "start:prod": "cd server && npm start",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [],
@@ -20,8 +18,6 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "bootstrap": "^5.1.0",
-    "if-env": "^1.0.4",
-    "react-bootstrap": "^2.0.0-beta.5"
+    "if-env": "^1.0.4"
   }
 }
