@@ -483,6 +483,7 @@ export const ADD_ORDER = gql`
   }
 `;
 
+//working for pic
 export const UPDATE_PHOTO = gql`
   mutation uploadprofilepic($file: Upload!) {
     uploadprofilepic(file: $file) {
