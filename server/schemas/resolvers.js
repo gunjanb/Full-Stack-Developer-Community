@@ -397,20 +397,86 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
 
-    updatepost: async (
-      parent,
-      { title, content, video, video_title },
-      context
-    ) => {
+    // updatepost: async (
+    //   parent,
+    //   { title, content, video, video_title },
+    //   context
+    // ) => {
+    //   if (context.user) {
+    //     // const newargs = { title, content, video, video_title };
+    //     const post = new Post({
+    //       title: title,
+    //       content: content,
+    //       video: video,
+    //       video_title: video_title,
+    //     });
+    //     console.log("post to be added ", post);
+    //     const postresponse = await User.findByIdAndUpdate(
+    //       context.user._id,
+    //       { $push: { posts: post } },
+    //       { new: true }
+    //     )
+    //       .populate("posts")
+    //       .populate("techs");
+    //   }
+    //   console.log("from post", postresponse);
+    //   throw new AuthenticationError("Not logged in");
+    // },
+
+    updatepost: async (parent, args, context) => {
+      // if (context.user) {
+      //   const newargs = { title, content, video, video_title };
+      //   const post = new Post({
+      //     title: title,
+      //     content: content,
+      //     video: video,
+      //     video_title: video_title,
+      //   });
+      //   console.log("post to be added ", post);
+      //  // upload file first and get link
+      //   const postresponse = await User.findByIdAndUpdate(
+      //     context.user._id,
+      //     { $push: { posts: post } },
+      //     { new: true }
+      //   )
+      //     .populate("posts")
+      //     .populate("techs");
+      // }
+      // console.log("from post", postresponse);
+      // throw new AuthenticationError("Not logged in");
       if (context.user) {
-        // const newargs = { title, content, video, video_title };
+        console.log(context.user);
+        const file = await args.file;
+        console.log("File ", file);
+        console.log("file.mime ", file.mimetype);
+        const { createReadStream, filename, mimetype } = file;
+        const fileStream = createReadStream();
+        console.log("filestream", fileStream);
+        console.log("filetype", file.type);
+        const uploadParams = {
+          Bucket: process.env.BUCKET_NAME,
+          Key: `${nanoid()}`,
+          Body: fileStream,
+          ACL: "public-read",
+          ContentType: file.mimetype,
+        };
+
+        const result = await S3.upload(uploadParams).promise();
+
+        // console.log("ans from aws", result);
+        // console.log("argshelpme", args.helpme);
+        // upload file first and get link
+
+        console.log(result);
+        console.log(result.Location);
         const post = new Post({
-          title: title,
-          content: content,
-          video: video,
-          video_title: video_title,
+          title: args.title,
+          content: args.content,
+          video: result.Location,
+          video_title: args.video_title,
         });
         console.log("post to be added ", post);
+        // upload file first and get link
         const postresponse = await User.findByIdAndUpdate(
           context.user._id,
           { $push: { posts: post } },
@@ -418,9 +484,11 @@ const resolvers = {
         )
           .populate("posts")
           .populate("techs");
+
+        console.log("from post", postresponse);
       }
-      console.log("from post", postresponse);
-      throw new AuthenticationError("Not logged in");
+
+      throw new AuthenticationError("In upload video");
     },
 
     addOrder: async (parent, { products }, context) => {
@@ -450,7 +518,6 @@ const resolvers = {
 
     uploadprofilepic: async (parent, args, context) => {
       if (context.user) {
-        // s3 stuff
         console.log(context.user);
         const file = await args.file;
         console.log("File ", file);
