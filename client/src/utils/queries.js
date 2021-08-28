@@ -1,32 +1,16 @@
-// import { gql } from "@apollo/client";
+import { gql } from "@apollo/client";
 // for profile page; able to render all data(posts and video)
-export const QUERY_USER = gql`
-query {
-  user {
-    _id
-    username
-    email
-    profilePic
-    aboutMe
-    contactInfo
-    posts {
-      _id
-      title
-      content
-      video
-      video_title
-      tech {
-        _id
-        name
-      }
-    }
-    orders {
+//working
+
+//working
+export const QUERY_TECHS = gql`
+  {
+    techs {
       _id
       name
     }
   }
 `;
-//working
 export const QUERY_USERS = gql`
   {
     users {
@@ -51,8 +35,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_POST = gql`
-query getSinglePost($postId: ID!) {
-  post(postId: $postId) {
+  query getSinglePost($postId: ID!) {
+    post(postId: $postId) {
       _id
       title
       content
@@ -61,9 +45,9 @@ query getSinglePost($postId: ID!) {
       tech {
         _id
         name
+      }
     }
   }
-}
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
