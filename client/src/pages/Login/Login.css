@@ -44,6 +44,11 @@
   width: 200px;
 }
 
+.error-text {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 780px) {
   .background {
     margin: 30px;
