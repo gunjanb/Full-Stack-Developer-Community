@@ -223,8 +223,21 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Post, Tech, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")(process.env.S_KEY);
+const { GraphQLUpload } = require("graphql-upload");
+const AWS = require("aws-sdk");
 
+const awsConfig = {
+  // accessKeyId
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  // secretAccessKey
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: "us-east-2",
+  apiVersion: "2006-03-01",
+  correctClockSkew: true,
+};
+const S3 = new AWS.S3(awsConfig);
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     techs: async () => {
       return await Tech.find();
@@ -433,33 +446,35 @@ const resolvers = {
         console.log(context.user);
         const file = await args.file;
         console.log("File ", file);
-        // console.log("file.mime ", file.mimetype);
-        // const { createReadStream, filename, mimetype } = file;
-        // const fileStream = createReadStream();
-        // console.log("filestream", fileStream);
-        // console.log("filetype", file.type);
-        // const uploadParams = {
-        //   Bucket: "learn-together",
-        //   Key: filename,
-        //   Body: fileStream,
-        //   ACL: "public-read",
-        //   ContentType: file.mimetype,
-        // };
-        // const result = await S3.upload(uploadParams).promise();
+        console.log("file.mime ", file.mimetype);
+        const { createReadStream, filename, mimetype } = file;
+        const fileStream = createReadStream();
+        console.log("filestream", fileStream);
+        console.log("filetype", file.type);
+        const uploadParams = {
+          Bucket: "learn-together",
+          Key: filename,
+          Body: fileStream,
+          ACL: "public-read",
+          ContentType: file.mimetype,
+        };
+        const result = await S3.upload(uploadParams).promise();
 
         // console.log("ans from aws", result);
         // console.log("argshelpme", args.helpme);
 
-        // return Profile.findOneAndUpdate(
-        //   { _id: profileId },
-        //   {
-        //     $addToSet: { skills: skill },
-        //   },
-        //   {
-        //     new: true,
-        //     runValidators: true,
-        //   }
-        // );
+        console.log(result);
+        console.log(result.Location);
+
+        return await User.findByIdAndUpdate(
+          context.user._id,
+          { profilePic: result.Location },
+          {
+            new: true,
+          }
+        )
+          .populate("techs")
+          .populate("posts");
       } else throw new AuthenticationError("In upload video");
     },
   },
