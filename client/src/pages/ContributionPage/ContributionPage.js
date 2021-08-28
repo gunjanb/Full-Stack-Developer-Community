@@ -1,13 +1,13 @@
 import React from "react";
 import ProductList from "../../components/ProductList";
 import Cart from "../../components/Cart";
-import './index.css';
+import './contribution.css';
 
 const ContributionPage = () => {
   return (
-    <div className="container">
-      <ProductList />
+    <div className="padding padding-bottom">
       <Cart />
+      <ProductList />
     </div>
   );
 };
