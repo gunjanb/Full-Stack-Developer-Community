@@ -385,18 +385,18 @@ export const UPDATE_TECH = gql`
   }
 `;
 
-//working
+//working for video as well
 export const ADD_POST = gql`
   mutation updatepost(
     $title: String
     $content: String
-    $video: String
+    $file: Upload
     $video_title: String
   ) {
     updatepost(
       title: $title
       content: $content
-      video: $video
+      file: $file
       video_title: $video_title
     ) {
       _id
