@@ -1,8 +1,9 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 import { useQuery } from "@apollo/client";
 import { useParams, Link } from 'react-router-dom';
 import { QUERY_POST } from '../../utils/queries';
-import { Row, Col, Spinner, Card } from "react-bootstrap";
+import { Row, Spinner, Card } from "react-bootstrap";
 import './ContentPage.css';
 
 const ContentPage = () => {
@@ -65,16 +66,32 @@ const ContentPage = () => {
           <Card className="w-75 mx-auto card-bg-color">
             {post.video ? (
               <>
-                <Card.Body className="text-center">
-                  <Card.Title>Video</Card.Title>
-                  <Card.Text>{post.video}</Card.Text>
-                </Card.Body>
+                {/* <Card.Body className="text-center">
+                  <Card.Title>Video</Card.Title> */}
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    playsinline={true}
+                    controls={true}
+                    playIcon={<button>Play</button>}
+                    url="https://www.youtube.com/watch?v=LRP8d7hhpoQ"
+                  />
+                  
+                {/* </Card.Body> */}
               </>
             ) : (
-              <Card.Body className="text-center text-white">
-                <Card.Title>Video</Card.Title>
-                <p className="text-center">Video has not been added</p>
-              </Card.Body>
+              // <Card.Body className="text-center text-white">
+              //   <Card.Title>Video</Card.Title>
+              //   <p className="text-center">Video has not been added</p>
+              // </Card.Body>
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                playsinline={true}
+                controls={true}
+                playIcon={<button>Play</button>}
+                url="https://www.youtube.com/watch?v=LRP8d7hhpoQ"
+              />
             )}
           </Card>
         </div>
