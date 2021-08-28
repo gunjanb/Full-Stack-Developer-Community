@@ -24,7 +24,8 @@ const AddPost = () => {
   // set show to true and false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { data, loading } = useQuery(QUERY_TECHS);
+  const { data } = useQuery(QUERY_TECHS);
+  const [updatepost, { loading }] = useMutation(ADD_POST);
 
   useEffect(() => {
     if (data) {
@@ -39,22 +40,30 @@ const AddPost = () => {
     }
   }, [data, loading, dispatch]);
 
-  const [addPost] = useMutation(ADD_POST);
-
   //on submit
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     handleClose();
     console.log(file);
-    console.log(title, tech, content, videotitle);
+    console.log(title, content, videotitle);
+
     try {
-      await addPost({
+      // await addPost({
+      //   variables: {
+      //     file: file,
+      //     title: title,
+      //     tech: tech,
+      //     content: content,
+      //     video_tilte: videotitle,
+      //   },
+      // });
+      await updatepost({
         variables: {
-          file: file,
           title: title,
-          tech: tech,
           content: content,
-          video_tilte: videotitle,
+          file: file,
+          video_title: videotitle,
         },
       });
     } catch (err) {
@@ -88,6 +97,18 @@ const AddPost = () => {
 
   return (
     <>
+      {loading ? (
+        <Spinner
+          animation="border"
+          role="status"
+          style={{
+            width: " 1rem",
+            height: " 1rem",
+            margin: "auto",
+            display: "block",
+          }}
+        ></Spinner>
+      ) : null}
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
         Add Post
       </Button>
@@ -133,8 +154,7 @@ const AddPost = () => {
               ></textarea>
             </div>
 
-            <div className="col-12 m-1 p-1">
-              {/* <p>Select a tech </p> */}
+            {/* <div className="col-12 m-1 p-1">
               <label htmlFor="tech">Select a tech:</label>
               <select onChange={(e) => setTech(e.target.value)} value={tech}>
                 <option>Choose an option</option>
@@ -144,7 +164,7 @@ const AddPost = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div className="col-12 m-1 p-1">
               {/* <p className="">Select Video title:</p> */}
               <label htmlFor="videotitle">Video Title:</label>

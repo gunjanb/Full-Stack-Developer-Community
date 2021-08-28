@@ -10,3 +10,15 @@
 .dark-black-color {
   color: black;
 }
+
+.mymargin {
+  margin-bottom: 25rem;
+  padding-bottom: 25rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .mymargin {
+    margin-bottom: 45rem;
+    padding-bottom: 45rem;
+  }
+}

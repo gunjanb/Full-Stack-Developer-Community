@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+// import { gql } from "@apollo/client";
 // for profile page; able to render all data(posts and video)
 export const QUERY_USER = gql`
 query {
@@ -22,22 +22,13 @@ query {
     }
     orders {
       _id
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        image
-      }
+      name
     }
   }
-}
 `;
-//for home page; able to track down tech info and render back user
+//working
 export const QUERY_USERS = gql`
-  query {
+  {
     users {
       _id
       username
@@ -48,37 +39,13 @@ export const QUERY_USERS = gql`
       posts {
         _id
         title
-        tech {
-          _id
-          name
-        }
+        video
+        video_title
       }
-    }
-  }
-`;
-
-//for home page
-export const QUERY_TECHS = gql`
-query {
-  techs {
-      _id
-      name
-      users{
+      techs {
         _id
+        name
       }
-    }
-}
-`;
-
-export const QUERY_USER_ID = gql`
-  query getUser($_id: ID!) {
-    user(_id: $_id) {
-      _id
-      username
-      email
-      profilePic
-      aboutMe
-      contactInfo
     }
   }
 `;
@@ -111,11 +78,46 @@ export const QUERY_ALL_PRODUCTS = gql`
     }
   }
 `;
-
+//checkouts
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {
       session
+    }
+  }
+`;
+//user
+export const QUERY_USER = gql`
+  query {
+    user {
+      _id
+      username
+      email
+      profilePic
+      aboutMe
+      contactInfo
+      posts {
+        _id
+        title
+        video
+        video_title
+      }
+      techs {
+        _id
+        name
+      }
+      orders {
+        _id
+        purchaseDate
+        products {
+          _id
+          name
+          description
+          price
+          quantity
+          image
+        }
+      }
     }
   }
 `;

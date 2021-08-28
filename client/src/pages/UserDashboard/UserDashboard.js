@@ -12,6 +12,7 @@ import AddPhoto from "../../components/AddPhoto/AddPhoto";
 import AddAboutMe from "../../components/AddAboutMe/AddAboutMe";
 import AddContactInfo from "../../components/AddContactInfo/AddContactInfo";
 import AddPost from "../../components/AddPost/AddPost";
+import AddTech from "../../components/AddTech/AddTech";
 
 const UserDashboard = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const UserDashboard = () => {
         <>
           {console.log(currentUser)}
           {currentUser ? (
-            <div className="vh-100">
+            <div className="vh-100 mymargin">
               <h1 className="w-100 my-5 text-center">
                 Welcome {currentUser.username}!
               </h1>
@@ -68,7 +69,7 @@ const UserDashboard = () => {
                       <>
                         <Card.Img
                           variant="top"
-                          className="w-75 mx-auto rounded"
+                          className="w-50 h-45 mx-auto rounded "
                           src={currentUser.profilePic}
                         />
                         <Card.Body className="text-center">
@@ -128,24 +129,27 @@ const UserDashboard = () => {
 
                 <Col lg={6}>
                   <Card className="w-75 mx-auto card-bg-color">
-                    {currentUser.posts && currentUser.posts.length ? (
+                    {currentUser.techs && currentUser.techs.length ? (
                       <>
                         <Card.Body className="text-center">
                           <h5 className="text-center dark-black-color">
                             Techs
                           </h5>
                           <ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
-                            {currentUser.posts.map((post) => (
+                            {currentUser.techs.map((tech) => (
                               <span
-                                key={post._id}
+                                key={tech._id}
                                 className="d-inline-block text-center btn-sm m-1 text-white"
                               >
-                                {post.tech.name}
+                                {tech.name}
                               </span>
                             ))}
                           </ul>
                           {/* need to pass the tech  already user selected in previous articles as prop to this component */}
                           {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
+                          <AddTech
+                            currentUserAvailabletechs={currentUser.techs}
+                          />
                         </Card.Body>
                       </>
                     ) : (
@@ -155,6 +159,9 @@ const UserDashboard = () => {
                         {/* will work fine if we go with model having user having tech and post seperate model and not nested one  and just part of user itself */}
                         {/* {not having any previous techs selected so anything user selected will get added to user model } */}
                         {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
+                        <AddTech
+                          currentUserAvailabletechs={currentUser.techs}
+                        />
                       </Card.Body>
                     )}
                   </Card>
@@ -164,14 +171,16 @@ const UserDashboard = () => {
                 <div className="  p-4 d-flex flex-column align-items-center rounded resource-block">
                   <h4 className="dark-black-color">Resources</h4>
                   {currentUser.posts && currentUser.posts.length ? (
-                    <div className="w-20">
+                    <div className="p-1">
                       {currentUser.posts.map((post) => (
-                        <Link
-                          className="btn btn-block btn-squared btn-light text-dark"
-                          to={`/post/${post._id}`}
-                        >
-                          {post.title}
-                        </Link>
+                        <div className="p-1" key={post._id}>
+                          <Link
+                            className="btn btn-block btn-squared btn-light text-dark"
+                            to={`/post/${post._id}`}
+                          >
+                            {post.title}
+                          </Link>
+                        </div>
                       ))}
                     </div>
                   ) : (

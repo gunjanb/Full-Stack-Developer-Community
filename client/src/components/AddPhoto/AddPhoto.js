@@ -7,7 +7,7 @@ import "./AddPhoto.css";
 const AddPhoto = () => {
   const [show, setShow] = useState(false);
   const [file, setFile] = useState();
-  const [updateUser, { loading }] = useMutation(UPDATE_PHOTO);
+  const [updateprofilepic, { loading }] = useMutation(UPDATE_PHOTO);
   //set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,9 +19,9 @@ const AddPhoto = () => {
     // const file = files[0];
     console.log(file);
     try {
-      await updateUser({
+      await updateprofilepic({
         variables: {
-          profilePic: file,
+          file: file,
         },
       });
     } catch (err) {
@@ -44,7 +44,7 @@ const AddPhoto = () => {
         ></Spinner>
       ) : null}
       <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
-        Add profile photo
+        Add Profile pic
       </Button>
 
       <Modal
