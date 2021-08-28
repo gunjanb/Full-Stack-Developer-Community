@@ -118,8 +118,9 @@
 // module.exports = typeDefs;
 
 const { gql } = require("apollo-server-express");
-
 const typeDefs = gql`
+  scalar Upload
+
   type Tech {
     _id: ID
     name: String
@@ -173,6 +174,7 @@ const typeDefs = gql`
     token: ID
     user: User
   }
+
   type Query {
     techs: [Tech]
     users: [User]
@@ -196,6 +198,7 @@ const typeDefs = gql`
       video: String
       video_title: String
     ): User
+    uploadprofilepic(file: Upload!): User
   }
 `;
 
