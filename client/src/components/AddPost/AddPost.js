@@ -63,7 +63,7 @@ const AddPost = () => {
         variables: {
           title: title,
           content: content,
-          video: content,
+          file: file,
           video_title: videotitle,
         },
       });
@@ -187,10 +187,10 @@ const AddPost = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               /> */}
 
-              {/* <Form.Control
+              <Form.Control
                 type="file"
                 onChange={(e) => setFile(e.target.files[0])}
-              /> */}
+              />
             </div>
 
             <div className="col-12 m-1 p-1 ">
