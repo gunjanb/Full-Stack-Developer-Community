@@ -13,6 +13,8 @@ import {
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helper';
 import spinner from '../../assets/spinner.gif';
+import "./detail.css";
+// import "./../Home/debug.css";
 
 function Detail() {
   const dispatch = useDispatch();
@@ -85,28 +87,32 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <Link to="/contributionPage">← Back to Contributions</Link>
+        <div className="container d-flex justify-content-center p-3">
+        <div className="detail-container text-style">
+          <Link className="link-text" to="/contributionPage">← Back to Contributions</Link>
 
-          <h2>{currentProduct.name}</h2>
+          <h2 className="detail-title m-0">{currentProduct.name}</h2>
 
-          <p>{currentProduct.description}</p>
+          <p className="detail-text">{currentProduct.description}</p>
 
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
+          <p className="detail-add">
+            <strong>Price: </strong>${currentProduct.price}{' '}
+            <button className="detail-button"onClick={addToCart}>Add to Cart</button>
             <button
+              className="detail-button"
               disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
             >
-              Remove from Cart
+              Remove
             </button>
           </p>
 
           <img
+            className="detail-img img-fluid rounded"
             src={`../images/${currentProduct.image}`}
             alt={currentProduct.name}
           />
+        </div>
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
