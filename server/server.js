@@ -42,7 +42,7 @@
 //     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
 //   });
 // });
-
+require("graphql")
 require("dotenv").config();
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
