@@ -118,6 +118,7 @@
 // `;
 
 import { gql } from "@apollo/client";
+//working
 export const QUERY_TECHS = gql`
   {
     techs {
@@ -126,7 +127,7 @@ export const QUERY_TECHS = gql`
     }
   }
 `;
-
+//working
 export const QUERY_USERS = gql`
   {
     users {
@@ -149,7 +150,7 @@ export const QUERY_USERS = gql`
     }
   }
 `;
-
+//products
 export const QUERY_ALL_PRODUCTS = gql`
   query {
     products {
@@ -162,7 +163,7 @@ export const QUERY_ALL_PRODUCTS = gql`
     }
   }
 `;
-
+//checkouts
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {
@@ -170,7 +171,7 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
-
+//user
 export const QUERY_USER = gql`
   query {
     user {

@@ -397,32 +397,6 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
 
-    // updatepost: async (
-    //   parent,
-    //   { title, content, video, video_title },
-    //   context
-    // ) => {
-    //   if (context.user) {
-    //     // const newargs = { title, content, video, video_title };
-    //     const post = new Post({
-    //       title: title,
-    //       content: content,
-    //       video: video,
-    //       video_title: video_title,
-    //     });
-    //     console.log("post to be added ", post);
-    //     const postresponse = await User.findByIdAndUpdate(
-    //       context.user._id,
-    //       { $push: { posts: post } },
-    //       { new: true }
-    //     )
-    //       .populate("posts")
-    //       .populate("techs");
-    //   }
-    //   console.log("from post", postresponse);
-    //   throw new AuthenticationError("Not logged in");
-    // },
-
     updatepost: async (parent, args, context) => {
       // if (context.user) {
       //   const newargs = { title, content, video, video_title };
