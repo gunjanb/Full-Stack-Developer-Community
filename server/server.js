@@ -57,7 +57,7 @@ const PORT = process.env.PORT || 3001;
 
 async function startServer() {
   db.once("open", () => {
-    console.log("Connected 🚀 To MongoDB Successfully");
+    console.log("Connected To MongoDB Successfully");
   });
 
   const server = new ApolloServer({
