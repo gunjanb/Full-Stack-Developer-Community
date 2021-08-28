@@ -7,7 +7,7 @@ import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
-import './style.css';
+import './cart.css';
 
 const stripePromise = loadStripe('pk_test_51JRSIkDCPVMgZ8j7LQXvGtgzf95mU0xYqBOij8hGCmsqUW97YIKnIcsn5iPCSswvapFxsXA9F7IVJw73CFoQIuV000ZgsxrTkm');
 
@@ -64,8 +64,8 @@ const Cart = () => {
 
   if (!cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
+      <div className="cart-closed container d-flex justify-content-end" onClick={toggleCart}>
+        <span className="cart-size" role="img" aria-label="trash">
           🛒
         </span>
       </div>
@@ -73,29 +73,29 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart">
-      <div className="close" onClick={toggleCart}>
+    <div className="cart mb-4">
+      <div className="close shopping-font m-2" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2 className="shopping-title mt-2">Shopping Cart</h2>
       {cartFromState.length ? (
         <div>
           {cartFromState.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between">
+          <div className="total">
             <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button className="m-3 checkout rounded"onClick={submitCheckout}>Checkout</button>
             ) : (
               <span>(log in to check out)</span>
             )}
           </div>
         </div>
       ) : (
-        <h3>
+        <h3 className="shopping-font">
           <span role="img" aria-label="shocked">
             😱
           </span>
