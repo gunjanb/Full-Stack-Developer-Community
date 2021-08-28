@@ -31,11 +31,11 @@ const ContentPage = () => {
   }
   return (
     <div className="vh-100">
-      <h1 className="w-100 my-5 text-center">
-        {post.title}!
-      </h1>
-      <Row className="m-4  d-flex justify-content-center ">
-        <Col lg={6}>
+      <h2 className="w-100 my-5 text-center">
+        {post.title}Post Title
+      </h2>
+      <Row className="m-4  d-flex justify-content-center">
+      <div className="p-4 d-flex flex-column align-items-center rounded resource-block">
           <Card className="w-75 mx-auto card-bg-color">
             {post.content ? (
               <>
@@ -48,32 +48,20 @@ const ContentPage = () => {
               <Card.Body className="text-center text-white">
                 <Card.Title>Content</Card.Title>
                 <p className="text-center">
-                  No content has been added
+                  Lorem ipsum dolor sit amet at. Tincidunt lacinia quisque suspendisse erat tempor egestas nostra. Nullam nec odio pellentesque blandit. Sit maximus bibendum aliquet. Primis pellentesque quam ipsum.
+
+                  Mollis per dictum efficitur vehicula. Hendrerit sed nec finibus ultricies donec ornare. Malesuada sed felis magna vel faucibus dolor. Fusce integer mattis consectetur rhoncus. Augue vehicula auctor pellentesque in per efficitur. Quam libero hendrerit facilisis.
+
+                  Ornare sem per morbi praesent ac senectus. Letius sollicitudin donec mattis vitae netus. Consequat efficitur himenaeos mattis eu vitae vivamus. Curabitur tristique tempus curae aptent dis. Platea ut tellus nam efficitur.
                 </p>
               </Card.Body>
             )}
           </Card>
-        </Col>
-        <Col lg={6}>
-          <Card className="w-75 mx-auto card-bg-color">
-            {post.video_title ? (
-              <>
-                <Card.Body className="text-center">
-                  <Card.Title>Video Title</Card.Title>
-                  <Card.Text>{post.video_title}</Card.Text>
-                </Card.Body>
-              </>
-            ) : (
-              <Card.Body className="text-center text-white">
-                <Card.Title>Video Title</Card.Title>
-                <p className="text-center">Video has not been added</p>
-              </Card.Body>
-            )}
-          </Card>
-        </Col>
+        </div>
       </Row>
       <Row className="m-4  d-flex justify-content-center">
-        <div className="  p-4 d-flex flex-column align-items-center rounded resource-block">
+        <h2 className="w-100 my-5 text-center">{post.video_title} Video Title</h2>
+        <div className="p-4 d-flex flex-column align-items-center rounded resource-block">
           <Card className="w-75 mx-auto card-bg-color">
             {post.video ? (
               <>
