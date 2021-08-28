@@ -12,6 +12,7 @@ query {
     posts {
       _id
       title
+      content
       video
       video_title
       tech {
@@ -82,19 +83,21 @@ export const QUERY_USER_ID = gql`
   }
 `;
 
-// export const QUERY_POST = gql`
-// query {
-//   post($_id:ID!) {
-//       title
-//       content
-//       video
-//       video_title
-//       tech {
-//         name
-//     }
-//   }
-// }
-// `;
+export const QUERY_POST = gql`
+query getSinglePost($postId: ID!) {
+  post(postId: $postId) {
+      _id
+      title
+      content
+      video
+      video_title
+      tech {
+        _id
+        name
+    }
+  }
+}
+`;
 
 export const QUERY_ALL_PRODUCTS = gql`
   query {
