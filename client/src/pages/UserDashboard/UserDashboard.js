@@ -69,7 +69,7 @@ const UserDashboard = () => {
                       <>
                         <Card.Img
                           variant="top"
-                          className="w-75 mx-auto rounded"
+                          className="w-50 h-45 mx-auto rounded "
                           src={currentUser.profilePic}
                         />
                         <Card.Body className="text-center">
