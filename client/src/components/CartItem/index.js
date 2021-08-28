@@ -1,11 +1,13 @@
 import React from 'react';
-import { useStoreContext } from "../../utils/GlobalState";
+// import { useStoreContext } from "../../utils/GlobalState";
+import { useDispatch } from "react-redux";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
+import "./cartItem.css"
 
 const CartItem = ({ item }) => {
-
-  const [, dispatch] = useStoreContext();
+  // const [, dispatch] = useStoreContext();
+  const dispatch = useDispatch();
 
   const removeFromCart = item => {
     dispatch({
@@ -13,7 +15,6 @@ const CartItem = ({ item }) => {
       _id: item._id
     });
     idbPromise('cart', 'delete', { ...item });
-
   };
 
   const onChange = (e) => {
@@ -32,23 +33,21 @@ const CartItem = ({ item }) => {
         purchaseQuantity: parseInt(value)
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-
     }
   }
 
   return (
-    <div className="flex-row">
-      <div>
+    <div className="cart-flex-box shopping-text">
+      <div className="shopping-size">
         <img
+          className="item-size img-fluid rounded"
           src={`/images/${item.image}`}
-          alt=""
-        />
-      </div>
-      <div>
-        <div>{item.name}, ${item.price}</div>
+          alt=""/>
+          <div>{item.name}, ${item.price}</div>
         <div>
           <span>Qty:</span>
           <input
+            className="input-size"
             type="number"
             placeholder="1"
             value={item.purchaseQuantity}

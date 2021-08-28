@@ -4,7 +4,14 @@ import allReducer from "./reducers";
 
 const store = createStore(
   allReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  {
+    ...(window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION()),
+    stripe: {
+      products: [],
+      cart: [],
+      cartOpen: false,
+    },
+  }
 );
 
 export default store;
