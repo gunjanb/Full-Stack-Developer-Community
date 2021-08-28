@@ -218,12 +218,14 @@
 // };
 
 // module.exports = resolvers;
-
+require("dotenv").config();
+const { nanoid } = require("nanoid");
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Post, Tech, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")(process.env.S_KEY);
 const { GraphQLUpload } = require("graphql-upload");
+
 const AWS = require("aws-sdk");
 
 const awsConfig = {
@@ -231,10 +233,16 @@ const awsConfig = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   // secretAccessKey
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: "us-east-2",
-  apiVersion: "2006-03-01",
+  region: process.env.BUCKET_REGION,
+  apiVersion: process.env.AWS_API_VERSION,
   correctClockSkew: true,
 };
+// AWS.config.update(awsConfig);
+// const S3bucket = new AWS.S3({
+//   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//   region: "us-east-2",
+// });
 const S3 = new AWS.S3(awsConfig);
 const resolvers = {
   Upload: GraphQLUpload,
@@ -452,12 +460,13 @@ const resolvers = {
         console.log("filestream", fileStream);
         console.log("filetype", file.type);
         const uploadParams = {
-          Bucket: "learn-together",
-          Key: filename,
+          Bucket: process.env.BUCKET_NAME,
+          Key: `${nanoid()}`,
           Body: fileStream,
           ACL: "public-read",
           ContentType: file.mimetype,
         };
+
         const result = await S3.upload(uploadParams).promise();
 
         // console.log("ans from aws", result);
