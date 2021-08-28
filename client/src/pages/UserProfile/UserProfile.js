@@ -33,7 +33,6 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (users.length) {
-      console.log(data);
       setCurrentUser(data.users.find((user) => user._id === profileId));
     } else if (data) {
       dispatch({
@@ -43,6 +42,7 @@ const UserProfile = () => {
       data.users.forEach((user) => {
         idbPromise("users", "put", user);
       });
+      setCurrentUser(data.users.find((user) => user._id === profileId));
     } else if (!loading) {
       idbPromise("users", "get").then((users) => {
         dispatch({ type: UPDATE_USERS, payload: users });
@@ -81,7 +81,7 @@ const UserProfile = () => {
                           variant="top"
                           className="w-75 mx-auto rounded"
                           // src={currentUser.profilePic}
-                          src="holder.js/100px180?text=Image cap"
+                          src={currentUser.profilePic}
                         />
                       </>
                     ) : (
@@ -177,7 +177,7 @@ const UserProfile = () => {
                       {currentUser.posts.map((post) => (
                         <Link
                           className="btn btn-block btn-squared btn-light text-dark"
-                          to={`/post/${post._id}`}
+                          to={`/post/${post._id}/`}
                         >
                           {post.title}
                         </Link>
