@@ -350,7 +350,7 @@ const resolvers = {
         throw new AuthenticationError("Can not find user");
       }
 
-      const correctPw = await User.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Sorry, incorrect credentials");
