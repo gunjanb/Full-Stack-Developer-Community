@@ -6,7 +6,6 @@ import { QUERY_TECHS } from "../../utils/queries";
 import { UPDATE_TECHS } from "../../utils/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { idbPromise } from "../../utils/helper";
-
 import "./AddPost.css";
 
 const AddPost = () => {
@@ -109,7 +108,7 @@ const AddPost = () => {
           }}
         ></Spinner>
       ) : null}
-      <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
+      <Button className="post-add" variant="light" onClick={handleShow}>
         Add Post
       </Button>
 
@@ -121,11 +120,11 @@ const AddPost = () => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add your post</Modal.Title>
+          <Modal.Title className="post-text">Add your post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form
-            className="d-flex  flex-column justify-center justify-space-between-md align-center"
+            className="m-2 d-flex flex-column justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 m-1 p-1">
@@ -147,7 +146,7 @@ const AddPost = () => {
                 name="content"
                 placeholder="write your view here"
                 value={content}
-                className="form-control w-100"
+                className="form-control w-100 post-upload-text"
                 style={{ lineHeight: "1.5" }}
                 rows="5"
                 onChange={handlecontent}
@@ -205,7 +204,7 @@ const AddPost = () => {
             </div>
 
             <div className="col-12 m-1 p-1 ">
-              <button className="btn btn-dark btn-sm p-1" type="submit">
+              <button className="post-button p-0" type="submit">
                 Save
               </button>
             </div>

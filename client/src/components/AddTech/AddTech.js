@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_TECH } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 import { QUERY_TECHS } from "../../utils/queries";
+import "./AddTech.css"
 
 const AddTech = ({ currentUserAvailabletechs }) => {
   const [techselected, setTech] = useState();
@@ -41,7 +42,7 @@ const AddTech = ({ currentUserAvailabletechs }) => {
 
   return (
     <>
-      <Button className="w-50 btn-sm " variant="dark" onClick={handleShow}>
+      <Button className="tech-add" variant="light" onClick={handleShow}>
         Add Tech
       </Button>
 
@@ -53,10 +54,10 @@ const AddTech = ({ currentUserAvailabletechs }) => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Select tech</Modal.Title>
+          <Modal.Title className="tech-text">Select tech</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleFormSubmit}>
+          <Form className="m-2" onSubmit={handleFormSubmit}>
             {/* <div className="col-12 m-1 p-1">
               <label htmlFor="tech">Select a tech:</label>
               <select
@@ -77,6 +78,7 @@ const AddTech = ({ currentUserAvailabletechs }) => {
                   <Form.Check
                     // type="checkbox"
                     // disabled={tech.name === "All"}
+                    className="tech-upload-text"
                     name="updatedTechs"
                     label={tech.name}
                     value={tech._id}
@@ -84,7 +86,7 @@ const AddTech = ({ currentUserAvailabletechs }) => {
                 </div>
               ))}
             </Form.Group>
-            <Button className="mt-3" type="submit" variant="dark btn-sm ">
+            <Button className="tech-add-button p-0" type="submit" variant="light">
               save
             </Button>
           </Form>

@@ -1,24 +1,103 @@
-.card-bg-color {
-  background-color: #415d43;
+.container-user {
+  height: 100%;
+  width: 100%;
 }
 
-.resource-block {
-  background-color: #415d43;
-  width: 65rem;
+.user-title {
+  padding-top: 1.5rem;
+  font-size: 4rem;
 }
 
-.dark-black-color {
+.user-img {
+  height: 300px;
+  width: 300px;
+  border: 2px solid white;
+}
+
+.user-header {
+  font-size: 2rem;
+  color: white;
+}
+
+.tech-list {
+  font-size: 2rem;
   color: black;
 }
 
-.mymargin {
-  margin-bottom: 25rem;
-  padding-bottom: 25rem;
+.profile-text {
+  font-size: 1.5rem;
+  color: white;
 }
 
-@media screen and (max-width: 1000px) {
-  .mymargin {
-    margin-bottom: 45rem;
-    padding-bottom: 45rem;
+.user-info {
+  font-size: 1.25rem;
+  color: white;
+}
+
+.user-tech {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-bg-color {
+  background-image: linear-gradient(#00b3b3, #6699ff);
+  border: 2px solid black;
+  margin: 5px;
+}
+
+.resource-block {
+  background-image: linear-gradient(#00b3b3, #6699ff);
+  width: 65rem;
+  border: 2px solid black;
+}
+
+.resource-button {
+  font-size: 1.5rem;
+}
+
+.mypadding {
+  margin-bottom: 100px;
+  height: 100%;
+}
+
+@media screen and (max-width: 780px) {
+  .user-title {
+    padding-top: 1.5rem;
+    font-size: 3rem;
+  }
+
+  .mypadding {
+    margin-bottom: 100px;
+    height: 100%;
+  }
+
+  .tech-list {
+    font-size: 1.5rem;
+    color: black;
+    padding-right: 2rem;
+  }
+  .profile-text {
+    font-size: 1.25rem;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .user-title {
+    padding-top: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .mypadding {
+    margin-bottom: 100px;
+    height: 100%;
+  }
+
+  .tech-list {
+    font-size: 1rem;
+    color: black;
+  }
+  .resource-button {
+    font-size: 1rem;
   }
 }

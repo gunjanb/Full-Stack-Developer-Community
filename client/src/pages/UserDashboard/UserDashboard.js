@@ -6,13 +6,14 @@ import { useParams, Link } from "react-router-dom";
 import { QUERY_USERS } from "../../utils/queries";
 import { UPDATE_USERS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
-import { Row, Col, Spinner, Card } from "react-bootstrap";
+import { Container, Row , Col, Spinner, Card } from "react-bootstrap";
 import "./UserDashboard.css";
 import AddPhoto from "../../components/AddPhoto/AddPhoto";
 import AddAboutMe from "../../components/AddAboutMe/AddAboutMe";
 import AddContactInfo from "../../components/AddContactInfo/AddContactInfo";
 import AddPost from "../../components/AddPost/AddPost";
 import AddTech from "../../components/AddTech/AddTech";
+// import "./../Home/debug.css"
 
 const UserDashboard = () => {
   const dispatch = useDispatch();
@@ -58,18 +59,18 @@ const UserDashboard = () => {
         <>
           {console.log(currentUser)}
           {currentUser ? (
-            <div className="vh-100 mymargin">
-              <h1 className="w-100 my-5 text-center">
+            <div className="container-user mypadding text-style">
+              <h1 className="text-center user-title">
                 Welcome {currentUser.username}!
               </h1>
-              <Row className="m-4  d-flex justify-content-center ">
-                <Col lg={6} className="pb-2">
-                  <Card className="w-75 mx-auto card-bg-color">
+              <Container fluid>
+                <div className="d-flex justify-content-evenly flex-wrap flex-shrink-0">
+                  <Card className="card-bg-color align-items-center col-sm-5 pt-5">
                     {currentUser.profilePic ? (
                       <>
                         <Card.Img
                           variant="top"
-                          className="w-50 h-45 mx-auto rounded "
+                          className="user-img rounded img-fluid"
                           src={currentUser.profilePic}
                         />
                         <Card.Body className="text-center">
@@ -78,68 +79,43 @@ const UserDashboard = () => {
                       </>
                     ) : (
                       <Card.Body className="text-center text-white">
-                        <p className="text-center">Add your profile picture</p>
+                        <p className="text-center user-header">Add your profile picture</p>
                         <AddPhoto />
                       </Card.Body>
                     )}
                   </Card>
-                </Col>
-                <Col lg={6}>
-                  <Card className="w-75 mx-auto card-bg-color">
-                    {currentUser.contactInfo ? (
-                      <>
-                        <Card.Body className="text-center">
-                          <p> {currentUser.contactInfo}</p>
-                          <AddContactInfo
-                            currentUserContactInfo={currentUser.contactInfo}
-                          />
-                        </Card.Body>
-                      </>
-                    ) : (
-                      <Card.Body className="text-center text-white">
-                        <p className="text-center">Add your Contact Info</p>
-                        <AddContactInfo
-                          currentUserContactInfo={currentUser.contactInfo}
-                        />
-                      </Card.Body>
-                    )}
-                  </Card>
-                </Col>
-              </Row>
-              <Row className="m-4  d-flex justify-content-center">
-                <Col lg={6} className="pb-2">
-                  <Card className="w-75 mx-auto card-bg-color">
+      
+  
+                  <Card className="align-items-center card-bg-color user-header col-sm-6">
                     {currentUser.aboutMe ? (
                       <>
-                        <Card.Body className="text-center">
-                          <p> {currentUser.aboutMe} </p>
+                        <Card.Body className="text-center profile-text">
+                          <p className="p-2"> {currentUser.aboutMe} </p>
                           <AddAboutMe
                             currentUserAboutMe={currentUser.aboutMe}
                           />
                         </Card.Body>
                       </>
                     ) : (
-                      <Card.Body className="text-center text-white">
-                        <p className="text-center">Add About yourself</p>
+                      <Card.Body className="text-center user-header text-white">
+                        <p className="text-center p-2">Add About yourself</p>
                         <AddAboutMe currentUserAboutMe={currentUser.aboutMe} />
                       </Card.Body>
                     )}
                   </Card>
-                </Col>
-
-                <Col lg={6}>
-                  <Card className="w-75 mx-auto card-bg-color">
+  
+                  <Card className="card-bg-color col-sm-5">
                     {currentUser.techs && currentUser.techs.length ? (
                       <>
                         <Card.Body className="text-center">
-                          <h5 className="text-center dark-black-color">
+                          <h5 className="text-center user-header">
                             Techs
                           </h5>
-                          <ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
+                          <ul className="d-inline-flex flex-row flex-wrap justify-content-center mt-2 mb-3 align-items-center">
                             {currentUser.techs.map((tech) => (
                               <span
                                 key={tech._id}
-                                className="d-inline-block text-center btn-sm m-1 text-white"
+                                className="d-inline-flex text-center tech-list"
                               >
                                 {tech.name}
                               </span>
@@ -154,8 +130,8 @@ const UserDashboard = () => {
                       </>
                     ) : (
                       <Card.Body className="text-center ">
-                        <h5 className="text-center dark-black-color">Techs</h5>
-                        <p className="text-center">Not added anything yet</p>
+                        <h5 className="text-center user-header">Techs</h5>
+                        <p className="text-center user-tech">Nothing Added Yet!</p>
                         {/* will work fine if we go with model having user having tech and post seperate model and not nested one  and just part of user itself */}
                         {/* {not having any previous techs selected so anything user selected will get added to user model } */}
                         {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
@@ -165,17 +141,34 @@ const UserDashboard = () => {
                       </Card.Body>
                     )}
                   </Card>
-                </Col>
-              </Row>
-              <Row className="m-4  d-flex justify-content-center">
-                <div className="  p-4 d-flex flex-column align-items-center rounded resource-block">
-                  <h4 className="dark-black-color">Resources</h4>
+                  <Card className="card-bg-color col-sm-6">
+                    {currentUser.contactInfo ? (
+                      <>
+                        <Card.Body className="text-center profile-text">
+                          <p> {currentUser.contactInfo}</p>
+                          <AddContactInfo
+                            currentUserContactInfo={currentUser.contactInfo}
+                          />
+                        </Card.Body>
+                      </>
+                    ) : (
+                      <Card.Body className="text-center text-white user-header">
+                        <p className="text-center">Add your Contact Info</p>
+                        <AddContactInfo
+                          currentUserContactInfo={currentUser.contactInfo}
+                        />
+                      </Card.Body>
+                    )}
+                  </Card>
+
+                <Card className="card-bg-color col-sm-11 align-items-center p-3 ms-3 me-3 mb-3">
+                  <h4 className="user-header">Resources</h4>
                   {currentUser.posts && currentUser.posts.length ? (
                     <div className="p-1">
                       {currentUser.posts.map((post) => (
                         <div className="p-1" key={post._id}>
                           <Link
-                            className="btn btn-block btn-squared btn-light text-dark"
+                            className="btn btn-block btn-squared btn-light text-dark resource-button"
                             to={`/post/${post._id}`}
                           >
                             {post.title}
@@ -184,11 +177,13 @@ const UserDashboard = () => {
                       ))}
                     </div>
                   ) : (
-                    <p>Add your content here you want to share</p>
+                    <p className="user-tech">Add your content here you want to share</p>
                   )}
                   <AddPost />
-                </div>
-              </Row>
+
+                </Card>
+                  </div>
+              </Container>
             </div>
           ) : null}
         </>
