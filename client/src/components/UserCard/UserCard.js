@@ -10,8 +10,8 @@ const UserCard = ({ _id, username, profilePic }) => {
     backgroundPosition: "center",
   };
   return (
-    <Link to={`/profile/${_id}`} style={{ width: "300px", height: "300px" }}>
-      <div className=" m-2" style={cardStyle}>
+    <Link to={`/profile/${_id}`} style={{ width: "500px", height: "700px" }}>
+      <div className="m-2" style={cardStyle}>
         <h3>{username}</h3>
       </div>
     </Link>

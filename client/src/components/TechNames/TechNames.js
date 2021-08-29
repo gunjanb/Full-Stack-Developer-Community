@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { QUERY_TECHS } from "../../utils/queries";
 import { UPDATE_TECHS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
-
 import TechBtn from "../TechBtn/TechBtn";
 import "./TechNames.css";
 
