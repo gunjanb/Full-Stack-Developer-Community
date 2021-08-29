@@ -111,11 +111,11 @@ const UserDashboard = () => {
                           <h5 className="text-center user-header">
                             Techs
                           </h5>
-                          <ul className="d-inline-flex flex-row flex-wrap justify-content-center mt-2 mb-3 align-items-center">
+                          <ul className="d-flex flex-row flex-wrap justify-content-evenly mt-2 mb-3">
                             {currentUser.techs.map((tech) => (
                               <span
                                 key={tech._id}
-                                className="d-inline-flex text-center tech-list"
+                                className="text-center tech-list"
                               >
                                 {tech.name}
                               </span>
