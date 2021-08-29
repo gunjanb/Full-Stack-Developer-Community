@@ -38,7 +38,7 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
 
   return (
     <>
-      <Button className="w-50 btn-sm " variant="dark" onClick={handleShow}>
+      <Button className="contact-add" variant="light" onClick={handleShow}>
         Contact Info
       </Button>
 
@@ -50,11 +50,12 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add your Contact Info</Modal.Title>
+          <Modal.Title className="contact-text">Add your Contact Info</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleFormSubmit}>
+          <Form className="m-2" onSubmit={handleFormSubmit}>
             <FormControl
+              className="contact-upload-add"
               name="contactinfo"
               rows="5"
               as="textarea"
@@ -63,7 +64,7 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
               value={contactInfo || ""}
               placeholder={currentUserContactInfo}
             />
-            <Button className="mt-3" type="submit" variant="dark btn-sm ">
+            <Button className="contact-button p-0" type="submit" variant="light">
               save
             </Button>
           </Form>

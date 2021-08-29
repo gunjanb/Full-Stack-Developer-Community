@@ -43,8 +43,8 @@ const AddPhoto = () => {
           }}
         ></Spinner>
       ) : null}
-      <Button className="w-50 btn-sm" variant="dark" onClick={handleShow}>
-        Add Profile pic
+      <Button className="photo-add" variant="light" onClick={handleShow}>
+        Add Profile Pic
       </Button>
 
       <Modal
@@ -55,18 +55,19 @@ const AddPhoto = () => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add your profile photo</Modal.Title>
+          <Modal.Title className="photo-text">Add your profile photo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form className="m-2" onSubmit={handleFileUpload}>
             <Form.Group>
               {/* <Form.File className="text-center" id="uploadphoto" /> */}
               <Form.Control
+                className="photo-upload-text"
                 type="file"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </Form.Group>
-            <Button type="submit" variant="dark btn-sm ">
+            <Button type="submit" className="photo-button p-0" variant="light">
               save
             </Button>
           </Form>
