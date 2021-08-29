@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-
 import { UPDATE_CURRENT_TECH } from "../../utils/actions";
 
 const TechBtn = ({ tech }) => {
@@ -14,10 +13,7 @@ const TechBtn = ({ tech }) => {
   };
 
   return (
-    <button
-      className=" text-white py-2 rounded m-2"
-      onClick={() => handleClick(tech._id)}
-    >
+    <button className="py-2 rounded m-2" onClick={() => handleClick(tech._id)}>
       {tech.name}
     </button>
   );
