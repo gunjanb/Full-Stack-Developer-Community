@@ -165,10 +165,10 @@ const Home = () => {
       </div>
 
       <div className="card-container learn-more padding-bottom">
-        <Row>
+        <Row className="w-100">
           <TechNames />
         </Row>
-        <Row>
+        <Row className="w-100">
           <UserDisplay />
         </Row>
       </div>
