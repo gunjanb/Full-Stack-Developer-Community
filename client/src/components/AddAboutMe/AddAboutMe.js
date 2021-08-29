@@ -37,7 +37,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
 
   return (
     <>
-      <Button className="w-50 btn-sm " variant="dark" onClick={handleShow}>
+      <Button className="about-add" variant="light" onClick={handleShow}>
         About Me
       </Button>
 
@@ -49,11 +49,12 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add About yourself</Modal.Title>
+          <Modal.Title className="about-text">Add About yourself</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleFormSubmit}>
+          <Form className="m-2" onSubmit={handleFormSubmit}>
             <FormControl
+              className="about-upload-text"
               name="aboutme"
               rows="5"
               as="textarea"
@@ -62,7 +63,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
               value={aboutme || ""}
               placeholder={currentUserAboutMe}
             />
-            <Button className="mt-3" type="submit" variant="dark btn-sm ">
+            <Button className="about-button p-0" type="submit" variant="light">
               save
             </Button>
           </Form>
