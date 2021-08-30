@@ -18,30 +18,42 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 
 ## About the Project
 
+- This application was designed to be mobile friendly and was designed utilizing [React](https://reactjs.org/) and [Apollo GraphQL](https://www.apollographql.com/docs/).
+
+- The **client** folder utilizes the following technologies:
+
+  - [react](https://www.npmjs.com/package/create-react-app)
+  - [redux](https://www.npmjs.com/package/redux)
+  - [stripe](https://www.npmjs.com/package/@stripe/stripe-js)
+  - [@apollo/client](https://www.npmjs.com/package/apollo-client)
+  - [graphQL](https://www.npmjs.com/package/graphql)
+  - [Font Awesome Regular Icons](https://www.npmjs.com/package/@fortawesome/free-brands-svg-icons)
+  - [Font Awesome Brand Icons](https://www.npmjs.com/package/@fortawesome/free-regular-svg-icons)
+  - [Font Awesome Solid Icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons)
+  - [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+  - [bootsrap](https://getbootstrap.com/)
+  - [Favicon Generator](https://favicon.io/)
+  - [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3.org/Style/CSS/Overview.en.html), and [Javascript](https://www.javascript.com/)
+  - [Node.js](https://nodejs.org/en/)
+
 - The **server** folder utilizes the following technologies:
 
   - [express](https://www.npmjs.com/package/express)
   - [apollo-express-server](https://www.npmjs.com/package/apollo-server-express)
+  - [aws-sdk](https://www.npmjs.com/package/aws-sdk)
+  - [nanoid](https://www.npmjs.com/package/nanoid)
+  - [dotenv](https://www.npmjs.com/package/dotenv)
   - [bcrypt](https://www.npmjs.com/package/bcrypt)
-  - [graphQL](https://www.npmjs.com/package/graphql)
-  - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+  - [graphql](https://www.npmjs.com/package/graphql)
+  - [graphql-upload](https://www.npmjs.com/package/graphql-upload)
+  - [jwt-decode](https://www.npmjs.com/package/jwt-decode)
   - [mongoose](https://www.npmjs.com/package/mongoose)
   - [stripe](https://www.npmjs.com/package/stripe)
   - [dotenv](https://www.npmjs.com/package/dotenv)
   - [MongoDB](https://www.mongodb.com/)
   - [Node.js](https://nodejs.org/en/)
 
-- The **client** folder utilizes the following technologies:
-
-  - [react](https://www.npmjs.com/package/create-react-app)
-  - [redux](https://www.npmjs.com/package/redux)
-  - [@apollo/client](https://www.npmjs.com/package/apollo-client)
-  - [graphQL](https://www.npmjs.com/package/graphql)
-  -
-  - [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3.org/Style/CSS/Overview.en.html), and [Javascript](https://www.javascript.com/)
-  - [Node.js](https://nodejs.org/en/)
-
-- For [Website Deployment](https://reduxstore082021.herokuapp.com/) the following technologies were used:
+- For [Website Deployment](https://fullstackdevelopercommunity.herokuapp.com/) the following technologies were used:
   - [Heroku](https://heroku.com/)
   - [MongoDB Atlas](https://www.mongodb.com/)
   - [if-env](https://www.npmjs.com/package/if-env)
@@ -57,11 +69,29 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 
 ## Usage
 
-![Full Stack Web Development]()
+- Go to [Deployed Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/).
+
+**Signup** Mobile View \
+![Signup Mobile](client/src/assets/signup-mobile.jpeg) \
+
+**Login** Mobile View \
+![Login Mobile](client/src/assets/login-mobile.jpeg)\
+
+Next Picture for website \
+![Website View]()
 
 ## Contributing
 
+- [Donna Crawford](https://github.com/Donnastjames)
+- [Gunjan Bhargava](https://github.com/gunjanb)
+- [Rex Yu](https://github.com/yu19910513)
+- [Tiffany Washke](https://github.com/twashke)
+- Further contributions are always encouraged!
+
 ## Tests
+
+- Tested throughout Development on Local Computers
+- Tested once deployed to [Heroku](https://fullstackdevelopercommunity.herokuapp.com/)
 
 ## License
 

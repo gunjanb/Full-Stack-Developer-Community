@@ -1,0 +1,76 @@
+.about-add {
+  color: white;
+  font-size: 1.25rem;
+  border: 2px solid white;
+  background-color: black;
+  width: 40%;
+  margin: 10px;
+}
+
+.about-text {
+  font-family: "Share Tech", sans-serif;
+  font-size: 2.5rem;
+  padding-left: 4.5rem;
+}
+
+.about-upload-text {
+  font-family: "Share Tech", sans-serif;
+  font-size: 1.25rem;
+}
+
+.about-button {
+  font-family: "Share Tech", sans-serif;
+  font-size: 1.75rem;
+  border: 2px solid white;
+  width: 30%;
+  margin-top: 10px;
+  margin-left: 10rem;
+  background-image: linear-gradient(#00b3b3, #6699ff);
+  border: solid black 1px;
+  color: white;
+}
+
+@media screen and (max-width: 780px) {
+  .about-add {
+    color: white;
+    font-size: 1rem;
+    border: 2px solid white;
+    background-color: black;
+    width: 60%;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-add {
+    color: white;
+    font-size: 1rem;
+    border: 2px solid white;
+    background-color: black;
+    width: 60%;
+    margin: 10px;
+  }
+
+  .about-text {
+    font-family: "Share Tech", sans-serif;
+    font-size: 1.5rem;
+    padding-left: 3.5rem;
+  }
+
+  .about-upload-text {
+    font-family: "Share Tech", sans-serif;
+    font-size: 1rem;
+  }
+
+  .about-button {
+    font-family: "Share Tech", sans-serif;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    width: 30%;
+    margin-top: 10px;
+    margin-left: 6.5rem;
+    background-image: linear-gradient(#00b3b3, #6699ff);
+    border: solid black 1px;
+    color: white;
+  }
+}

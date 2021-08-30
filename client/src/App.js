@@ -81,7 +81,6 @@
 
 import React from "react";
 import { Provider } from "react-redux";
-// import { StoreProvider } from './utils/GlobalState';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
@@ -104,7 +103,6 @@ import store from "./utils/store";
 import ContributionPage from "./pages/ContributionPage/ContributionPage";
 import Detail from "./pages/Detail/Detail";
 import Success from "./pages/Success/Success";
-import OrderHistory from "./pages/OrderHistory/OrderHistory";
 import { createUploadLink } from "apollo-upload-client";
 const token = localStorage.getItem("id_token");
 
@@ -130,13 +128,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/user/:userId" component={UserDashboard} />
-              <Route
-                exact
-                path="/contributionPage"
-                component={ContributionPage}
-              />
               <Route exact path="/success" component={Success} />
-              <Route exact path="/orderHistory" component={OrderHistory} />
               <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
               <Route exact path="/content" component={ContentPage} />
