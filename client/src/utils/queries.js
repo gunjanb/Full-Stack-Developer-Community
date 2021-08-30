@@ -22,6 +22,7 @@ export const QUERY_USERS = gql`
         title
         video
         video_title
+        content
       }
       techs {
         _id
