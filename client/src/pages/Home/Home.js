@@ -112,7 +112,8 @@ import "./Home.css";
 import { QUERY_TECHS, QUERY_USERS } from "../../utils/queries";
 import TechNames from "../../components/TechNames/TechNames";
 import UserDisplay from "../../components/UserDisplay/UserDisplay";
-import { Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+// import "./debug.css";
 
 const Home = () => {
   return (
@@ -164,13 +165,14 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="card-container learn-more padding-bottom">
-        <Row className="w-100">
+      <div className="container learn-more padding-bottom pt-2">
+        <Container className="container">
+          <h5 className="learn-more learn-background rounded">Learn More About...</h5>
           <TechNames />
-        </Row>
-        <Row className="w-100">
+        </Container>
+        <Container className="">
           <UserDisplay />
-        </Row>
+        </Container>
       </div>
     </div>
   );
