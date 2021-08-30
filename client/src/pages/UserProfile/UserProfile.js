@@ -207,8 +207,8 @@ import { UPDATE_USERS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
 import { Row, Col, Spinner, Card, Button } from "react-bootstrap";
 import "./UserProfile.css";
-import ViewPost from "../../components/ViewPost/ViewPost";
-import Auth from '../../utils/auth';
+import ViewPostModal from "../../components/ViewPostModal/ViewPostModal";
+import Auth from "../../utils/auth";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -217,7 +217,6 @@ const UserProfile = () => {
   const { profileId } = useParams();
   const { loading, data } = useQuery(QUERY_USERS);
   const [currentUser, setCurrentUser] = useState({});
-
 
   useEffect(() => {
     if (users.length) {
@@ -255,8 +254,8 @@ const UserProfile = () => {
       ) : (
         <>
           {console.log(currentUser)}
-          {currentUser && Auth.loggedIn()  ? (
-            <div className="vh-100">
+          {currentUser && Auth.loggedIn() ? (
+            <div className="vh-100 bottom-spacing">
               <h1 className="w-100 my-5 text-center">
                 {currentUser.username}!
               </h1>
@@ -356,15 +355,17 @@ const UserProfile = () => {
                   </Card>
                 </Col>
               </Row>
-              <Row className="m-4  d-flex justify-content-center">
-                <div className="  p-4 d-flex flex-column align-items-center rounded resource-block">
+              <Row className="m-4 d-flex justify-content-center">
+                <div className="d-flex flex-column align-items-center rounded resource-block">
                   {/* <h4 className="dark-black-color">Resources</h4> */}
                   <Card.Title>Resoures</Card.Title>
                   {currentUser.posts && currentUser.posts.length ? (
-                    <div className="w-20">
+                    <div className="p-5 ">
                       {currentUser.posts.map((post) => (
-                      // <ViewPost key={post._id} videoUrl={post.video} />
-                      <Button>{post.video_title}</Button>
+                        // <ViewPost key={post._id} videoUrl={post.video} />
+                        <div className="d-flex flex-column p-2">
+                          <ViewPostModal post={post} />
+                        </div>
                       ))}
                     </div>
                   ) : (
@@ -373,8 +374,19 @@ const UserProfile = () => {
                 </div>
               </Row>
             </div>
-          ) :  <p className="d-flex justify-content-center login-msg">Please {' '} 
-         <Link to="/login" className="px-2">login</Link> or <Link to="/signup" className="px-2">signup </Link>for free to learn more.</p>}
+          ) : (
+            <p className="d-flex justify-content-center login-msg">
+              Please{" "}
+              <Link to="/login" className="px-2">
+                login
+              </Link>{" "}
+              or{" "}
+              <Link to="/signup" className="px-2">
+                signup{" "}
+              </Link>
+              for free to learn more.
+            </p>
+          )}
         </>
       )}
     </>
