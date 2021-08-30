@@ -89,7 +89,7 @@ const UserDashboard = () => {
                   <Card className="align-items-center card-bg-color user-header col-sm-6">
                     {currentUser.aboutMe ? (
                       <>
-                        <Card.Body className="text-center profile-text">
+                        <Card.Body className="text-center profile-text about-size">
                           <p className="p-2"> {currentUser.aboutMe} </p>
                           <AddAboutMe
                             currentUserAboutMe={currentUser.aboutMe}
