@@ -363,7 +363,7 @@ const UserProfile = () => {
                     <div className="p-5 ">
                       {currentUser.posts.map((post) => (
                         // <ViewPost key={post._id} videoUrl={post.video} />
-                        <div className="d-flex flex-column p-2">
+                        <div className="d-flex flex-column p-2" key={post._id}>
                           <ViewPostModal post={post} />
                         </div>
                       ))}
