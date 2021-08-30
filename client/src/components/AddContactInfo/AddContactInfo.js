@@ -10,14 +10,11 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
 
   const [updateUser] = useMutation(UPDATE_CONTACT_INFO);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     setContactInfo(event.target.value);
   };
 
-  //on form submit
   const handleFormSubmit = async (e) => {
-    // close modal
     handleClose();
     e.preventDefault();
 
@@ -32,7 +29,6 @@ const AddContactInfo = ({ currentUserContactInfo }) => {
     }
   };
 
-  // set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

@@ -8,16 +8,14 @@ const AddPhoto = () => {
   const [show, setShow] = useState(false);
   const [file, setFile] = useState();
   const [updateprofilepic, { loading }] = useMutation(UPDATE_PHOTO);
-  //set show to true or false
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  //on submit
+  
   const handleFileUpload = async (e) => {
     e.preventDefault();
-    // var files = document.getElementById("uploadphoto").files;
     handleClose();
-    // const file = files[0];
-    console.log(file);
+    
     try {
       await updateprofilepic({
         variables: {
@@ -60,7 +58,6 @@ const AddPhoto = () => {
         <Modal.Body>
           <Form className="m-2" onSubmit={handleFileUpload}>
             <Form.Group>
-              {/* <Form.File className="text-center" id="uploadphoto" /> */}
               <Form.Control
                 className="photo-upload-text"
                 type="file"

@@ -12,9 +12,7 @@ const AddTech = ({ currentUserAvailabletechs }) => {
   const { loading, data } = useQuery(QUERY_TECHS);
   const [updatetech] = useMutation(UPDATE_TECH);
 
-  //on form submit
-  const handleFormSubmit = async (e) => {
-    // close modal
+   const handleFormSubmit = async (e) => {
     handleClose();
     e.preventDefault();
     const techs = e.target.elements["updatedTechs"];
@@ -36,7 +34,6 @@ const AddTech = ({ currentUserAvailabletechs }) => {
     }
   };
 
-  // set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -58,26 +55,10 @@ const AddTech = ({ currentUserAvailabletechs }) => {
         </Modal.Header>
         <Modal.Body>
           <Form className="m-2" onSubmit={handleFormSubmit}>
-            {/* <div className="col-12 m-1 p-1">
-              <label htmlFor="tech">Select a tech:</label>
-              <select
-                onChange={(e) => setTech(e.target.value)}
-                value={techselected}
-              >
-                <option>Choose an option</option>
-                {data?.techs.map((tech) => (
-                  <option key={tech._id} value={tech.name}>
-                    {tech.name}
-                  </option>
-                ))}
-              </select>
-            </div> */}
             <Form.Group>
               {data?.techs.map((tech) => (
                 <div key={tech._id} className="mb-3">
                   <Form.Check
-                    // type="checkbox"
-                    // disabled={tech.name === "All"}
                     className="tech-upload-text"
                     name="updatedTechs"
                     label={tech.name}
