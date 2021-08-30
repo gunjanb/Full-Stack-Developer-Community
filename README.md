@@ -18,7 +18,15 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 
 ## About the Project
 
-- This application was designed to be mobile friendly and was designed utilizing [React](https://reactjs.org/) and [Apollo GraphQL](https://www.apollographql.com/docs/).
+- This application was designed to be mobile friendly and was designed utilizing the MERN stack with [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), [React](https://reactjs.org/) and [Node.js](https://nodejs.org/en/).
+- This application relied on [aws-sdk](https://www.npmjs.com/package/aws-sdk) and [graphql-upload](https://www.npmjs.com/package/graphql-upload) to upload videos, and then allow users to view them.
+- Global State was handled using [redux](https://www.npmjs.com/package/redux).
+- The contribution page utilized [stripe](https://www.npmjs.com/package/stripe) to allow the user to donate.
+- The [Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/) allows a user to **Signup** or **Login** to contribute to the web developement community.
+- The **Home** page allows a user to view all available technologies, when the click the button, it will bring up all developers who have posted content relating to that technology.
+- Once a developer is chosen, they can view their **Profile** page and the developer's posted content.
+- The **Dashboard** allows the user to input a profile picture and information about themselves as well as upload content.
+- The **Donate!** section allows the user to contribute to the **Full Stack Developer Community** with a donation.
 
 - The **client** folder utilizes the following technologies:
 
@@ -70,15 +78,23 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 ## Usage
 
 - Go to [Deployed Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/).
+- **Login** or **Signup** to add, or edit your user profile using the **Dashboard**.
+- Use the **Home** page to view all available technologies.
+- Once a technology is chosen, the developers with content are displayed.
+- Choose a **Developer** to view their profile page and view their content.
+- Go to the **Donate** page to contribute to the **Full Stack Developer Community**.
 
 **Signup** Mobile View \
-![Signup Mobile](client/src/assets/signup-mobile.jpeg) \
+![Signup Mobile](client/src/assets/signup-mobile.jpeg)
 
 **Login** Mobile View \
-![Login Mobile](client/src/assets/login-mobile.jpeg)\
+![Login Mobile](client/src/assets/login-mobile.jpeg)
 
-Next Picture for website \
-![Website View]()
+**Home** page view \
+![Home](client/src/assets/home.png)
+
+**Donate** to the Full Stack Developer Community \
+![Donate](client/src/assets/Donate.png)
 
 ## Contributing
 
