@@ -15,12 +15,13 @@ const UserCard = ({ _id, username, profilePic }) => {
     textAlign: "center",
     color: "white",
     fontSize: "5rem",
-    border: "2px black solid",
+    border: "3px black solid",
     borderRadius: "5px",
+    boxShadow: "8px 8px #00b3b3",
   };
   return (
     <Link to={`/profile/${_id}`}>
-      <div className="m-2" style={cardStyle}>
+      <div className="m-2 user-shadow" style={cardStyle}>
         <h3>{username}</h3>
       </div>
     </Link>
