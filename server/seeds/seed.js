@@ -12,7 +12,9 @@ db.once("open", async () => {
     { name: "REACT" },
     { name: "APOLLO" },
     { name: 'CSS'},
-    { name: 'C++'}
+    { name: 'Java'},
+    { name: 'C++'},
+    { name: 'SQL'}
   ]);
 
   console.log("tech seeded", techs);
@@ -90,7 +92,7 @@ db.once("open", async () => {
     aboutMe: "Currently enrolled in a MERN stack web dev boot camp @ UW",
     profilePic: "https://avatars.githubusercontent.com/u/13214814?v=4",
     contactInfo: "Github: https://github.com/gunjanb",
-    techs: [techs[0]._id, techs[1]._id, techs[2]._id, techs[5]._id],
+    techs: [techs[0]._id, techs[1]._id, techs[2]._id, techs[5]._id,techs[7]._id],
     posts: [posts[1], posts[3]],
   });
 
@@ -101,7 +103,7 @@ db.once("open", async () => {
     aboutMe: "A full-stack web developer with strong planning and troubleshooting skills, especially backend debugging and development.",
     profilePic: "https://scontent-sea1-1.xx.fbcdn.net/v/t1.6435-9/175490637_10209085720297096_6902058411419859689_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=X2IDd_zqNz4AX96zy8x&_nc_ht=scontent-sea1-1.xx&oh=9fb85e54f0157d952a9e455ce9564eb2&oe=614E9281",
     contactInfo: "Github: https://github.com/yu19910513",
-    techs: [techs[0]._id, techs[3]._id, techs[4]._id, techs[5]._id],
+    techs: [techs[0]._id, techs[3]._id, techs[4]._id, techs[5]._id, techs[7]._id],
     posts: [posts[6], posts[5]],
   });
 
@@ -112,7 +114,7 @@ db.once("open", async () => {
     aboutMe: "Living in Washington, when I'm not working, I'm either at the gym, hiking, or sitting in front of a computer learning code.",
     profilePic: "https://avatars.githubusercontent.com/u/79234530?v=4",
     contactInfo: "Github: https://github.com/twashke",
-    techs: [techs[0]._id, techs[1]._id, techs[2]._id, techs[4]._id],
+    techs: [techs[0]._id, techs[1]._id, techs[2]._id, techs[4]._id, techs[8]._id],
     posts: [posts[1], posts[4]],
   });
 
