@@ -1,8 +1,5 @@
 import { gql } from "@apollo/client";
-// for profile page; able to render all data(posts and video)
-//working
 
-//working
 export const QUERY_TECHS = gql`
   {
     techs {
@@ -62,7 +59,7 @@ export const QUERY_ALL_PRODUCTS = gql`
     }
   }
 `;
-//checkouts
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {
@@ -70,7 +67,7 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
-//user
+
 export const QUERY_USER = gql`
   query {
     user {
