@@ -20,23 +20,6 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 
 - This application was designed to be mobile friendly and was designed utilizing [React](https://reactjs.org/) and [Apollo GraphQL](https://www.apollographql.com/docs/).
 
-- The **server** folder utilizes the following technologies:
-
-  - [express](https://www.npmjs.com/package/express)
-  - [apollo-express-server](https://www.npmjs.com/package/apollo-server-express)
-  - [aws-sdk](https://www.npmjs.com/package/aws-sdk)
-  - [nanoid](https://www.npmjs.com/package/nanoid)
-  - [dotenv](https://www.npmjs.com/package/dotenv)
-  - [bcrypt](https://www.npmjs.com/package/bcrypt)
-  - [graphql](https://www.npmjs.com/package/graphql)
-  - [graphql-upload](https://www.npmjs.com/package/graphql-upload)
-  - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-  - [mongoose](https://www.npmjs.com/package/mongoose)
-  - [stripe](https://www.npmjs.com/package/stripe)
-  - [dotenv](https://www.npmjs.com/package/dotenv)
-  - [MongoDB](https://www.mongodb.com/)
-  - [Node.js](https://nodejs.org/en/)
-
 - The **client** folder utilizes the following technologies:
 
   - [react](https://www.npmjs.com/package/create-react-app)
@@ -51,6 +34,23 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
   - [bootsrap](https://getbootstrap.com/)
   - [Favicon Generator](https://favicon.io/)
   - [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3.org/Style/CSS/Overview.en.html), and [Javascript](https://www.javascript.com/)
+  - [Node.js](https://nodejs.org/en/)
+
+- The **server** folder utilizes the following technologies:
+
+  - [express](https://www.npmjs.com/package/express)
+  - [apollo-express-server](https://www.npmjs.com/package/apollo-server-express)
+  - [aws-sdk](https://www.npmjs.com/package/aws-sdk)
+  - [nanoid](https://www.npmjs.com/package/nanoid)
+  - [dotenv](https://www.npmjs.com/package/dotenv)
+  - [bcrypt](https://www.npmjs.com/package/bcrypt)
+  - [graphql](https://www.npmjs.com/package/graphql)
+  - [graphql-upload](https://www.npmjs.com/package/graphql-upload)
+  - [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+  - [mongoose](https://www.npmjs.com/package/mongoose)
+  - [stripe](https://www.npmjs.com/package/stripe)
+  - [dotenv](https://www.npmjs.com/package/dotenv)
+  - [MongoDB](https://www.mongodb.com/)
   - [Node.js](https://nodejs.org/en/)
 
 - For [Website Deployment](https://fullstackdevelopercommunity.herokuapp.com/) the following technologies were used:
