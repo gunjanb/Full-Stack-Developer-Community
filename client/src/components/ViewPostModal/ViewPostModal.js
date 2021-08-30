@@ -11,16 +11,17 @@ const ViewPostModal = (props) => {
 
   return (
     <>
-      <Button type="button" onClick={handleShowButton}>
-        Click this
+      <Button type="button" className="m-2" onClick={handleShowButton}>
+        <span>{props.post.title}</span>
       </Button>
 
       {console.log(props.post.video)}
+      {console.log(props.post.content)}
       {show && (
-        <>
+        <div style={{ backgroundColor: "black" }}>
           <div
-            className="d-flex  stylethemodal flex-column"
-            style={{ marginBottom: "10rem" }}
+            className="d-flex  
+            m-2 stylethemodal flex-column "
           >
             <div>
               <ReactPlayer
@@ -30,15 +31,24 @@ const ViewPostModal = (props) => {
                 controls={true}
                 playIcon={<button>Play</button>}
                 url={props.post.video}
-                // url="https://www.youtube.com/watch?v=Cny_2QWxoe0"
+                config={{
+                  file: {
+                    attributes: {
+                      controlsList: "nodownload",
+                    },
+                  },
+                }}
               />
             </div>
-            <div>{"hello"}</div>
-            <Button type="button" onClick={handleClose}>
-              Close this
+            <div className="p-1 bg-white w-100 text-dark d-flex justify-content-center flex-column align-items-center">
+              <h6 className="text-dark"> Short Description</h6>
+              {props.post.content}
+            </div>
+            <Button type="button" className="m-2" onClick={handleClose}>
+              Close
             </Button>
           </div>
-        </>
+        </div>
       )}
     </>
   );
