@@ -253,7 +253,6 @@ const UserProfile = () => {
         ></Spinner>
       ) : (
         <>
-          {console.log(currentUser)}
           {currentUser && Auth.loggedIn() ? (
             <div className="vh-100 bottom-spacing">
               <h1 className="w-100 my-5 text-center">
@@ -357,12 +356,10 @@ const UserProfile = () => {
               </Row>
               <Row className="m-4 d-flex justify-content-center">
                 <div className="d-flex flex-column align-items-center rounded resource-block">
-                  {/* <h4 className="dark-black-color">Resources</h4> */}
                   <Card.Title>Resoures</Card.Title>
                   {currentUser.posts && currentUser.posts.length ? (
-                    <div className="p-5 ">
+                    <div className="p-5">
                       {currentUser.posts.map((post) => (
-                        // <ViewPost key={post._id} videoUrl={post.video} />
                         <div className="d-flex flex-column p-2" key={post._id}>
                           <ViewPostModal post={post} />
                         </div>
