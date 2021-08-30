@@ -11,7 +11,7 @@ const ViewPostModal = (props) => {
 
   return (
     <>
-      <Button type="button" className="m-2" onClick={handleShowButton}>
+      <Button type="button" className="m-2" onClick={handleShow}>
         <span>{props.post.title}</span>
       </Button>
 
