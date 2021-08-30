@@ -9,14 +9,11 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
   const [show, setShow] = useState(false);
   const [updateaboutme] = useMutation(UPDATE_ABOUT_ME);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     setAboutMe(event.target.value);
   };
 
-  //submit form
   const handleFormSubmit = async (e) => {
-    // close modal
     handleClose();
     e.preventDefault();
 
@@ -31,7 +28,6 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
     }
   };
 
-  // set show to true or false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

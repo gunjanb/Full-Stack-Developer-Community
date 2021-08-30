@@ -1,4 +1,3 @@
-//all imports
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,6 @@ import AddAboutMe from "../../components/AddAboutMe/AddAboutMe";
 import AddContactInfo from "../../components/AddContactInfo/AddContactInfo";
 import AddPost from "../../components/AddPost/AddPost";
 import AddTech from "../../components/AddTech/AddTech";
-// import "./../Home/debug.css"
 
 const UserDashboard = () => {
   const dispatch = useDispatch();
@@ -25,7 +23,6 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       setCurrentUser(data.users.find((user) => user._id === userId));
       dispatch({
         type: UPDATE_USERS,
@@ -35,7 +32,7 @@ const UserDashboard = () => {
         idbPromise("users", "put", user);
       });
     } else if (!loading) {
-      idbPromise("users", "get").then((users) => {
+        idbPromise("users", "get").then((users) => {
         dispatch({ type: UPDATE_USERS, payload: users });
       });
     }
@@ -57,7 +54,6 @@ const UserDashboard = () => {
         ></Spinner>
       ) : (
         <>
-          {console.log(currentUser)}
           {currentUser ? (
             <div className="container-user mypadding text-style">
               <h1 className="text-center user-title">
@@ -121,8 +117,7 @@ const UserDashboard = () => {
                               </span>
                             ))}
                           </ul>
-                          {/* need to pass the tech  already user selected in previous articles as prop to this component */}
-                          {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
+                          
                           <AddTech
                             currentUserAvailabletechs={currentUser.techs}
                           />
@@ -132,9 +127,7 @@ const UserDashboard = () => {
                       <Card.Body className="text-center ">
                         <h5 className="text-center user-header">Techs</h5>
                         <p className="text-center user-tech">Nothing Added Yet!</p>
-                        {/* will work fine if we go with model having user having tech and post seperate model and not nested one  and just part of user itself */}
-                        {/* {not having any previous techs selected so anything user selected will get added to user model } */}
-                        {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
+                        
                         <AddTech
                           currentUserAvailabletechs={currentUser.techs}
                         />
@@ -161,28 +154,28 @@ const UserDashboard = () => {
                     )}
                   </Card>
 
-                <Card className="card-bg-color col-sm-11 align-items-center p-3 ms-3 me-3 mb-3">
-                  <h4 className="user-header">Resources</h4>
-                  {currentUser.posts && currentUser.posts.length ? (
-                    <div className="p-1">
-                      {currentUser.posts.map((post) => (
-                        <div className="p-1" key={post._id}>
-                          <Link
-                            className="btn btn-block btn-squared btn-light text-dark resource-button"
-                            to={`/post/${post._id}`}
-                          >
-                            {post.title}
-                          </Link>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="user-tech">Add your content here you want to share</p>
-                  )}
-                  <AddPost />
+                  <Card className="card-bg-color col-sm-11 align-items-center p-3 ms-3 me-3 mb-3">
+                    <h4 className="user-header">Resources</h4>
+                    {currentUser.posts && currentUser.posts.length ? (
+                      <div className="p-1">
+                        {currentUser.posts.map((post) => (
+                          <div className="p-1" key={post._id}>
+                            <Link
+                              className="btn btn-block btn-squared btn-light text-dark resource-button"
+                              to={`/post/${post._id}`}
+                            >
+                              {post.title}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="user-tech">Add your content here you want to share</p>
+                    )}
+                    <AddPost />
 
-                </Card>
-                  </div>
+                  </Card>
+                </div>
               </Container>
             </div>
           ) : null}

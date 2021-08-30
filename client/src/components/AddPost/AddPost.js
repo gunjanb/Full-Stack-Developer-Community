@@ -20,7 +20,6 @@ const AddPost = () => {
   const [videotitle, setVideoTitle] = useState();
   const [alltechs, setAllTechs] = useState([]);
 
-  // set show to true and false
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { data } = useQuery(QUERY_TECHS);
@@ -39,24 +38,11 @@ const AddPost = () => {
     }
   }, [data, loading, dispatch]);
 
-  //on submit
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     handleClose();
-    console.log(file);
-    console.log(title, content, videotitle);
-
+    
     try {
-      // await addPost({
-      //   variables: {
-      //     file: file,
-      //     title: title,
-      //     tech: tech,
-      //     content: content,
-      //     video_tilte: videotitle,
-      //   },
-      // });
       await updatepost({
         variables: {
           title: title,
@@ -69,12 +55,7 @@ const AddPost = () => {
       console.error(err);
     }
   };
-  // title: String!
-  // tech: String!
-  // content: String!
-  // video: String
-  // video_title: String
-
+  
   const handletitle = (event) => {
     setTitle(event.target.value);
   };
@@ -128,7 +109,6 @@ const AddPost = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 m-1 p-1">
-              {/* <p className="">Select title:</p> */}
               <label htmlFor="title">Title:</label>
               <input
                 name="title"
@@ -140,7 +120,6 @@ const AddPost = () => {
               />
             </div>
             <div className="col-12 m-1 p-1">
-              {/* <p>Short Description:</p> */}
               <label htmlFor="content">Short Description:</label>
               <textarea
                 name="content"
@@ -153,19 +132,7 @@ const AddPost = () => {
               ></textarea>
             </div>
 
-            {/* <div className="col-12 m-1 p-1">
-              <label htmlFor="tech">Select a tech:</label>
-              <select onChange={(e) => setTech(e.target.value)} value={tech}>
-                <option>Choose an option</option>
-                {data?.techs.map((tech) => (
-                  <option key={tech._id} value={tech.name}>
-                    {tech.name}
-                  </option>
-                ))}
-              </select>
-            </div> */}
             <div className="col-12 m-1 p-1">
-              {/* <p className="">Select Video title:</p> */}
               <label htmlFor="videotitle">Video Title:</label>
               <input
                 name="videotitle"
@@ -177,26 +144,6 @@ const AddPost = () => {
               />
             </div>
             <div className="col-12 m-1 p-1">
-              {/* <p className="pt-1">Select Video to upload:</p> */}
-              {/* <label htmlFor="file">Select Video:</label> */}
-              {/* <input
-                type="file"
-                name="file"
-                value={file}
-                accept="video/*"
-                className="form-input w-100"
-                onChange={handlefile}
-              /> */}
-
-              {/* <Form.File
-                className="text-center"
-                type="file"
-                // className="custom-file-label"
-                // id="inputGroupFile01"
-                // label={file}
-                onChange={(e) => setFile(e.target.files[0])}
-              /> */}
-
               <Form.Control
                 type="file"
                 onChange={(e) => setFile(e.target.files[0])}
