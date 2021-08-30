@@ -19,7 +19,8 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 ## About the Project
 
 - This application was designed to be mobile friendly and was designed utilizing the MERN stack with [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), [React](https://reactjs.org/) and [Node.js](https://nodejs.org/en/).
-- This application relied on [aws-sdk](https://www.npmjs.com/package/aws-sdk) and [graphql-upload](https://www.npmjs.com/package/graphql-upload) to upload videos, and then allow users to view them.
+- This application relied on [aws-sdk](https://www.npmjs.com/package/aws-sdk) and [graphql-upload](https://www.npmjs.com/package/graphql-upload) to upload videos.
+- To view the videos, [react-player](https://www.npmjs.com/package/react-player) was utilized.
 - Global State was handled using [redux](https://www.npmjs.com/package/redux).
 - The contribution page utilized [stripe](https://www.npmjs.com/package/stripe) to allow the user to donate.
 - The [Full Stack Developer Community](https://fullstackdevelopercommunity.herokuapp.com/) allows a user to **Signup** or **Login** to contribute to the web developement community.
@@ -31,6 +32,7 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 - The **client** folder utilizes the following technologies:
 
   - [react](https://www.npmjs.com/package/create-react-app)
+  - [react-player](https://www.npmjs.com/package/react-player)
   - [redux](https://www.npmjs.com/package/redux)
   - [stripe](https://www.npmjs.com/package/@stripe/stripe-js)
   - [@apollo/client](https://www.npmjs.com/package/apollo-client)
