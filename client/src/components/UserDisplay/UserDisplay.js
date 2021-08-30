@@ -63,7 +63,7 @@ const UserDisplay = () => {
           }}
         ></Spinner>
       ) : (
-        <div className="d-flex justify-content-center flex-wrap mx-auto">
+        <div className="container d-flex justify-content-evenly flex-wrap">
           {filterUsers() ? (
             filterUsers().map((user) => <UserCard {...user} key={user._id} />)
           ) : (
