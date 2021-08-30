@@ -1,0 +1,33 @@
+.button-style {
+  background-image: linear-gradient(#00b3b3, #6699ff);
+  border: solid black 2px;
+  color: white;
+  margin: 0.5rem;
+  width: 18%;
+  align-self: center;
+  font-size: 1.75rem;
+}
+
+@media screen and (max-width: 780px) {
+  .button-style {
+    background-image: linear-gradient(#00b3b3, #6699ff);
+    border: solid black 2px;
+    color: white;
+    margin: 0.5rem;
+    width: 40%;
+    align-self: center;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .button-style {
+    background-image: linear-gradient(#00b3b3, #6699ff);
+    border: solid black 2px;
+    color: white;
+    margin: 1rem;
+    width: 30%;
+    align-self: center;
+    font-size: 1rem;
+  }
+}

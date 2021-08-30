@@ -12,10 +12,11 @@ function Signup(props) {
     email: "",
     password: "",
   });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    try {
     const mutationResponse = await addUser({
       variables: {
         username: formState.username,
@@ -26,7 +27,10 @@ function Signup(props) {
     const token = mutationResponse.data.addUser.token;
     const userId = mutationResponse.data.addUser.user._id;
     Auth.login(token, userId);
-  };
+    } catch (e) {
+      console.log(e);
+    }
+   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -84,6 +88,12 @@ function Signup(props) {
                 onChange={handleChange}
               />
             </label>
+
+            {error ? (
+              <div>
+                <p className="error-text">This user already exists</p>
+              </div>
+            ) : null}
             <br />
             <div>
               <br />
