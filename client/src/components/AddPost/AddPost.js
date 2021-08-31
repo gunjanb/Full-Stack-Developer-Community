@@ -89,7 +89,7 @@ const AddPost = () => {
           }}
         ></Spinner>
       ) : null}
-      <Button className="post-add" variant="light" onClick={handleShow}>
+      <Button className="post-add align-self-center" variant="light" onClick={handleShow}>
         Add Post
       </Button>
 
