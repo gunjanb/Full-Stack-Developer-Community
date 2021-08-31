@@ -4,3 +4,9 @@
   padding: 12rem;
   font-size: larger;
 }
+
+.user-card-image {
+  height: 360px;
+  width: 360px;
+  padding-top: 1.75rem;
+}
