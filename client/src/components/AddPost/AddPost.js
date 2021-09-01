@@ -151,7 +151,7 @@ const AddPost = () => {
             </div>
 
             <div className="col-12 m-1 p-1 ">
-              <button className="post-button p-0" type="submit">
+              <button className="post-button rounded p-0" type="submit">
                 Save
               </button>
             </div>

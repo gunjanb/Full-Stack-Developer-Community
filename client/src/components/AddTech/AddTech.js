@@ -67,7 +67,7 @@ const AddTech = ({ currentUserAvailabletechs }) => {
                 </div>
               ))}
             </Form.Group>
-            <Button className="tech-add-button p-0" type="submit" variant="light">
+            <Button className="tech-add-button rounded p-0" type="submit" variant="light">
               save
             </Button>
           </Form>
