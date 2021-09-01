@@ -95,8 +95,14 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 **Home** page view \
 ![Home](client/src/assets/home.png)
 
+**Home** Page - Technologies and Developers \
+![Home](client/src/assets/home-page-gif.gif)
+
 **Donate** to the Full Stack Developer Community \
-![Donate](client/src/assets/Donate.png)
+![Donate](client/src/assets/donate-gif.gif)
+
+**Add Post** to the Resources Section \
+![Add Post](client/src/assets/add-post-gif.gif)
 
 ## Contributing
 
