@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form, Spinner } from "react-bootstrap";
+import { Modal, Button, Form, Spinner, FormControl } from "react-bootstrap";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_TECHS } from "../../utils/queries";
