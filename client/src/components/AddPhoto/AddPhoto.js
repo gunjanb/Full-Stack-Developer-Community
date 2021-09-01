@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Spinner, FormControl } from "react-bootstrap";
+import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PHOTO } from "../../utils/mutations";
 import "./AddPhoto.css";
