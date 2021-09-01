@@ -65,25 +65,15 @@ const ContentPage = () => {
         <div className="p-4 d-flex flex-column align-items-center rounded resource-block">
           <Card className="w-75 mx-auto card-bg-color">
             {post.video ? (
-              <>
-                {/* <Card.Body className="text-center">
-                  <Card.Title>Video</Card.Title> */}
-                  <ReactPlayer
-                    width="100%"
-                    height="100%"
-                    playsinline={true}
-                    controls={true}
-                    playIcon={<button>Play</button>}
-                    url="https://www.youtube.com/watch?v=LRP8d7hhpoQ"
-                  />
-                  
-                {/* </Card.Body> */}
-              </>
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                playsinline={true}
+                controls={true}
+                playIcon={<button>Play</button>}
+                url="https://www.youtube.com/watch?v=LRP8d7hhpoQ"
+              />
             ) : (
-              // <Card.Body className="text-center text-white">
-              //   <Card.Title>Video</Card.Title>
-              //   <p className="text-center">Video has not been added</p>
-              // </Card.Body>
               <ReactPlayer
                 width="100%"
                 height="100%"
