@@ -6,8 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import { QUERY_USERS } from "../../utils/queries";
 import { UPDATE_USERS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helper";
-import { Container, Row, Col, Spinner, Card, Button } from "react-bootstrap";
-import Jumbotron from "./../../components/Jumbotron/index.js"
+import { Container, Row, Spinner, Card } from "react-bootstrap";
 import ViewPostModal from "../../components/ViewPostModal/ViewPostModal";
 import Auth from "../../utils/auth";
 import "./UserProfile.css";
@@ -178,8 +177,8 @@ const UserProfile = () => {
               </Container>
             </div>
           ) : (
-          <Jumbotron>
-            <p className="d-flex justify-content-center login-msg">
+          <Container fluid>
+            <Card className="user-header d-flex justify-content-center align-self-center login-msg text-style">
               Please{" "}
               <Link to="/login" className="px-2">
                 login
@@ -187,10 +186,10 @@ const UserProfile = () => {
               or{" "}
               <Link to="/signup" className="px-2">
                 signup{" "}
-              </Link>
+              </Link> 
               for free to learn more.
-            </p>
-            </Jumbotron>
+            </Card>
+            </Container>
           )}
         </>
       )}
