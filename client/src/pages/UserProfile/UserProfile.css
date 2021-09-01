@@ -2,11 +2,26 @@
   width: 100%;
   height: 100%;
   padding: 12rem;
-  font-size: larger;
+  font-size: x-large;
+  background-image: linear-gradient(#00b3b3, #6699ff);
+  margin-top: 3rem;
+}
+
+.login-signup {
+  height: 50%;
+  width: 50%;
 }
 
 .user-card-image {
   height: 360px;
   width: 360px;
   padding-top: 1.75rem;
+}
+
+.contact-card {
+  width: 360px;
+}
+
+.resource-width {
+  width: 100%;
 }
