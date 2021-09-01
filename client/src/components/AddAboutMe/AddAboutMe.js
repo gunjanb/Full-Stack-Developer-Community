@@ -59,7 +59,7 @@ const AddAboutMe = ({ currentUserAboutMe }) => {
               value={aboutme || ""}
               placeholder={currentUserAboutMe}
             />
-            <Button className="about-button p-0" type="submit" variant="light">
+            <Button className="about-button rounded p-0" type="submit" variant="light">
               save
             </Button>
           </Form>
