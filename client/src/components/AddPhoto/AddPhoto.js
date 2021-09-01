@@ -64,7 +64,7 @@ const AddPhoto = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </Form.Group>
-            <Button type="submit" className="photo-button p-0" variant="light">
+            <Button type="submit" className="photo-button rounded p-0" variant="light">
               save
             </Button>
           </Form>
