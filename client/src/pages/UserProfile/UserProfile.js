@@ -76,7 +76,7 @@ const UserProfile = () => {
                       <Card.Body className="text-center text-white">
                         <Card.Title className="text-center user-header">Profile Pic</Card.Title>
                         <p className="text-center user-header">
-                          Not added any profile pic yet
+                          User has not chosen a profile picture yet!
                         </p>
                       </Card.Body>
                     )}
@@ -86,7 +86,7 @@ const UserProfile = () => {
                   <Card className="card-bg-color user-header col-md-6 mb-1 flex-shrink-2 flex-grow-2">
                     {currentUser.aboutMe ? (
                       <>
-                        <Card.Body className=" about-size text-center profile-text about-size align-self-center">
+                        <Card.Body className="text-center profile-text about-size align-self-center">
                           <Card.Title className="text-center user-header pt-3">About Me</Card.Title>
                           <Card.Text>{currentUser.aboutMe}</Card.Text>
                         </Card.Body>
@@ -94,7 +94,7 @@ const UserProfile = () => {
                     ) : (
                       <Card.Body className="text-center user-header align-self-center flex-grow-2">
                         <Card.Title className="text-center user-header pt-3">About Me</Card.Title>
-                        <p className="text-center p-2">Not added any bio yet</p>
+                        <p className="text-center p-2">User has not added a bio yet!</p>
                       </Card.Body>
                     )}
                   </Card>
@@ -112,9 +112,9 @@ const UserProfile = () => {
                       </>
                     ) : (
                       <Card.Body className="text-center text-white align-self-center">
-                        <Card.Title>Contact Info</Card.Title>
-                        <p className="text-center">
-                          Not added any contact Info yet
+                        <Card.Title className="user-header">Contact Info</Card.Title>
+                        <p className="text-center user-tech">
+                          No Contact Info Added!
                         </p>
                       </Card.Body>
                     )}
@@ -129,11 +129,11 @@ const UserProfile = () => {
                             Techs
                           </h5> */}
                           <Card.Title className="text-center user-header">Techs</Card.Title>
-                          <ul className="d-inline-flex flex-row flex-wrap justify-content-evenly mt-3 mb-3">
+                          <ul className="d-flex flex-row flex-wrap justify-content-evenly mt-3 mb-3">
                             {currentUser.techs.map((tech) => (
                               <span
                                 key={tech._id}
-                                className="text-center tech-list"
+                                className="tech-list"
                               >
                                 {tech.name}
                               </span>
@@ -147,7 +147,7 @@ const UserProfile = () => {
                       <Card.Body className="text-center ">
                         {/* <h5 className="text-center dark-black-color">Techs</h5> */}
                         <Card.Title className="text-center user-header">Techs</Card.Title>
-                        <p className="text-center user-tech">Nothing Added Yet!</p>
+                        <p className="text-center user-tech">No Techs have been selected!</p>
                         {/* will work fine if we go with model having user having tech and post seperate model and not nested one  and just part of user itself */}
                         {/* {not having any previous techs selected so anything user selected will get added to user model } */}
                         {/* <SelectTech currentUserTechs={currentUser.techs} /> */}
@@ -170,7 +170,7 @@ const UserProfile = () => {
                       ))}
                     </div>
                   ) : (
-                    <p className="user-tech" >Not Added any content yet</p>
+                    <p className="user-tech" >No posts have been added by this user yet!</p>
                   )}
                   </Card>
                 </Row>

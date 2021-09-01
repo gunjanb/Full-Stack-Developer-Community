@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import ReactPlayer from "react-player";
+import "./ViewPostModal.css";
 
 const ViewPostModal = (props) => {
   const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ const ViewPostModal = (props) => {
     <>
       <Button
         type="button"
-        className="btn btn-block btn-squared btn-light text-dark resource-button m-2"
+        className="btn btn-light rounded  button-view-tech m-2"
         onClick={handleShow}
       >
         <span>{props.post.title}</span>
@@ -45,10 +46,10 @@ const ViewPostModal = (props) => {
               />
             </div>
             <div className="p-1 bg-white w-100 text-dark d-flex justify-content-center flex-column align-items-center">
-              <h6 className="text-dark"> Short Description</h6>
+              <h6 className="text-dark description"> Short Description</h6>
               {props.post.content}
             </div>
-            <Button type="button" className="m-2" onClick={handleClose}>
+            <Button type="button" className="btn btn-light rounded  close-button m-2" onClick={handleClose}>
               Close
             </Button>
           </div>

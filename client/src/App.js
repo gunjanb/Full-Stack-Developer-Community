@@ -15,7 +15,6 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer/Footer.js";
 import UserDashboard from "./pages/UserDashboard/UserDashboard.js";
 import UserProfile from "./pages/UserProfile/UserProfile.js";
-import ContentPage from "./pages/ContentPage/ContentPage.js";
 import store from "./utils/store";
 import ContributionPage from "./pages/ContributionPage/ContributionPage";
 import Detail from "./pages/Detail/Detail";
@@ -48,7 +47,6 @@ function App() {
               <Route exact path="/success" component={Success} />
               <Route exact path="/products/:id" component={Detail} />
               <Route exact path="/profile/:profileId" component={UserProfile} />
-              <Route exact path="/content" component={ContentPage} />
               <Route exact path="/donate" component={ContributionPage} />
               <Route component={NoMatch} />
             </Switch>
