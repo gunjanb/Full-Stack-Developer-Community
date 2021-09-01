@@ -19,3 +19,14 @@
 .description {
   font-size: 2rem;
 }
+
+@media screen and (max-width: 780px) {
+  .button-view-tech {
+    color: white;
+    border: 2px solid white;
+    background-color: black;
+    width: 100%;
+    align-self: center;
+    font-size: 1rem;
+  }
+}
