@@ -6,7 +6,6 @@ import "./Home.css";
 import TechNames from "../../components/TechNames/TechNames";
 import UserDisplay from "../../components/UserDisplay/UserDisplay";
 import { Container } from "react-bootstrap";
-// import "./debug.css";
 
 const Home = () => {
   return (
