@@ -25,3 +25,14 @@
 .resource-width {
   width: 100%;
 }
+
+@media screen and (max-width: 780px) {
+  .login-msg {
+    width: 100%;
+    height: 100%;
+    padding: 12rem;
+    font-size: small;
+    background-image: linear-gradient(#00b3b3, #6699ff);
+    margin-top: 3rem;
+  }
+}
