@@ -1,4 +1,4 @@
-# Full Stack Web Development
+# Full Stack Web Developer Community
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
 ## Description
