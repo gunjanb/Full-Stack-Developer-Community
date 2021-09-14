@@ -108,7 +108,6 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 - [Gunjan Bhargava](https://github.com/gunjanb)
 - [Rex Yu](https://github.com/yu19910513)
 - [Tiffany Washke](https://github.com/twashke)
-- Further contributions are always encouraged!
 
 ## Tests
 
@@ -130,12 +129,12 @@ If you have any questions about project you can contact contributors by email or
 
 ### Donna Crawford
 
-- Email : Donnastjames
+- Email : crawford0774@gmail.com
 - GitHub:[Donnastjames](https://github.com/Donnastjames)
 
 ### Rex Yu
 
-- Email : yu19910513
+- Email : yu19910513@gmail.com
 - GitHub: [yu19910513](https://github.com/yu19910513)
 
 ### Tiffany Washke
