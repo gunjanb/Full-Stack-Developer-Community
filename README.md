@@ -85,23 +85,29 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 - Choose a **Developer** to view their profile page and view their content.
 - Go to the **Donate** page to contribute to the **Full Stack Developer Community**.
 
-**Signup** Mobile View \
-![Signup Mobile](client/src/assets/signup-mobile.jpeg)
+ **Signup** Mobile View 
+ 
+ ![Signup Mobile](client/src/assets/signup-mobile.jpeg)
 
-**Login** Mobile View \
-![Login Mobile](client/src/assets/login-mobile.jpeg)
+ **Login** Mobile View 
+ 
+ ![Login Mobile](client/src/assets/login-mobile.jpeg)
 
-**Home** page view \
-![Home](client/src/assets/home.png)
+ **Home** page view 
+ 
+ ![Home](client/src/assets/home.png)
 
-**Home** Page - Technologies and Developers \
-![Home](client/src/assets/home-page-gif.gif)
+ **Home** Page - Technologies and Developers 
 
-**Donate** to the Full Stack Developer Community \
-![Donate](client/src/assets/donate-gif.gif)
+ ![Home](client/src/assets/home-page-gif.gif)
 
-**Add Post** to the Resources Section \
-![Add Post](client/src/assets/add-post-gif.gif)
+ **Donate** to the Full Stack Developer Community 
+ 
+ ![Donate](client/src/assets/donate-gif.gif)
+
+ **Add Post** to the Resources Section 
+
+ ![Add Post](client/src/assets/add-post-gif.gif)
 
 ## Contributors
 
