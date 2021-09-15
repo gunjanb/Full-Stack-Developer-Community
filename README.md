@@ -62,6 +62,7 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
   - [Node.js](https://nodejs.org/en/)
 
 - For [Website Deployment](https://fullstackdevelopercommunity.herokuapp.com/) the following technologies were used:
+
   - [Heroku](https://heroku.com/)
   - [MongoDB Atlas](https://www.mongodb.com/)
   - [if-env](https://www.npmjs.com/package/if-env)
@@ -104,8 +105,8 @@ Welcome to the [Full Stack Developer Community](https://fullstackdevelopercommun
 
 ## Contributors
 
-- [Donna Crawford](https://github.com/Donnastjames)
 - [Gunjan Bhargava](https://github.com/gunjanb)
+- [Donna Crawford](https://github.com/Donnastjames)
 - [Rex Yu](https://github.com/yu19910513)
 - [Tiffany Washke](https://github.com/twashke)
 
